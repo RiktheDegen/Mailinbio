@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Mybot.css';
 import axios from 'axios';
 
+
+//new comment to check if git is working 
 const Mybot = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [messages, setMessages] = useState([]);
