@@ -1,0 +1,62 @@
+/* src/components/Mybot.css */
+/* Add any additional styles for your Mybot here */
+
+.user-bubble {
+  background-color: #4a5568; /* Slate Gray */
+  color: #f8f9fa; /* Lighter Grey */
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.bot-bubble {
+  background-color: #2d3748; /* Charcoal Gray */
+  color: #f8f9fa; /* Lighter Grey */
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.expanded {
+  width: 70%;
+  height: 70vh; /* Set your desired height, 70% of the viewport height in this example */
+}
+
+/* Add styling for partially expanded mode */
+.partially-expanded {
+  width: 50%; /* Set your desired width for partially expanded mode */
+  
+}
+
+/* Update styling for collapse and expand button */
+.collapse-expand-btn {
+  cursor: pointer;
+}
+
+
+/* Styling for code blocks */
+.user-text {
+  /* Your existing styles for user messages */
+
+  /* Add the following styles to handle code blocks */
+  white-space: pre-wrap; /* Preserve line breaks */
+}
+
+.bot-text {
+  /* Your existing styles for bot messages */
+
+  /* Add the following styles to handle code blocks */
+  white-space: pre-wrap; /* Preserve line breaks */
+}
+
+.code-block {
+  background-color: #1e1e1e; /* Dark background color for code blocks */
+  color: #d4d4d4; /* Light text color for code blocks */
+  padding: 10px;
+  margin: 0;
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  border-radius: 5px;
+  font-family: 'Courier New', monospace; /* Use a monospaced font for code */
+}
