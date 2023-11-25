@@ -3,7 +3,7 @@ import {Container, Form, Button, Row, Col, FormGroup, Label, Input, Card,CardBod
 
 import firebase from 'firebase/compat/app'
 import "firebase/compat/auth";
-import { getDatabase,ref, set  } from 'firebase/database';
+import { getDatabase,ref, set, get  } from 'firebase/database';
 //firebase.initializeApp(firebaseConfig);
 
 import { UserContext } from './context/UserContext'
@@ -11,10 +11,11 @@ import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
-function writeUserData(userId, email) {
+function writeUserData(userId, email, hasExistingBot) {
   const db = getDatabase();
   set(ref(db, 'users/' + userId), {
     email: email,
+    UserHasBot: hasExistingBot
   });
 }
 
@@ -34,7 +35,7 @@ const Singup = () => {
       console.log(res);
       context.setUser({email:res.user.email, uid: res.user.uid})
       try {
-        writeUserData(res.user.uid, res.user.email);
+        writeUserData(res.user.uid, res.user.email, 'False');
       } catch (error) {
         console.log(error);
       }
@@ -56,8 +57,10 @@ const Singup = () => {
     handleSignup()
   }
 
+  const dbRef = firebase.database().ref();
+  const hasBotStatus = dbRef.child("users").child(userId).child(hasExistingBot).get();
   if (context.user?.uid) {
-   return <Navigate to = "/"/>
+   return <Navigate to = "/Upload"/>
   }
   return(
     <Container className='text-center'>

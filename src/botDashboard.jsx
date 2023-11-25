@@ -1,9 +1,9 @@
 import React from 'react'
 
-function botDashboard() {
+function BotDashboard() {
   return (
     <div>botDashboard</div>
   )
 }
 
-export default botDashboard
+export default BotDashboard

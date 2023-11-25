@@ -3,7 +3,7 @@ import {Container, Form, Button, Row, Col, FormGroup, Label, Input, Card,CardBod
 
 import firebase from 'firebase/compat/app'
 import "firebase/compat/auth";
-import { getDatabase,ref, set  } from 'firebase/database';
+import { getDatabase,ref, set, get,child  } from 'firebase/database';
 
 
 import { UserContext } from './context/UserContext'
@@ -20,6 +20,7 @@ const Signin = () => {
   const[email, setEmail] = useState('')
   const[password, setPassword] = useState('')
 
+  
 
   const handleSignup = () => {
     firebase
@@ -45,8 +46,9 @@ const Signin = () => {
     handleSignup()
   }
 
-  if (context.user?.uid) {
-   return <Navigate to = "/Upload"/>
+  
+  if (context.user?.uid ) {
+   return <Navigate to = "/Home"/>
   }
   return(
     <Container className='text-center'>

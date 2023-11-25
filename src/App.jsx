@@ -8,6 +8,7 @@ import Singup from './Singup'
 import NotFound from './NotFound'
 import Upload from './Upload'
 import Mybotbckend from './Mybotbckend'
+import BotDashboard from './BotDashboard'
 //toast 
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,6 +55,7 @@ function App() {
           <Route exact path="/signin" element={<Signin />}/>
           <Route exact path="/signup" element={<Singup/>}/>
           <Route exact path="/Upload" element={<Upload />}/>
+          <Route exact path="/botDashboard" element={<BotDashboard />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
