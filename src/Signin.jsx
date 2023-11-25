@@ -3,11 +3,15 @@ import {Container, Form, Button, Row, Col, FormGroup, Label, Input, Card,CardBod
 
 import firebase from 'firebase/compat/app'
 import "firebase/compat/auth";
-//firebase.initializeApp(firebaseConfig);
+import { getDatabase,ref, set  } from 'firebase/database';
+
 
 import { UserContext } from './context/UserContext'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+
+
 
 
 const Signin = () => {

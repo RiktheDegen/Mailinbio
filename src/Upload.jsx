@@ -1,15 +1,15 @@
 
 import React, { useContext, useState } from 'react';
-import fs from "fs";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
+import { getDatabase,ref, set  } from 'firebase/database';
+
 import { UserContext } from '../src/context/UserContext'
 import { Navigate, Link } from 'react-router-dom';
-import OpenAI from "openai";
-const openai = new OpenAI({
-  apiKey: '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',
-  dangerouslyAllowBrowser: true,
-});
+
+
+
+
 
 const DocumentUpload = ({ userId }) => {
     const context = useContext(UserContext)
@@ -35,27 +35,15 @@ const DocumentUpload = ({ userId }) => {
             () => {
               // Document uploaded successfully
               console.log('Document uploaded successfully!');
+              // writeUserData(context.user.uid, '1',document.name);
             }
           );
         };
 
       const createBot = async () => {
-          const fileOne = await openai.files.create({
-            file: fs.createReadStream("/Mailinbio/src/assistants API chat/screencapture-platform-openai-docs-assistants-overview-2023-11-21-15_38_12.pdf"),
-            purpose: "assistants",
-          });
-          const fileTwo = await openai.files.create({
-            file: fs.createReadStream("Mailinbio/src/assistants API chat/screencapture-platform-openai-docs-assistants-tools-2023-11-21-15_41_15.pdf"),
-            purpose: "assistants",
-          });
-          const assistant = await openai.beta.assistants.create({
-            instructions: "You are a developer support chatbot.Use the given documents to help users with questions regarding the API",
-            model: "gpt-4-1106-preview",
-            tools: [{"type": "retrieval"}],
-            file_ids: [fileOne.id, fileTwo.id]
-          });
         
-        }
+        
+        };
       
         return (
           <div>

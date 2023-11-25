@@ -3,11 +3,20 @@ import {Container, Form, Button, Row, Col, FormGroup, Label, Input, Card,CardBod
 
 import firebase from 'firebase/compat/app'
 import "firebase/compat/auth";
+import { getDatabase,ref, set  } from 'firebase/database';
 //firebase.initializeApp(firebaseConfig);
 
 import { UserContext } from './context/UserContext'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+
+function writeUserData(userId, email) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    email: email,
+  });
+}
 
 
 const Singup = () => {
@@ -24,6 +33,12 @@ const Singup = () => {
     .then( res => {
       console.log(res);
       context.setUser({email:res.user.email, uid: res.user.uid})
+      try {
+        writeUserData(res.user.uid, res.user.email);
+      } catch (error) {
+        console.log(error);
+      }
+      
     })
     .catch(error => {
       console.log(error)
@@ -31,7 +46,7 @@ const Singup = () => {
         type: 'error'
       })
     })
-
+    
 
   }
 

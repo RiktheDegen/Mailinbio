@@ -19,17 +19,19 @@ import firebase from "firebase/compat/app"
 import 'firebase/auth'
 
 
-const firebaseConfig = {
+ const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
   authDomain: "mailinbio-e8100.firebaseapp.com",
   projectId: "mailinbio-e8100",
   storageBucket: "mailinbio-e8100.appspot.com",
   messagingSenderId: "845033432043",
   appId: "1:845033432043:web:c4c3307b010a15cb0bafae",
-  measurementId: "G-95Y59PQSJW"
+  measurementId: "G-95Y59PQSJW",
+  databaseURL: "https://mailinbio-e8100-default-rtdb.firebaseio.com/",
 };
 
 const prod = firebase.initializeApp(firebaseConfig);
+
 
 
 import Header from './Header';
