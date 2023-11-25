@@ -117,7 +117,7 @@ const createBot = async () => {
   });
   const assistant = await openai.beta.assistants.create({
     instructions: "You are a developer support chatbot.Use the given documents to help users with questions regarding the API",
-    model: "gpt-4-1106-preview",
+    model: "gpt-3.5-turbo-1106",
     tools: [{"type": "retrieval"}],
     file_ids: [fileOne.id, fileTwo.id]
   });

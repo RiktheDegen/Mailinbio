@@ -60,3 +60,13 @@
   border-radius: 5px;
   font-family: 'Courier New', monospace; /* Use a monospaced font for code */
 }
+
+.bold-text {
+  font-weight: bold;
+  /* Add more styles as needed */
+}
+.code-text {
+  /* Add your styling for code blocks here */
+  color: #ff79c6; /* Example: Pink color for code blocks */
+  /* Add more styles as needed */
+}
