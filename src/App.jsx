@@ -9,6 +9,7 @@ import NotFound from './NotFound'
 import Upload from './Upload'
 import Mybotbckend from './Mybotbckend'
 import BotDashboard from './BotDashboard'
+import Dashboard from './Dashboard';
 //toast 
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,6 +42,7 @@ import Footer from './Footer';
 
 
 
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -55,6 +57,7 @@ function App() {
           <Route exact path="/signin" element={<Signin />}/>
           <Route exact path="/signup" element={<Singup/>}/>
           <Route exact path="/Upload" element={<Upload />}/>
+          <Route exact path="/Dashboard" element={<Dashboard />}/>
           <Route exact path="/botDashboard" element={<BotDashboard />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
