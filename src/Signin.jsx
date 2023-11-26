@@ -19,8 +19,8 @@ const Signin = () => {
   const context = useContext(UserContext)
   const[email, setEmail] = useState('')
   const[password, setPassword] = useState('')
+  const userId = context.user?.uid;
 
-  
 
   const handleSignup = () => {
     firebase
@@ -28,17 +28,15 @@ const Signin = () => {
     .signInWithEmailAndPassword(email, password)
     .then( res => {
       console.log(res);
-      context.setUser({email:res.user.email, uid: res.user.uid})
-    })
+      context.setUser({email:res.user.email, uid: res.user.uid, botStatus:'false'})
+    }
+    )
     .catch(error => {
       console.log(error)
       toast(error.message, {
         type: 'error'
       })
-    })
-
-
-  }
+    }) }
 
   const handleSubmit = e => {
     console.log("called function");
@@ -46,10 +44,12 @@ const Signin = () => {
     handleSignup()
   }
 
+
+  if ( context.user?.uid && context.user.botStatus === 'false')  {
+    return <Navigate to = "/Upload"/>
+   }
   
-  if (context.user?.uid ) {
-   return <Navigate to = "/Home"/>
-  }
+
   return(
     <Container className='text-center'>
       <Row>

@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import { getDatabase,ref, set  } from 'firebase/database';
+import { getDatabase,ref, set, get,child } from 'firebase/database';
 
 import { UserContext } from '../src/context/UserContext'
 import { Navigate, Link } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { Navigate, Link } from 'react-router-dom';
 
 
 const DocumentUpload = ({ userId }) => {
+
     const context = useContext(UserContext)
     if (context.user?.uid) {
         const [document, setDocument] = useState(null);
