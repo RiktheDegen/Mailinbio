@@ -8,14 +8,14 @@ import { Navigate, Link } from 'react-router-dom';
 
 
 
-
-
 const DocumentUpload = ({ userId }) => {
-
+ 
   const [document, setDocument] = useState(null);
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-const [previewContent, setPreviewContent] = useState('');
+  const [previewContent, setPreviewContent] = useState('');
+  const [docType, setDocType] = useState('');
+
 
     const context = useContext(UserContext)
     if (context.user?.uid) {
@@ -24,7 +24,25 @@ const [previewContent, setPreviewContent] = useState('');
         const handleUpload = async () => {
           // Ensure a document is selected
           if (!document) return;
-      
+          setDocType('');
+            // Specify the allowed file types
+          
+            if (uploadedDocuments.length >= 20) {
+              alert('You can only upload up to 20 files.');
+              return;
+            }
+
+          const allowedFileTypes = ['.c', '.cpp', '.csv', '.docx', '.html', '.java', '.json', '.md', '.pdf', '.php', '.pptx', '.py', '.rb', '.tex', '.txt', '.css'];
+          
+          const fileExtension = document.name.slice(((document.name.lastIndexOf(".") - 1) >>> 0) + 2);
+          const isValidFileType = allowedFileTypes.includes(`.${fileExtension.toLowerCase()}`);
+
+          if (!isValidFileType) {
+            setDocType('Invalid file type. Please select a supported file type.');
+            
+            return;
+          }
+
           // Reference to Firebase Storage
           const storageRef = firebase.storage().ref(`${userId}/${document.name}`);
       
@@ -40,6 +58,7 @@ const [previewContent, setPreviewContent] = useState('');
             () => {
               // Document uploaded successfully
               console.log('Document uploaded successfully!');
+              
               const newDocument = { name: document.name, url: storageRef.getDownloadURL() };
               setUploadedDocuments((prevDocuments) => [...prevDocuments, newDocument]);
               setDocument(null); // Reset the document state after upload
@@ -81,7 +100,7 @@ const [previewContent, setPreviewContent] = useState('');
           
     <div className="container mt-8">
          <h2 className="text-2xl font-bold">Upload your API Docs:</h2>
-         <p className="font-semibold"> Supported file types include:
+         <p className="font-semibold"> Upload upto 20 files. Supported file types include:
 .c
 .cpp
 .csv
@@ -113,6 +132,7 @@ const [previewContent, setPreviewContent] = useState('');
         {document && (
             <div className="ml-4 mt-3">
               <p className="font-semibold">{document.name}</p>
+              <p className="font-semibold">{docType}</p>
               {/* You can also display other information like size, type, etc. */}
               {/* <p>{`Type: ${document.type}`}</p> */}
               {/* <p>{`Size: ${document.size} bytes`}</p> */}
@@ -120,7 +140,7 @@ const [previewContent, setPreviewContent] = useState('');
           )}
       </div>
       <button
-        className="mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="mt-8 mb-8 bg-transparent hover:bg-blue-500 text-blue-500 font-semibold py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         onClick={handleUpload}
        >Upload Document</button>
        
@@ -128,8 +148,11 @@ const [previewContent, setPreviewContent] = useState('');
         <h2 className="text-2xl font-bold">Current Uploads:</h2>
         {uploadedDocuments.map((uploadedDocument, index) => (
           <div key={index} className="border p-4 mt-4 flex items-center">
-            {/* Display document icon here */}
-            <div className="w-10 h-10 bg-gray-300 mr-4"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+            </svg>
+
+            {/* <div className="w-10 h-10 bg-gray-300 mr-4"></div> */}
             <p>{uploadedDocument.name}</p>
             <div className="ml-auto">
              
@@ -141,11 +164,18 @@ const [previewContent, setPreviewContent] = useState('');
           </div>
         ))}
       </div>
-             
+      {/* <div className="mt-8">
+        <h2 className="text-2xl font-bold">Give your bot instructions:</h2>
+        <textarea
+          className="w-full p-4 border border-gray-300 mt-2"
+         value={instructions}
+         onChange={}
+        />
+      </div> */}
 
 
-            <button className='mx-4' onClick={createBot}>create new bot with local files</button>
-            <Link className='mx-4' to="/Mybot">Go to my bot</Link>
+            <button className='mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' onClick={createBot}>Create my Bot</button>
+           
           </div>
         );
     } else {

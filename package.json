@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.14.18",
+    "@mui/material": "^5.14.18",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "autoprefixer": "^10.4.16",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -26,6 +29,7 @@
     "react-router-dom": "^6.18.0",
     "react-syntax-highlighter": "^15.5.0",
     "sort-by": "^1.2.0",
+    "styled-components": "^6.1.1",
     "tailwind": "^4.0.0"
   },
   "devDependencies": {

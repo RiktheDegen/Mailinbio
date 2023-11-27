@@ -57,8 +57,7 @@ const Singup = () => {
     handleSignup()
   }
 
-  const dbRef = firebase.database().ref();
-  const hasBotStatus = dbRef.child("users").child(userId).child(hasExistingBot).get();
+
   if (context.user?.uid) {
    return <Navigate to = "/Upload"/>
   }
