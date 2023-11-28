@@ -5,15 +5,14 @@ import { getDatabase,ref, set, get,child } from 'firebase/database';
 import Modal from 'react-modal';
 import { UserContext } from '../src/context/UserContext'
 import { Navigate, Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 const DocumentUpload = ({ userId }) => {
  
   const [document, setDocument] = useState(null);
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [previewContent, setPreviewContent] = useState('');
+  const [docURL, setDocURL] = useState([]);
   const [docType, setDocType] = useState('');
 
 
@@ -55,11 +54,11 @@ const DocumentUpload = ({ userId }) => {
             error => {
               console.error(error);
             },
-            () => {
+            async () => {
               // Document uploaded successfully
               console.log('Document uploaded successfully!');
-              
-              const newDocument = { name: document.name, url: storageRef.getDownloadURL() };
+              const downloadURL = await storageRef.getDownloadURL(); // Await the promise
+              const newDocument = { name: document.name, url: downloadURL };
               setUploadedDocuments((prevDocuments) => [...prevDocuments, newDocument]);
               setDocument(null); // Reset the document state after upload
             }
@@ -67,9 +66,18 @@ const DocumentUpload = ({ userId }) => {
         };
 
       const createBot = async () => {
-        
-        
-        };
+        if (uploadedDocuments.length<1) {
+                  return  alert('please upload files to continue');
+                }
+                console.log(uploadedDocuments);
+                const response = await axios.post('http://localhost:3001/api/createBot', {
+                  dataArray: uploadedDocuments,
+                  
+        })
+          
+        const botCreationStatus = response.data.botCreationStatus?.text;
+        console.log('Bot succesfully made' + botCreationStatus);
+      };
       
 
        

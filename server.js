@@ -103,10 +103,33 @@ app.post('/api/messages', async (req, res) => {
   res.json({ botResponse});
 });
 
+
+app.post('/api/createBot', async (req, res) => {
+  const userFilesArray = req.body; // Assuming your message is sent in the request body
+  var userFilesCount = userFilesArray.length;
+  console.log(userFilesArray);
+  console.log(userFilesCount);
+
+
+  // Handle the user message, interact with OpenAI, and send back a response
+
+   
+
+  //   const botResponse = {
+  //     text: success ? botReply : 'the API call has failed',
+  //     type: 'bot',
+  //   };
+
+  // // Example response
+  // console.log(botResponse.text);
+  // res.json({ botResponse});
+});
+
+
 //Begin document upload tests 
 
 const createBot = async () => {
-  console.log('begun function');
+  
   const fileOne = await openai.files.create({
     file: fs.createReadStream("./src/assistants API chat/intro.docx"),
     purpose: "assistants",
@@ -128,6 +151,5 @@ const createBot = async () => {
 
 app.listen(port, async() => {
   console.log(`Server is running on port ${port}`);
-  await createBot();
-  await initThread(); // Wait for initThread to complete
+ 
 });
