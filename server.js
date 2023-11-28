@@ -6,6 +6,25 @@ import cors from 'cors';
 import OpenAI from "openai";
 import axios from 'axios';
 import fs from "fs";
+import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase-admin/app';
+import 'firebase/compat/storage';
+import { getStorage, ref, getDownloadURL} from 'firebase/storage';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
+  authDomain: "mailinbio-e8100.firebaseapp.com",
+  projectId: "mailinbio-e8100",
+  storageBucket: "mailinbio-e8100.appspot.com",
+  messagingSenderId: "845033432043",
+  appId: "1:845033432043:web:c4c3307b010a15cb0bafae",
+  measurementId: "G-95Y59PQSJW",
+  databaseURL: "https://mailinbio-e8100-default-rtdb.firebaseio.com/",
+};
+
+const prod = firebase.initializeApp(firebaseConfig);
+const storage = getStorage(prod);
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -105,25 +124,115 @@ app.post('/api/messages', async (req, res) => {
 
 
 app.post('/api/createBot', async (req, res) => {
-  const userFilesArray = req.body; // Assuming your message is sent in the request body
-  var userFilesCount = userFilesArray.length;
+  let apiReply;
+  const userFilesArray = req.body.dataArray; // Assuming your message is sent in the request body
   console.log(userFilesArray);
-  console.log(userFilesCount);
+ 
+  var numberOfFiles = userFilesArray.length;
+  console.log(numberOfFiles);
+  var fileID = [];
+  // userFilesArray.forEach(async(obj, index) => {
+    
+  //   const linkVariable = `link${index + 1}`;
+  //   var linkValue = obj.url;
+  //   // Replace 'path/to/your/file' with the actual path to your file in Firebase Storage
 
+  //   // Create a reference to the file using the 'ref' method
+  //   const fileRef = ref(storage, linkValue);
 
-  // Handle the user message, interact with OpenAI, and send back a response
+  //   // Get the download URL for the file
+  //     getDownloadURL(fileRef)
+  //     .then((downloadURL) => {
+  //   // Use the download URL to fetch the file content
+  //     return fetch(downloadURL);
+  //     })
+  //     .then((response) => {
+  //   // Check if the fetch was successful (status code 200)
+  //   if (!response.ok) {
+  //     throw new Error(`Failed to fetch file: ${response.statusText}`);
+  //   }
 
-   
-
-  //   const botResponse = {
-  //     text: success ? botReply : 'the API call has failed',
-  //     type: 'bot',
-  //   };
+  //   // Process the file content (e.g., read as a stream, parse, etc.)
+  //   return response.blob(); // You can use response.blob() for binary data
+  // })
+  // .then(async (fileContent) => {
+  //   // Do something with the file content
+  //   const fileBlob = new File([fileContent], 'filename');
+  //   const fileOne = await openai.files.create({
+  //     file: fileBlob,
+  //     purpose: "assistants",
+  //   });
+  //  async function pushFileID() {
+  //     var fileIdTemp = await fileOne.id;
+  //     fileID.push(fileOne.id);
+  //   console.log(fileID);
+  //   }
+  //   pushFileID();
+  //   if (fileID.length === numberOfFiles - 1 ) {
+  //     const assistant = await openai.beta.assistants.create({
+  //       instructions: "You are a developer support chatbot.Use the given documents to help users with questions regarding the API",
+  //       model: "gpt-3.5-turbo-1106",
+  //       tools: [{"type": "retrieval"}],
+  //       file_ids: fileID,
+  //     });
+  //     apiReply = assistant.id;
+  //   }
+  //   const botResponse = apiReply;
 
   // // Example response
-  // console.log(botResponse.text);
+  // console.log(botResponse);
   // res.json({ botResponse});
-});
+  //   });
+    
+  // });
+   // Handle the user message, interact with OpenAI, and send back a response
+
+   await Promise.all(userFilesArray.map(async (obj, index) => {
+    const linkValue = obj.url;
+    const fileRef = ref(storage, linkValue);
+    
+    try {
+      const downloadURL = await getDownloadURL(fileRef);
+      const response = await fetch(downloadURL);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch file: ${response.statusText}`);
+      }
+
+      const fileContent = await response.blob();
+      const fileBlob = new File([fileContent], 'filename');
+
+      const fileOne = await openai.files.create({
+        file: fileBlob,
+        purpose: 'assistants',
+      });
+
+      fileID.push(fileOne.id);
+      console.log(fileID);
+    } catch (error) {
+      console.error('Error processing file:', error);
+    }
+  }));
+
+  if (fileID.length === numberOfFiles) {
+    const assistant = await openai.beta.assistants.create({
+      instructions: 'You are a developer support chatbot. Use the given documents to help users with questions regarding the API',
+      model: 'gpt-3.5-turbo-1106',
+      tools: [{ type: 'retrieval' }],
+      file_ids: fileID,
+    });
+
+    const botResponse = assistant.id;
+
+    // Example response
+    console.log(botResponse);
+    res.json({ botResponse });
+  } else {
+    res.status(500).json({ error: 'File processing failed' });
+  }
+   
+
+  });
 
 
 //Begin document upload tests 

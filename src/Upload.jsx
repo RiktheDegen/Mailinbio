@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 const DocumentUpload = ({ userId }) => {
- 
+  var listOfDocs;
   const [document, setDocument] = useState(null);
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
   const [docURL, setDocURL] = useState([]);
@@ -59,6 +59,7 @@ const DocumentUpload = ({ userId }) => {
               console.log('Document uploaded successfully!');
               const downloadURL = await storageRef.getDownloadURL(); // Await the promise
               const newDocument = { name: document.name, url: downloadURL };
+              
               setUploadedDocuments((prevDocuments) => [...prevDocuments, newDocument]);
               setDocument(null); // Reset the document state after upload
             }
@@ -69,14 +70,16 @@ const DocumentUpload = ({ userId }) => {
         if (uploadedDocuments.length<1) {
                   return  alert('please upload files to continue');
                 }
-                console.log(uploadedDocuments);
+                console.log(Array.isArray(uploadedDocuments));
                 const response = await axios.post('http://localhost:3001/api/createBot', {
                   dataArray: uploadedDocuments,
-                  
-        })
+                     
+        }  
+        )
           
-        const botCreationStatus = response.data.botCreationStatus?.text;
-        console.log('Bot succesfully made' + botCreationStatus);
+        const botId = response.data.botResponse;
+        console.log('Bot succesfully made ' + botId);
+        <Navigate to = "/" />
       };
       
 
