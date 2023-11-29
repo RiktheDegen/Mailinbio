@@ -9,7 +9,8 @@ import NotFound from './NotFound'
 import Upload from './Upload'
 import Mybotbckend from './Mybotbckend'
 import CurrentUploads from './currentUploads';
-import Dashboard from './Dashboard';
+import BotTesting from './BotTesting';
+
 //toast 
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,12 +56,13 @@ function App() {
           <Route exact path="/signin" element={<Signin />}/>
           <Route exact path="/signup" element={<Singup/>}/>
           <Route exact path="/Upload" element={<Upload />}/>
-          <Route exact path="/Dashboard" element={<Dashboard />}/>
+          <Route exact path="/BotTesting" element={<BotTesting />}/>
+          <Route exact path="/MyBotBckend/:AssistantId" element={<Mybotbckend />}/>
           <Route exact path="/currentUploads" element={<CurrentUploads />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
-          <Mybotbckend />
+        
           <Footer/>
           </UserContext.Provider>
     </Router>

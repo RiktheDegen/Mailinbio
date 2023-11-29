@@ -1,5 +1,4 @@
 // server.js
-
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -66,6 +65,8 @@ const initThread = async () => {
 // Example endpoint to handle incoming messages
 app.post('/api/messages', async (req, res) => {
   const userMessage = req.body.text; // Assuming your message is sent in the request body
+  assistantId = req.body.assistant;
+
 
   // Handle the user message, interact with OpenAI, and send back a response
 
@@ -227,10 +228,11 @@ app.post('/api/createBot', async (req, res) => {
     // Example response
     console.log(botResponse);
     res.json({ botResponse });
+    return
   } else {
     res.status(500).json({ error: 'File processing failed' });
   }
-   
+   return
 
   });
 
@@ -260,5 +262,5 @@ const createBot = async () => {
 
 app.listen(port, async() => {
   console.log(`Server is running on port ${port}`);
- 
+ initThread()
 });

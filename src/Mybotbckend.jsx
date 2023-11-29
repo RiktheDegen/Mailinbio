@@ -3,10 +3,15 @@ import './Mybot.css';
 import axios from 'axios';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import { useParams } from 'react-router-dom';
 
 //new comment to check if git is working 
-const Mybot = () => {
+const Mybot = ({ UserId}) => {
+
+  const { AssistantId } = useParams();
+  const userAssitant = AssistantId;
+  console.log(userAssitant);
+
   const [collapsed, setCollapsed] = useState(false);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
@@ -25,6 +30,7 @@ const Mybot = () => {
     try {
       const response = await axios.post('http://localhost:3001/api/messages', {
         text: newMessage,
+        assistant: userAssitant,
       });
   
       const botResponse = response.data.botResponse?.text;
@@ -96,6 +102,8 @@ const Mybot = () => {
   };
 
   return (
+    <div>
+      <p>You can test your bot in this stage</p>
     <div
       className={`fixed bottom-0 right-0 m-4 p-4 bg-gray-800 text-gray-300 rounded-lg ${
         collapsed ? 'w-60' : 'partially-expanded'
@@ -141,6 +149,7 @@ const Mybot = () => {
           </div>
         </>
       )}
+    </div>
     </div>
   );
 };

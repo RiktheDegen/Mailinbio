@@ -4,18 +4,19 @@ import 'firebase/compat/storage';
 import { getDatabase,ref, set, get,child } from 'firebase/database';
 import Modal from 'react-modal';
 import { UserContext } from '../src/context/UserContext'
-import { Navigate, Link } from 'react-router-dom';
+import { Navigate, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 const DocumentUpload = ({ userId }) => {
   var listOfDocs;
+
   const [document, setDocument] = useState(null);
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
   const [docURL, setDocURL] = useState([]);
   const [docType, setDocType] = useState('');
 
-
+  const Navigate = useNavigate();
     const context = useContext(UserContext)
     if (context.user?.uid) {
         const [document, setDocument] = useState(null);
@@ -79,7 +80,17 @@ const DocumentUpload = ({ userId }) => {
           
         const botId = response.data.botResponse;
         console.log('Bot succesfully made ' + botId);
-        <Navigate to = "/" />
+        const assistantId = botId;
+        const charSet = 'asst';
+        var hasAsst = charSet.split('').every(char => botId.includes(char))
+        console.log(hasAsst);
+        if (hasAsst){
+          // Navigate('/BotTesting');
+          Navigate(`/MyBotBckend/${assistantId}`);
+        };
+         
+        
+        
       };
       
 
