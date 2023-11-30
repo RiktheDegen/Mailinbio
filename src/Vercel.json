@@ -1,0 +1,9 @@
+
+{
+    "builds": [
+      { "src": "build/**", "use": "@vercel/static" },
+      { "src": "public/**", "use": "@vercel/static" },
+      { "src": "node_modules/bootstrap/dist/css/bootstrap.min.css", "use": "@vercel/static" }
+    ]
+  }
+  
