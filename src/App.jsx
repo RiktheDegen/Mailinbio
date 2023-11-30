@@ -8,7 +8,7 @@ import Singup from './Singup'
 import NotFound from './NotFound'
 import Upload from './Upload'
 import Mybotbckend from './Mybotbckend'
-import CurrentUploads from './currentUploads';
+import CurrentUploads from './CurrentUploads';
 import BotTesting from './BotTesting';
 
 //toast 
