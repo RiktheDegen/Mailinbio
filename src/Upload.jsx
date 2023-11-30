@@ -86,7 +86,7 @@ const DocumentUpload = ({ userId }) => {
         console.log(hasAsst);
         if (hasAsst){
           // Navigate('/BotTesting');
-          Navigate(`/MyBotBckend/${assistantId}`);
+          Navigate(`/BotTesting/${assistantId}`);
         };
          
         

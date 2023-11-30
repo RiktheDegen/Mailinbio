@@ -32,7 +32,7 @@ app.use(cors());
 
 
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: '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',
 });
 
 app.use(bodyParser.json());

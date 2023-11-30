@@ -27,12 +27,14 @@
 /* Add styling for partially expanded mode */
 .partially-expanded {
   width: 50%; /* Set your desired width for partially expanded mode */
-  
+  z-index: 52;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* Update styling for collapse and expand button */
 .collapse-expand-btn {
   cursor: pointer;
+  
 }
 
 
@@ -69,4 +71,9 @@
   /* Add your styling for code blocks here */
   color: #ff79c6; /* Example: Pink color for code blocks */
   /* Add more styles as needed */
+}
+
+.collapsed {
+z-index: 52;
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }

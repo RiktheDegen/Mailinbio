@@ -5,16 +5,23 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useParams } from 'react-router-dom';
 
+export const defaultConfig = {
+  title: 'ChatGPT',
+  theme: 'gray', // Add more configuration options as needed
+};
+
+
 //new comment to check if git is working 
-const Mybot = ({ UserId}) => {
+const Mybot = ({ UserId, AssistantId, title, theme}) => {
 
-  const { AssistantId } = useParams();
+  
   const userAssitant = AssistantId;
-  console.log(userAssitant);
+  
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -103,10 +110,9 @@ const Mybot = ({ UserId}) => {
 
   return (
     <div>
-      <p>You can test your bot in this stage</p>
     <div
-      className={`fixed bottom-0 right-0 m-4 p-4 bg-gray-800 text-gray-300 rounded-lg ${
-        collapsed ? 'w-60' : 'partially-expanded'
+      className={`fixed bottom-0 right-0 m-4 p-4 bg-gray-800 text-gray-300 rounded-lg  ${
+        collapsed ? 'w-60 collapsed' : 'partially-expanded'
       }`}
     >
       <div className="flex justify-between items-center mb-4">
