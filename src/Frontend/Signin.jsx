@@ -6,7 +6,7 @@ import "firebase/compat/auth";
 import { getDatabase,ref, set, get,child  } from 'firebase/database';
 
 
-import { UserContext } from './context/UserContext'
+import { UserContext } from '../context/UserContext'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -51,7 +51,7 @@ const Signin = () => {
   
 
   return(
-    <Container className='text-center'>
+    <Container className='mt-4 text-center' style={{ minHeight: '60vh' }}>
       <Row>
         <Col lg={6} className='offset-lg-3 mt-5'>
           <Card>

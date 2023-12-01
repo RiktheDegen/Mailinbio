@@ -3,13 +3,13 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Routes, Route, Navigate, Link} from "react-router-dom"
 import Home from './Home';
-import Signin from './Signin'
-import Singup from './Singup'
+import Signin from './Frontend/Signin'
+import Singup from './Frontend/Singup'
 import NotFound from './NotFound'
-import Upload from './Upload'
-import Mybotbckend from './Mybotbckend'
+import Upload from './Frontend/Upload'
+import Mybotbckend from './Reusable Components/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
-import BotTesting from './BotTesting';
+import BotTesting from './Frontend/BotTesting';
 
 //toast 
 import {ToastContainer} from 'react-toastify'
@@ -21,6 +21,9 @@ import { UserContext } from './context/UserContext';
 import firebase from "firebase/compat/app"
 import 'firebase/auth'
 
+import Header from './Frontend/Header';
+import Footer from './Frontend/Footer';
+import Onboarding from './Frontend/Onboarding';
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -37,8 +40,7 @@ const prod = firebase.initializeApp(firebaseConfig);
 
 
 
-import Header from './Header';
-import Footer from './Footer';
+
 
 
 function App() {
@@ -59,10 +61,10 @@ function App() {
           <Route exact path="/BotTesting/:AssistantId" element={<BotTesting />}/>
           <Route exact path="/MyBotBckend" element={<Mybotbckend />}/>
           <Route exact path="/currentUploads" element={<CurrentUploads />}/>
+          <Route exact path="/Onboarding" element={<Onboarding />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
-        
           <Footer/>
           </UserContext.Provider>
     </Router>

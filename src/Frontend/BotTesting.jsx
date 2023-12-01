@@ -1,8 +1,8 @@
 import React, { useState, useContext }  from 'react'
 import { Navigate, Link, useNavigate } from 'react-router-dom';
-import { UserContext } from '../src/context/UserContext'
+import { UserContext } from '../context/UserContext'
 import { useParams } from 'react-router-dom';
-import Mybot from './Mybotbckend';
+import Mybot from '../Reusable Components/Mybotbckend';
 import './BotTesting.css';
 
 function BotTesting({ userId }) {

@@ -6,16 +6,15 @@ import "firebase/compat/auth";
 import { getDatabase,ref, set, get  } from 'firebase/database';
 //firebase.initializeApp(firebaseConfig);
 
-import { UserContext } from './context/UserContext'
+import { UserContext } from '../context/UserContext'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
-function writeUserData(userId, email, hasExistingBot) {
+function writeUserData(userId, email) {
   const db = getDatabase();
   set(ref(db, 'users/' + userId), {
     email: email,
-    UserHasBot: hasExistingBot
   });
 }
 
@@ -35,7 +34,7 @@ const Singup = () => {
       console.log(res);
       context.setUser({email:res.user.email, uid: res.user.uid})
       try {
-        writeUserData(res.user.uid, res.user.email, 'False');
+        writeUserData(res.user.uid, res.user.email);
       } catch (error) {
         console.log(error);
       }
@@ -59,15 +58,15 @@ const Singup = () => {
 
 
   if (context.user?.uid) {
-   return <Navigate to = "/Upload"/>
+   return <Navigate to = "/Onboarding"/>
   }
   return(
-    <Container className='text-center'>
+    <Container className='mt-4 text-center' style={{ minHeight: '60vh' }}>
       <Row>
         <Col lg={6} className='offset-lg-3 mt-5'>
           <Card>
             <Form onSubmit = {handleSubmit}>
-              <CardHeader className=''>SignIn here</CardHeader> 
+              <CardHeader className=''>Sign Up here</CardHeader> 
               <CardBody>
                 <FormGroup row>
                   <Label for='email' sm={3}>Email</Label>
@@ -96,7 +95,7 @@ const Singup = () => {
                                   </FormGroup>
                                   </CardBody>
                                   <CardFooter>
-                          <Button type='submit' block color='primary' >Sign in</Button>
+                          <Button type='submit' block color='primary' >Sign up</Button>
                                   </CardFooter>
                   </Form>
                   </Card>

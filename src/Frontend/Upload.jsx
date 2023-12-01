@@ -3,7 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { getDatabase,ref, set, get,child } from 'firebase/database';
 import Modal from 'react-modal';
-import { UserContext } from '../src/context/UserContext'
+import { UserContext } from '../context/UserContext'
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 

@@ -12,7 +12,7 @@ import { getStorage, ref, getDownloadURL} from 'firebase/storage';
 
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
   authDomain: "mailinbio-e8100.firebaseapp.com",
   projectId: "mailinbio-e8100",
   storageBucket: "mailinbio-e8100.appspot.com",
@@ -32,7 +32,7 @@ app.use(cors());
 
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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',
 });
 
 app.use(bodyParser.json());
