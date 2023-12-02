@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import { getDatabase,ref, set, get,child } from 'firebase/database';
+import { getDatabase,ref, set, get,child, update, increment } from 'firebase/database';
 import Modal from 'react-modal';
 import { UserContext } from '../context/UserContext'
 import { Navigate, Link, useNavigate } from 'react-router-dom';
@@ -18,6 +18,27 @@ const DocumentUpload = ({ userId }) => {
 
   const Navigate = useNavigate();
     const context = useContext(UserContext)
+    
+    function writeUserData(HasUploads, UploadCount) {
+      
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + context.user.uid);
+      update(userRef, {
+        HasUploads: HasUploads,
+        UploadCount: UploadCount,
+      });
+    }
+    
+    function writeUserBot(AssitantId, HasBotStatus) {
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + context.user.uid);
+      update(userRef, {
+        AssitantId: AssitantId,
+        HasBotStatus: HasBotStatus,
+      });
+    }
+
+
     if (context.user?.uid) {
         const [document, setDocument] = useState(null);
         
@@ -62,6 +83,10 @@ const DocumentUpload = ({ userId }) => {
               const newDocument = { name: document.name, url: downloadURL };
               
               setUploadedDocuments((prevDocuments) => [...prevDocuments, newDocument]);
+              console.log(uploadedDocuments.length);
+              var incrementUploadCount = uploadedDocuments.length + 1;
+              writeUserData('true', incrementUploadCount);
+              console.log('performed writeUserData');
               setDocument(null); // Reset the document state after upload
             }
           );
@@ -81,9 +106,11 @@ const DocumentUpload = ({ userId }) => {
         const botId = response.data.botResponse;
         console.log('Bot succesfully made ' + botId);
         const assistantId = botId;
+        writeUserBot(botId, 'true');
         const charSet = 'asst';
         var hasAsst = charSet.split('').every(char => botId.includes(char))
         console.log(hasAsst);
+
         if (hasAsst){
           // Navigate('/BotTesting');
           Navigate(`/BotTesting/${assistantId}`);
@@ -110,8 +137,10 @@ const DocumentUpload = ({ userId }) => {
             const updatedDocuments = [...uploadedDocuments];
             updatedDocuments.splice(index, 1);
             setUploadedDocuments(updatedDocuments);
-        
+            
             console.log('Document deleted successfully:', documentToDelete.name);
+            console.log(uploadedDocuments.length);
+            writeUserData(uploadedDocuments.length > 1 ? 'true' : 'false', updatedDocuments.length);
           } catch (error) {
             console.error('Error deleting document:', error.message);
             // Handle error if necessary

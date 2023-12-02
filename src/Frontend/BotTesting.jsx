@@ -25,6 +25,9 @@ function BotTesting({ userId }) {
   return (
     <div>
      <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' >Generate embed</button>
+     <button className='mx-4 mt-8 mb-8 border border-gray-500 text-gray-500 px-4 py-2 rounded hover:border-blue-500 hover:text-blue-500' >
+  Save Bot
+</button>
 
 
     <Mybot AssistantId={AssistantId} />

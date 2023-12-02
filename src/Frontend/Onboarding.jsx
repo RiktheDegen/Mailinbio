@@ -4,7 +4,7 @@ import firebase from 'firebase/compat/app'
 import "firebase/compat/auth";
 import { getDatabase,ref, set, get, update } from 'firebase/database';
 import { UserContext } from '../context/UserContext'
-
+import { useNavigate } from 'react-router-dom'
 
 
   
@@ -12,10 +12,15 @@ import { UserContext } from '../context/UserContext'
 
 function Onboarding({ userId }) {
     
-    
+    const navigate = useNavigate();
+    let success; 
     const [name, setName] = useState('');
     const [organization, setOrganization] = useState('');
     const context = useContext(UserContext);
+    if (!context.user?.uid){
+        navigate('/')
+    }
+    
 
     //update values in Firebase
     function writeUserData(name, organization) {
@@ -23,7 +28,6 @@ function Onboarding({ userId }) {
         const userRef = ref(db, 'users/' + context.user.uid);
       
         update(userRef, {
-          UserHasBot: 'False',
           Name: name,
           Organisation: organization,
           HasBotStatus: 'false',
@@ -40,18 +44,26 @@ function Onboarding({ userId }) {
         
         // Store additional information
         if (name !== '' && organization !== '') {
+
             writeUserData(name, organization)
+            success = 'true';
             console.log("succesfully update user variables");
         }
             
               
         console.log('Additional information stored in the database');
+        if (success === 'true') {
+            
+            console.log(success);
+            navigate('/BotDashboard');
+           }
         // You can redirect the user to another page or perform other actions here
       } catch (error) {
         console.error('Error storing information:', error.message);
       }
     };
-  
+    
+   
     return (
         <div className="mt-8" style={{ minHeight: '60vh' }}>
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md" >

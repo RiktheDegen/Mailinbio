@@ -24,6 +24,7 @@ import 'firebase/auth'
 import Header from './Frontend/Header';
 import Footer from './Frontend/Footer';
 import Onboarding from './Frontend/Onboarding';
+import BotDashboard from './Frontend/BotDashboard';
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -62,6 +63,7 @@ function App() {
           <Route exact path="/MyBotBckend" element={<Mybotbckend />}/>
           <Route exact path="/currentUploads" element={<CurrentUploads />}/>
           <Route exact path="/Onboarding" element={<Onboarding />}/>
+          <Route exact path="/BotDashboard" element={<BotDashboard />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
