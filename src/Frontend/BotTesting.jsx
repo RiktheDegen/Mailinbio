@@ -1,11 +1,12 @@
 import React, { useState, useContext }  from 'react'
-import { Navigate, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext'
 import { useParams } from 'react-router-dom';
 import Mybot from '../Reusable Components/Mybotbckend';
 import './BotTesting.css';
 
 function BotTesting({ userId }) {
+  const navigate = useNavigate();
   const { AssistantId } = useParams();
   const userAssitant = AssistantId;
   console.log(userAssitant);
@@ -18,6 +19,10 @@ function BotTesting({ userId }) {
     setShowOverlay(false);
   };
 
+  const moveToDashboard = () => {
+    
+    navigate('/BotDashboard');
+  }
    
     // if ( !context.user?.uid )  {
     //     return <Navigate to = "/"/>
@@ -25,7 +30,7 @@ function BotTesting({ userId }) {
   return (
     <div>
      <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' >Generate embed</button>
-     <button className='mx-4 mt-8 mb-8 border border-gray-500 text-gray-500 px-4 py-2 rounded hover:border-blue-500 hover:text-blue-500' >
+     <button className='mx-4 mt-8 mb-8 border border-gray-500 text-gray-500 px-4 py-2 rounded hover:border-blue-500 hover:text-blue-500'  onClick={moveToDashboard}>
   Save Bot
 </button>
 

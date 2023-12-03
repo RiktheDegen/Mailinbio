@@ -7,7 +7,6 @@ import { UserContext } from '../context/UserContext'
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 const DocumentUpload = ({ userId }) => {
   var listOfDocs;
 
