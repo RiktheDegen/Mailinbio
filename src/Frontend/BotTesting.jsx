@@ -21,7 +21,7 @@ function BotTesting({ userId }) {
 
   const moveToDashboard = () => {
     
-    navigate('/BotDashboard');
+    navigate('/BotDashboardWithUsers' );
   }
    
     // if ( !context.user?.uid )  {

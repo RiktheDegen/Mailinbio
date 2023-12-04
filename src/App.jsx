@@ -25,6 +25,7 @@ import Header from './Frontend/Header';
 import Footer from './Frontend/Footer';
 import Onboarding from './Frontend/Onboarding';
 import BotDashboard from './Frontend/BotDashboard';
+import BotDashboardWithUsers from './Frontend/BotDashboardWithUsers';
 import PopupModal from './Frontend/PopupModal';
 
  const firebaseConfig = {
@@ -65,6 +66,7 @@ function App() {
           <Route exact path="/currentUploads" element={<CurrentUploads />}/>
           <Route exact path="/Onboarding" element={<Onboarding />}/>
           <Route exact path="/BotDashboard" element={<BotDashboard />}/>
+          <Route exact path="/BotDashboardWithUsers" element={<BotDashboardWithUsers />}/>
           <Route exact path="/PopupModal" element={<PopupModal />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
