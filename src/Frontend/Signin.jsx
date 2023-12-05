@@ -45,7 +45,7 @@ const Signin = () => {
   }
 
 
-  if ( context.user?.uid && context.user.botStatus === 'false')  {
+  if ( context.user?.uid )  {
     return <Navigate to = "/Upload"/>
    }
   
