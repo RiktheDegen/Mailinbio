@@ -96,7 +96,7 @@ const DocumentUpload = ({ userId }) => {
                   return  alert('please upload files to continue');
                 }
                 console.log(Array.isArray(uploadedDocuments));
-                const response = await axios.post('http://localhost:3001/api/createBot', {
+                const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
                   dataArray: uploadedDocuments,
                      
         }  
