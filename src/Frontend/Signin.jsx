@@ -46,7 +46,7 @@ const Signin = () => {
 
 
   if ( context.user?.uid )  {
-    return <Navigate to = "/Upload"/>
+    return <Navigate to = "/NewUpload"/>
    }
   
 

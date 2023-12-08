@@ -27,6 +27,7 @@ import Onboarding from './Frontend/Onboarding';
 import BotDashboard from './Frontend/BotDashboard';
 import BotDashboardWithUsers from './Frontend/BotDashboardWithUsers';
 import PopupModal from './Frontend/PopupModal';
+import NewDocumentUpload from './Frontend/NewUpload';
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -68,6 +69,7 @@ function App() {
           <Route exact path="/BotDashboard" element={<BotDashboard />}/>
           <Route exact path="/BotDashboardWithUsers" element={<BotDashboardWithUsers />}/>
           <Route exact path="/PopupModal" element={<PopupModal />}/>
+          <Route exact path="/NewUpload" element={<NewDocumentUpload />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>

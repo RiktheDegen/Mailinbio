@@ -1,0 +1,12 @@
+Tried moving Firebase Updating to backend. Lost access to storage bucket
+
+New files: 
+NewUpload.jsx
+
+Context: Rewriten the WriteUserData function to send POST requests to Backend and for Backend to fetch Data 
+Updated Signin.jsx to redirect to the NewUpload instead of Upload 
+
+Status: Should Ideally work fine. Lost access to firebase storage bucket. 
+
+Notes:
+- Make 

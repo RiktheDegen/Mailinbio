@@ -1,0 +1,8 @@
+API 
+
+My Api Routes:
+
+/api/messages
+/api/createBot
+/api/Firebase/Auth 
+/api/firebase/database
