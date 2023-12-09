@@ -21,7 +21,7 @@ const NewDocumentUpload = ({ userId }) => {
    
 
       const writeUserData = async (HasUploads, UploadCount) => {  
-        const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/firebase/database', {
+        const response = await axios.post('http://localhost:3001/api/firebase/database', {
             uid: context.user.uid,
             HasUploads: HasUploads,
             UploadCount: UploadCount,

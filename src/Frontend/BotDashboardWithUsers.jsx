@@ -140,7 +140,7 @@ function BotDashboardWithUsers() {
 
 </button>
 {/* Bot name */}
-<div className="text-sm text-gray-700 mt-2">{userBotName}</div>
+<div className="text-sm text-gray-700 mt-2 "><strong>{userBotName}</strong></div>
 </div>
 
 
