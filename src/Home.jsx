@@ -2,20 +2,20 @@ import React from 'react'
 
 
 
-
 const Home = () => {
   return (
-    <div>Home
+    
+    
 
-      ToDo: Need to create a new global context in context API to store the uploadedDocuments Array to then resuse the current uploads sections later do it without fail slut
+
+    <div>
       
-      
-      
+
       <div className="font-sans">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-20">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Power Your Business with Our Services</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4"> Convert and Retain More Developers With AI That Understands Your Docs</h1>
           <p className="text-lg md:text-xl opacity-80 mb-8">
             Explore innovative solutions to boost your success and streamline your operations.
           </p>
@@ -132,6 +132,11 @@ const Home = () => {
         </div>
       </section>
     </div>
+
+    <>
+    
+    </>
+   
     </div>
   )
 }

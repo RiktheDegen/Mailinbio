@@ -7,7 +7,7 @@ import { getDatabase,ref, set, get,child  } from 'firebase/database';
 
 
 import { UserContext } from '../context/UserContext'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
@@ -15,7 +15,7 @@ import { toast } from 'react-toastify'
 
 
 const Signin = () => {
-
+  const navigate = useNavigate();
   const context = useContext(UserContext)
   const[email, setEmail] = useState('')
   const[password, setPassword] = useState('')
@@ -44,10 +44,33 @@ const Signin = () => {
     handleSignup()
   }
 
+  
+
+
+
+ 
 
   if ( context.user?.uid )  {
-    return <Navigate to = "/Upload"/>
+    const checkForBot = async() => {
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + context.user.uid);
+       // Retrieve updated data
+    const snapshot = await get(userRef);
+    const updatedUserData = snapshot.val();
+    const userHasBot = updatedUserData.HasBotStatus;
+      
+    if (userHasBot === 'true') {
+      navigate("/BotDashboardWithUsers");
+    } else {
+      navigate("/BotDashboard");
+    }
+
+    }
+
+    checkForBot();
+    
    }
+   
   
 
   return(

@@ -7,9 +7,11 @@ import Signin from './Frontend/Signin'
 import Singup from './Frontend/Singup'
 import NotFound from './NotFound'
 import Upload from './Frontend/Upload'
-import Mybotbckend from './Reusable Components/Mybotbckend'
+import Mybotbckend from './ReusableComponents/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
+
+
 
 //toast 
 import {ToastContainer} from 'react-toastify'
@@ -28,6 +30,8 @@ import BotDashboard from './Frontend/BotDashboard';
 import BotDashboardWithUsers from './Frontend/BotDashboardWithUsers';
 import PopupModal from './Frontend/PopupModal';
 import NewDocumentUpload from './Frontend/NewUpload';
+import BotEmbed from './ReusableComponents/BotEmbed';
+import NewHome from './Frontend/NewHome';
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -70,9 +74,11 @@ function App() {
           <Route exact path="/BotDashboardWithUsers" element={<BotDashboardWithUsers />}/>
           <Route exact path="/PopupModal" element={<PopupModal />}/>
           <Route exact path="/NewUpload" element={<NewDocumentUpload />}/>
+          <Route exact path="/NewHome" element={<NewHome />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
+   
           <Footer/>
           </UserContext.Provider>
     </Router>

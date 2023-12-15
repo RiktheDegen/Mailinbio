@@ -1,8 +1,11 @@
 import React, { useState, useContext }  from 'react'
+import ReactDOMServer from 'react-dom/server';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useParams } from 'react-router-dom';
-import Mybot from '../Reusable Components/Mybotbckend';
+import Mybot from '../ReusableComponents/Mybotbckend';
 import './BotTesting.css';
 
 function BotTesting({ userId }) {
@@ -13,7 +16,7 @@ function BotTesting({ userId }) {
   
   const context = useContext(UserContext);
   const [showOverlay, setShowOverlay] = useState(true);
-  
+  const [embedCode, setEmbedCode] = useState(null);
 
   const handleGotItClick = () => {
     setShowOverlay(false);
@@ -22,17 +25,52 @@ function BotTesting({ userId }) {
   const moveToDashboard = () => {
     
     navigate('/BotDashboardWithUsers' );
-  }
+  };
    
+  const generateEmbedCode = () => {
+    
+    return `//Insert this div in whichever pages you want your bot on
+
+    <div class="Api-chat-widget" data-symbol=${userAssitant}></div>
+    
+    //Insert this CSS file above any existing stylesheets in the head tag
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/assets/index.css">
+    
+    //Insert this in the bottom of any html page 
+    
+    <script type="module" src="https://cdn.jsdelivr.net/gh/RiktheDegen/Myfinnewbot@master/dist/assets/index-hgqPCg92.js"></script>`;
+  };
+
+  const handleGenerateEmbedClick = () => {
+    console.log('1');
+    const code = generateEmbedCode();
+    console.log('2');
+    setEmbedCode(code);
+  };
+
+
     // if ( !context.user?.uid )  {
     //     return <Navigate to = "/"/>
     //    }
   return (
     <div>
-     <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' >Generate embed</button>
+      {embedCode && (
+        
+        <div className='mx-4 mt-8'>
+          <h3>Embed Code:</h3>
+          <SyntaxHighlighter language="javascript" style={dracula}>
+          {embedCode}
+      </SyntaxHighlighter>
+          
+          
+        </div>
+      )};
+     <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' onClick={handleGenerateEmbedClick}>Generate embed</button>
      <button className='mx-4 mt-8 mb-8 border border-gray-500 text-gray-500 px-4 py-2 rounded hover:border-blue-500 hover:text-blue-500'  onClick={moveToDashboard}>
   Save Bot
 </button>
+
 
 
     <Mybot AssistantId={AssistantId} />
