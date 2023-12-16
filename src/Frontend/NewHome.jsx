@@ -6,10 +6,11 @@ function NewHome() {
 
     useEffect(() => {
         const handleScroll = () => {
-          const scrollPosition = window.scrollY;
+          // Calculate the offset for each step
           const stepOffsets = [0, /* Offset of step 1 */, /* Offset of step 2 */, /* Offset of step 3 */];
-          
+      
           // Determine the active step based on scroll position
+          const scrollPosition = window.scrollY + window.innerHeight / 2; // Adjust for the center of the viewport
           for (let i = 1; i <= 3; i++) {
             if (scrollPosition < stepOffsets[i]) {
               setActiveStep(i);
@@ -17,14 +18,16 @@ function NewHome() {
             }
           }
         };
-    
+      
         // Attach the scroll event listener
         window.addEventListener('scroll', handleScroll);
-
+      
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-          };
-        }, []);
+          // Detach the scroll event listener on component unmount
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+    
 
     return (
     <>
@@ -121,28 +124,52 @@ function NewHome() {
       </div>
     </section>    
     <section className="bg-gray-700 pb-16">
-  <div className="bg-gray-700 pb-16 rounded-tl-2xl rounded-tr-2xl">
-    <h2 className="text-white font-helvetica-neue text-4xl p-8 md:text-left md:text-center">
-      Build Your Agent In Three Easy Steps
-    </h2>
-  </div>
-  <div className="progress-bar-container">
-      <div className={`step ${activeStep === 1 ? 'active' : ''}`}>
-        <div className="circle">1</div>
-        <p>Upload Docs</p>
+      <div className="bg-gray-700 pb-16 rounded-tl-2xl rounded-tr-2xl">
+        <h2 className="text-white font-helvetica-neue text-4xl p-8 md:text-left md:text-center">
+          Build Your Agent In Three Easy Steps
+        </h2>
       </div>
-      <div className={`step ${activeStep === 2 ? 'active' : ''}`}>
-        <div className="circle">2</div>
-        <p>Test</p>
+      <div className="container">
+  <div className="flex flex-col lg:flex-row flex-grow ">
+    {/* Step 1 */}
+    <div className="flex items-center text-white flex-grow mt-4 mr-8">
+      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
+        1
       </div>
-      <div className={`step ${activeStep === 3 ? 'active' : ''}`}>
-        <div className="circle">3</div>
-        <p>Embed</p>
+      <div className="text-center">
+        <div className="text-lg font-regular mt-2 ml-8">Upload</div>
       </div>
     </div>
-</section>
+
+    {/* Step 2 */}
+    <div className="flex items-center text-white flex-grow mt-4 lg:mt-0 lg:ml-4 mr-8">
+      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-lg">
+        2
+      </div>
+      <div className="text-center">
+        <div className="text-lg font-regular mt-2">Testing</div>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="flex items-center text-white flex-grow mt-4 lg:mt-0 lg:ml-4">
+      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-lg">
+        3
+      </div>
+      <div className="text-center">
+        <div className="text-lg font-regular mt-2">Embed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      
+    </section>
+
 
 </>
+
   );
 }
 
