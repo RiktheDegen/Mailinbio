@@ -55,7 +55,7 @@ function NewHome() {
 
     <section className="mt-8 mb-8 flex flex-col md:flex-row bg-white p-8 md:p-16 max-w-[1200px] mx-auto ">
       {/* Text Section */}
-      <div className="md:w-1/3 md:max-w-[calc(100% - 2rem)] md:ml-4 mb-4">
+      <div className="md:w-1/2 md:ml-4 mb-4">
         <p className="text-helvetica-neue text-md font-medium mb-4">
           Convert
         </p>
@@ -123,49 +123,47 @@ function NewHome() {
         />
       </div>
     </section>    
-    <section className="bg-gray-700 pb-16">
-      <div className="bg-gray-700 pb-16 rounded-tl-2xl rounded-tr-2xl">
-        <h2 className="text-white font-helvetica-neue text-4xl p-8 md:text-left md:text-center">
-          Build Your Agent In Three Easy Steps
-        </h2>
+ 
+    <section style={{ background: '#1F2937' }} className="pb-16">
+  <div style={{ background: '#1F2937' }} className="pb-16 rounded-tl-2xl rounded-tr-2xl">
+    <h2 style={{ color: '#C2C2C2' }} className="mt-8 text-4xl p-8 md:text-left md:text-center">
+      Build Your Agent In Three Easy Steps
+    </h2>
+  </div>
+  <div className="container">
+    <div className="flex flex-col lg:flex-row flex-grow">
+      {/* Step 1 */}
+      <div style={{ color: '#C2C2C2' }} className="flex items-center justify-center flex-grow mt-4">
+        <div style={{ borderColor: '#C2C2C2' }} className="border border-4 rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
+          1
+        </div>
+        <div className="text-center">
+          <div style={{ color: '#C2C2C2' }} className="text-lg font-regular mt-2 ml-8">Upload</div>
+        </div>
       </div>
-      <div className="container">
-  <div className="flex flex-col lg:flex-row flex-grow ">
-    {/* Step 1 */}
-    <div className="flex items-center text-white flex-grow mt-4 mr-8">
-      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
-        1
-      </div>
-      <div className="text-center">
-        <div className="text-lg font-regular mt-2 ml-8">Upload</div>
-      </div>
-    </div>
 
-    {/* Step 2 */}
-    <div className="flex items-center text-white flex-grow mt-4 lg:mt-0 lg:ml-4 mr-8">
-      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-lg">
-        2
+      {/* Step 2 */}
+      <div style={{ color: '#C2C2C2' }} className="flex items-center justify-center flex-grow mt-4 lg:mt-0 lg:ml-4">
+        <div style={{ borderColor: '#C2C2C2' }} className="border border-4 rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
+          2
+        </div>
+        <div className="text-center">
+          <div style={{ color: '#C2C2C2' }} className="text-lg font-regular mt-2 ml-8">Test</div>
+        </div>
       </div>
-      <div className="text-center">
-        <div className="text-lg font-regular mt-2">Testing</div>
-      </div>
-    </div>
 
-    {/* Step 3 */}
-    <div className="flex items-center text-white flex-grow mt-4 lg:mt-0 lg:ml-4">
-      <div className="border border-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-lg">
-        3
-      </div>
-      <div className="text-center">
-        <div className="text-lg font-regular mt-2">Embed</div>
+      {/* Step 3 */}
+      <div style={{ color: '#C2C2C2' }} className="flex items-center justify-center flex-grow mt-4 lg:mt-0 lg:ml-4">
+        <div style={{ borderColor: '#C2C2C2' }} className="border border-4 rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
+          3
+        </div>
+        <div className="text-center">
+          <div style={{ color: '#C2C2C2' }} className="text-lg font-regular mt-2 ml-8">Embed</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
-      
-    </section>
+</section>
 
 
 </>
