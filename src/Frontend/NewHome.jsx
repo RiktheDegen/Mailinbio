@@ -124,9 +124,9 @@ function NewHome() {
       </div>
     </section>    
  
-    <section style={{ background: '#1F2937' }} className="pb-16">
-  <div style={{ background: '#1F2937' }} className="pb-16 rounded-tl-2xl rounded-tr-2xl">
-    <h2 style={{ color: '#C2C2C2' }} className="mt-8 text-4xl p-8 md:text-left md:text-center">
+    <section style={{ background: '#1F2937' }} className="pb-16 mt-8 ">
+  <div style={{ background: '#1F2937' }} className=" pb-16 rounded-tl-2xl rounded-tr-2xl">
+    <h2 style={{ color: '#C2C2C2' }} className="text-4xl p-8 md:text-left md:text-center">
       Build Your Agent In Three Easy Steps
     </h2>
   </div>
@@ -134,7 +134,7 @@ function NewHome() {
     <div className="flex flex-col lg:flex-row flex-grow">
       {/* Step 1 */}
       <div style={{ color: '#C2C2C2' }} className="flex items-center justify-center flex-grow mt-4">
-        <div style={{ borderColor: '#C2C2C2' }} className="border border-4 rounded-full w-24 h-24 flex items-center justify-center font-bold text-2xl">
+        <div style={{ borderColor: '#C2C2C2' }} className="border border-4 rounded-full w-24 h-24 flex items-center justify-center font-bold text-3xl">
           1
         </div>
         <div className="text-center">
