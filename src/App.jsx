@@ -62,7 +62,7 @@ function App() {
   <UserContext.Provider value={{user, setUser}}>
   <Header/>
           <Routes>
-          <Route exact path="/" element={<Home />}/>
+          <Route exact path="/" element={<NewHome />}/>
           <Route exact path="/signin" element={<Signin />}/>
           <Route exact path="/signup" element={<Singup/>}/>
           <Route exact path="/Upload" element={<Upload />}/>
