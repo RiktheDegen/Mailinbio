@@ -46,7 +46,7 @@ const Signup = () => {
   }
 
   return (
-    <Container className="mt-4 " >
+    <Container className="mt-4 mb-4" >
       
           <Card className='max-w-[550px] justify-center mx-auto '>
             <Form onSubmit={handleSubmit}>

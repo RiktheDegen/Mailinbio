@@ -70,7 +70,7 @@ function Onboarding({ userId }) {
         <h2 className="text-2xl font-semibold mb-4">Welcome to Api Chat</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+            <label htmlFor="name" className=" text-helvetica-neue block text-sm font-medium text-gray-600">
               Name:
             </label>
             <input
@@ -83,7 +83,7 @@ function Onboarding({ userId }) {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="organization" className="block text-sm font-medium text-gray-600">
+            <label htmlFor="organization" className="text-helvetica-neue block text-sm font-medium text-gray-600">
               Organization:
             </label>
             <input
@@ -97,7 +97,8 @@ function Onboarding({ userId }) {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            className="text-helvetica-neue text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            style={{ backgroundColor: '#2D3748' }}
           >
             Submit
           </button>

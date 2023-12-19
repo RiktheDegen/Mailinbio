@@ -67,10 +67,10 @@ const PopupModal = ({ isOpen, onRequestClose }) => {
   return (
     <div>
         <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles} overlayClassName="overlay">
-  <div className="flex flex-col">
-    <div className="text-xl font-bold">Name your bot</div>
+  <div className="flex flex-col p-2">
+    <div className="text-2xl text-helvetica-neue font-medium">Name your bot</div>
     <hr className="w-full border border-gray-500" />
-    <label className="text-gray-700 mb-2">Bot name:</label>
+    <label className="text-helvetica-neue text-gray-700 mb-2">Bot name:</label>
     <input
       type="text"
       value={botName}
@@ -80,6 +80,7 @@ const PopupModal = ({ isOpen, onRequestClose }) => {
     <button
       onClick={handleCreateBot}
       className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+      style = {{backgroundColor: "#2D3748"}}
     >
       Create Bot
     </button>

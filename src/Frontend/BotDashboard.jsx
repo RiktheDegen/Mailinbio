@@ -29,7 +29,7 @@ function BotDashboard({HasBot}) {
 
       try {
         setUserHasBot(null);
-        console.log(userHasBot);
+        // console.log(userHasBot);
         // Retrieve the user's data
         const snapshot = await get(userRef);
         const userData = snapshot.val();
@@ -40,9 +40,9 @@ function BotDashboard({HasBot}) {
         setUserPlan(userData.hasPaidStatus ? 'Starter Plan' : 'No Plan selected'); // Default to 'No Name' if the user data is not available
         
         var userBotStatus = userData.HasBotStatus;
-        console.log(userBotStatus);
+        // console.log(userBotStatus);
         setUserHasBot(userBotStatus);
-        console.log(userHasBot);  
+        // console.log(userHasBot);  
    
         if (userHasBot !== null) {
 
@@ -74,13 +74,13 @@ function BotDashboard({HasBot}) {
 
   
   return(
-    <div>
+    <div className='text-helvetica-neue'>
       <div>
-       <div className="flex h-screen bg-gray-100">
+       <div className="flex h-screen ">
         {/* Left Sidebar */}
-        <div className="w-64 bg-gray-800 p-4 text-white">
+        <div className="w-64 p-4 text-white" style={{backgroundColor: "#2D3748"}}>
           <div className="mb-8">
-            <div className="text-2xl font-bold mb-4">My Dashboard</div>
+            <div className="text-2xl text-helvetica-neue font-medium mb-4">My Dashboard</div>
             <div className="border-b border-gray-600 pb-2 mb-4">
               <div className="text-sm font-semibold mb-2">My Bots</div>
               <ul>
@@ -89,21 +89,21 @@ function BotDashboard({HasBot}) {
               </ul>
             </div>
             <div>
-              <div className="text-sm font-semibold mb-2">Settings</div>
+              <div className="text-helvetica-neue text-sm font-semibold mb-2">Settings</div>
               <ul>
-        <li className="flex items-center text-gray-300">
+        <li className="flex items-center text-gray-300 text-helvetica-neue">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
     </svg>
           General
         </li>
-        <li className="flex items-center text-gray-300">
+        <li className="flex items-center text-gray-300 text-helvetica-neue">
           <svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Plans
         </li>
-        <li className="flex items-center text-gray-300">
+        <li className="flex items-center text-gray-300 text-helvetica-neue">
           <svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -115,18 +115,18 @@ function BotDashboard({HasBot}) {
         </div>
     
         {/* Main Content Area */}
-        <div className="flex-1 p-4">
+        <div className=" flex-1 p-4">
           <div className="flex items-center border-b border-gray-300 pb-4 mb-4">
-            <div className="text-2xl font-bold mr-4">{userName}'s Workspace</div>
-            <div className="bg-blue-500 text-white px-2 py-1 rounded">{userPlan}</div>
+            <div className="text-3xl text-helvetica-neue font-medium mr-4">{userName}'s Workspace</div>
+            <div className="text-helvetica-neue text-white px-2 py-1 rounded" style = {{backgroundColor: "#21C55D"}}>{userPlan}</div>
           </div>
     
-          <div className="bg-gray-100 p-4 rounded text-center">
-            <div className="text-xl font-bold mb-2">Start building your bot today</div>
-            <p className="text-gray-600 mb-4">
+          <div className=" p-4 rounded text-center">
+            <div className="text-helvetica-neue text-2xl font-medium mb-2 text-gray-600" >Start building your bot today</div>
+            <p className="text-helvetica-neue text-gray-600 mb-4">
               Bring your API Docs to life — we can’t wait to see what you’ve got!
             </p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={openModal}>+ New Bot</button>
+            <button className="bg-blue-500 text-white py-2 px-4 rounded" style={{backgroundColor: "#2D3748"}} onClick={openModal}>+ New Bot</button>
             <PopupModal isOpen={modalIsOpen} onRequestClose={closeModal} />
           </div>
         </div>
