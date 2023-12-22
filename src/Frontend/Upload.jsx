@@ -243,7 +243,7 @@
 import React, { useContext, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import { getDatabase,ref, set, get,child, update, increment } from 'firebase/database';
+import { getDatabase,ref, set, get,child, update, increment, push, remove } from 'firebase/database';
 import Modal from 'react-modal';
 import { UserContext } from '../context/UserContext'
 import { Navigate, Link, useNavigate } from 'react-router-dom';
@@ -274,6 +274,9 @@ const DocumentUpload = ({ userId }) => {
       });
     }
     
+    
+
+
     function writeUserBot(AssitantId, HasBotStatus) {
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
@@ -311,7 +314,7 @@ const DocumentUpload = ({ userId }) => {
           }
 
           // Reference to Firebase Storage
-          const storageRef = firebase.storage().ref(`${userId}/${document.name}`);
+          const storageRef = firebase.storage().ref(`${context.user.uid}/${document.name}`);
       
           // Upload document
           const uploadTask = storageRef.put(document);
@@ -326,6 +329,22 @@ const DocumentUpload = ({ userId }) => {
             async () => {
               // Document uploaded successfully
               console.log('Document uploaded successfully!');
+              const db = getDatabase();
+              const userRef = ref(db, 'users/' + context.user.uid + '/files');
+              const sanitizedFileName = encodeURIComponent(document.name).replace(/\./g, '_');
+              // const updatedFiles = [...uploadedDocuments, { fileName: document.name }];
+              const updatedFiles = {
+                ...uploadedDocuments.name,
+                [sanitizedFileName]: { fileName: document.name },
+              };
+
+              update(userRef, updatedFiles )
+              .then(() => {
+              console.log('File added successfully!');
+              })
+               .catch((error) => {
+                  console.error('Error adding file:', error.message);
+              });
               const downloadURL = await storageRef.getDownloadURL(); // Await the promise
               const newDocument = { name: document.name, url: downloadURL };
               
@@ -379,7 +398,10 @@ const DocumentUpload = ({ userId }) => {
           
           try {
             // Reference to Firebase Storage
-            const storageRef = firebase.storage().ref(`${userId}/${documentToDelete.name}`);
+            const storageRef = firebase.storage().ref(`${context.user.uid}/${documentToDelete.name}`);
+            const sanitizedFileName = encodeURIComponent(documentToDelete.name).replace(/\./g, '_');
+            const userRef = ref(db, 'users/' + context.user.uid + '/files');
+            
             
             // Delete the document from Firebase Storage
             await storageRef.delete();
