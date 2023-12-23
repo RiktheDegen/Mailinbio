@@ -43,11 +43,25 @@ const PopupModal = ({ isOpen, onRequestClose }) => {
 
   const [botName, setBotName] = useState('');
   const navigate = useNavigate();
+  
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
   }    
   const context = useContext(UserContext);
+  const setFilesNull = async() => {
+    const db = getDatabase();
+   const filesRef = ref(db, `users/${context.user.uid}/files`);   
+    // Delete the document from Firebase Storage
+        set(filesRef, null)
+        .then(() => {
+          console.log('File deleted successfully!');
+        })
+        .catch((error) => {
+          console.error('Error deleting file:', error.message);
+        });
+  };
+  setFilesNull();
   const handleCreateBot = () => {
     // Handle creating the bot (you can add your logic here)
     function writeUserData(botName) {

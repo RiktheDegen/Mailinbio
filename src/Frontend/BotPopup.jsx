@@ -1,40 +1,69 @@
 import React, { useState, useEffect, useContext } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import { getDatabase, ref, get, update, push } from 'firebase/database';
+import { getDatabase, ref, get, update, push, set } from 'firebase/database';
 import { UserContext } from '../context/UserContext';
+import { BarLoader } from 'react-spinners';
+import { useNavigate } from 'react-router';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import axios from 'axios';
 
 const BotPopup = ({ botId, onClose }) => {
   const [botFiles, setBotFiles] = useState([]);
   const [newFile, setNewFile] = useState(null);
   const context = useContext(UserContext);
+  const [uploadedDocuments, setUploadedDocuments] = useState([]);
+  const [docURL, setDocURL] = useState([]);
+  const [docType, setDocType] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [document, setDocument] = useState(null);
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [embedCode, setEmbedCode] = useState(null);
+  const [userAssitant, setUserAssitant] = useState('');
+  const [Botloading, setBotLoading] = useState(false);
 
+  const Navigate = useNavigate();
+ 
   useEffect(() => {
     const fetchBotFiles = async () => {
       const db = getDatabase();
       const botFilesRef = ref(db, `users/${context.user.uid}/files`);
+      const UserFilesRef = ref(db, `users/${context.user.uid}`);
+    
+        const snapshotUser = await get(UserFilesRef);
+        const UserfilesData = snapshotUser.val();
       try {
         const snapshot = await get(botFilesRef);
         const filesData = snapshot.val();
         console.log('filesData:', filesData); 
+        // console.log(UserfilesData);
+        setUserAssitant(UserfilesData.AssitantId)
+        const filesDataArray = Object.values(filesData).map(entry => ({
+          filename: entry.fileName,
+        }));
+        console.log(filesDataArray);
         // Ensure botFiles is an array
-        setBotFiles(filesData || []);
+        setBotFiles(filesDataArray || []);
       } catch (error) {
         console.error('Error fetching bot files:', error.message);
       }
     };
 
     fetchBotFiles();
+
+    // Set up periodic fetch every 5 seconds (adjust the interval as needed)
+  const intervalId = setInterval(fetchBotFiles, 1000);
+
+  // Clean up the interval when the component unmounts
+  return () => clearInterval(intervalId);
   }, [context.user.uid]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
   };
 
-  const handleDeleteFile = (fileName) => {
-    const updatedFiles = botFiles.filter((file) => file.name !== fileName);
-    setBotFiles(updatedFiles);
-  };
+
 
   const handleSaveChanges = async () => {
     try {
@@ -58,8 +87,216 @@ const BotPopup = ({ botId, onClose }) => {
     // For example, navigate to the testing page with the botId
   };
 
+  const generateEmbedCode = () => {
+    
+    return `//Insert this div in whichever pages you want your bot on
+
+    <div class="Api-chat-widget" data-symbol=${userAssitant}></div>
+    
+    //Insert this CSS file above any existing stylesheets in the head tag
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/assets/index.css">
+    
+    //Insert this in the bottom of any html page 
+    
+    <script type="module" src="https://cdn.jsdelivr.net/gh/RiktheDegen/Myfinnewbot@master/dist/assets/index-hgqPCg92.js"></script>`;
+  };
+
+  const handleGenerateEmbedClick = () => {
+    console.log('1');
+    const code = generateEmbedCode();
+    console.log('2');
+    setEmbedCode(code);
+  };
+
+  function writeUserData(HasUploads, UploadCount) {
+      
+    const db = getDatabase();
+    const userRef = ref(db, 'users/' + context.user.uid);
+    update(userRef, {
+      HasUploads: HasUploads,
+      UploadCount: UploadCount,
+    });
+  }
+
+  function deleteBot() {
+    const db = getDatabase();
+    const userRef = ref(db, 'users/' + context.user.uid);
+    update(userRef, {
+      AssitantId: '',
+      HasBotStatus: 'False',
+      HasUploads: 'False',
+      UploadCount: 0,
+      botName: ''
+    });
+    Navigate('/BotDashboard')
+  }
+  
+        
+  const handleUpload = async () => {
+          // Ensure a document is selected
+          if (!document || loading) return;
+          setLoading(true);
+          setDocType('');
+            // Specify the allowed file types
+          
+            if (uploadedDocuments.length >= 20) {
+              alert('You can only upload up to 20 files.');
+              return;
+            }
+
+          const allowedFileTypes = ['.c', '.cpp', '.csv', '.docx', '.html', '.java', '.json', '.md', '.pdf', '.php', '.pptx', '.py', '.rb', '.tex', '.txt', '.css'];
+          
+          const fileExtension = document.name.slice(((document.name.lastIndexOf(".") - 1) >>> 0) + 2);
+          const isValidFileType = allowedFileTypes.includes(`.${fileExtension.toLowerCase()}`);
+
+          if (!isValidFileType) {
+            setDocType('Invalid file type. Please select a supported file type.');
+            
+            return;
+          }
+
+          // Reference to Firebase Storage
+          const storageRef = firebase.storage().ref(`${context.user.uid}/${document.name}`);
+      
+          // Upload document
+          const uploadTask = storageRef.put(document);
+      
+          // Handle successful upload
+          uploadTask.on('state_changed',
+            null,
+            error => {
+              console.error(error);
+              setLoading(false);
+            },
+            async () => {
+              // Document uploaded successfully
+              console.log('Document uploaded successfully!');
+              const db = getDatabase();
+              const userRef = ref(db, 'users/' + context.user.uid + '/files');
+              const sanitizedFileName = encodeURIComponent(document.name).replace(/\./g, '_');
+              // const updatedFiles = [...uploadedDocuments, { fileName: document.name }];
+              const updatedFiles = {
+                ...uploadedDocuments.name,
+                [sanitizedFileName]: { fileName: document.name },
+              };
+
+              update(userRef, updatedFiles )
+              .then(() => {
+              console.log('File added successfully!');
+              })
+               .catch((error) => {
+                  console.error('Error adding file:', error.message);
+              });
+              const downloadURL = await storageRef.getDownloadURL(); // Await the promise
+              const newDocument = { name: document.name, url: downloadURL };
+              
+              setUploadedDocuments((prevDocuments) => [...prevDocuments, newDocument]);
+              console.log(uploadedDocuments.length);
+              var incrementUploadCount = uploadedDocuments.length + 1;
+             
+              writeUserData('true', incrementUploadCount);
+              console.log('performed writeUserData');
+              
+              setDocument(null); // Reset the document state after upload
+              setLoading(false);
+            }
+          );
+        };
+
+
+  const handleDeleteFile = async (fileName) => {
+    const documentToDelete = fileName;
+    
+    try {
+      // Reference to Firebase Storage
+      const updatedFiles = botFiles.filter((file) => file.filename !== fileName);
+      setBotFiles(updatedFiles);
+      const db = getDatabase();
+      const storageRef = firebase.storage().ref(`${context.user.uid}/${documentToDelete}`);
+      const sanitizedFileName = encodeURIComponent(documentToDelete).replace(/\./g, '_');
+      const filesRef = ref(db, `users/${context.user.uid}/files/${sanitizedFileName}`);
+      console.log(filesRef);
+
+      // Delete the document from Firebase Storage
+      await storageRef.delete();
+      //Delete from RTDB
+      set(filesRef, null)
+      .then(() => {
+        console.log('File deleted successfully!');
+      })
+      .catch((error) => {
+        console.error('Error deleting file:', error.message);
+      });
+      
+      
+      console.log('Document deleted successfully:', documentToDelete);
+      console.log(botFiles.length);
+      writeUserData(botFiles.length > 1 ? 'true' : 'false', botFiles.length - 1);
+
+    } catch (error) {
+      console.error('Error deleting document:', error.message);
+      // Handle error if necessary
+    }
+  };
+  function writeUserBot(AssitantId, HasBotStatus) {
+    const db = getDatabase();
+    const userRef = ref(db, 'users/' + context.user.uid);
+    update(userRef, {
+      AssitantId: AssitantId,
+      HasBotStatus: HasBotStatus,
+    });
+  }
+
+ 
+
+
+  const createBot = async (fileName) => {
+    setBotLoading(true);
+    const db = getDatabase();
+    const botFilesRef = ref(db, `users/${context.user.uid}/files`);
+    const storageRef = firebase.storage().ref(`${context.user.uid}/${document.name}`);
+    const snapshot = await get(botFilesRef);
+    const filesData = snapshot.val();
+    const filesDataArray = Object.values(filesData).map(entry => ({
+      filename: entry.fileName,
+    }));
+    // console.log(filesDataArray);
+
+    if (filesDataArray.length<1) {
+              return  alert('please upload files to continue');
+              setBotLoading(false);
+            }
+
+             
+            
+            setBotLoading(true);
+            
+            const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
+              dataArray: filesDataArray,
+                 
+    }  
+    )
+      
+    const botId = response.data.botResponse;
+    console.log('Bot succesfully made ' + botId);
+    const assistantId = botId;
+    writeUserBot(botId, 'true');
+    const charSet = 'asst';
+    var hasAsst = charSet.split('').every(char => botId.includes(char))
+    console.log(hasAsst);
+    setBotLoading(false);
+    if (hasAsst){
+      // Navigate('/BotTesting');
+      Navigate(`/BotTesting/${assistantId}`);
+    };
+     
+    
+    
+  };
+
   return (
-    <div className=" p-4 bg-white shadow-md h-full overflow-y-auto">
+    <div className=" p-4 bg-white shadow-md h-full overflow-y-auto max-w-[700px]">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold">Bot Files</h2>
         <button className="text-sm text-gray-500" onClick={onClose}>
@@ -67,28 +304,95 @@ const BotPopup = ({ botId, onClose }) => {
         </button>
       </div>
       <div className="mb-4">
-        <input type="file" onChange={handleFileChange} />
+     
+
+
+      <div className="flex ">
+        <label htmlFor="fileInput" className="cursor-pointer mt-3">
+          <div className="w-16 h-16 border border-gray-300 flex justify-center items-center">
+            <span className="text-4xl">+</span>
+          </div>
+          <input
+            id="fileInput"
+            type="file"
+            className="hidden"
+            onChange={(e) => setDocument(e.target.files[0])}
+          />
+        </label>
+        {document && (
+            <div className="ml-4 mt-3">
+              <p className="font-semibold">{document.name}</p>
+              <p className="font-semibold">{docType}</p>
+              {/* You can also display other information like size, type, etc. */}
+              {/* <p>{`Type: ${document.type}`}</p> */}
+              {/* <p>{`Size: ${document.size} bytes`}</p> */}
+            </div>
+          )}
       </div>
-      <ul>
-        {Array.isArray(botFiles)
-          ? botFiles.map((file, index) => (
-              <li key={index} className="flex justify-between items-center border-b py-2">
-                <span>{file.name}</span>
-                <button className="text-red-500" onClick={() => handleDeleteFile(file.name)}>
-                  Delete
-                </button>
-              </li>
-            ))
-          : <p>botFiles is not an array</p>}
-      </ul>
-      <div className="mt-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={handleSaveChanges}>
-          Save Changes
-        </button>
-        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleTestBot}>
-          Test My Bot
+      <button
+  className="text-helvetica-neue mt-8 mb-8 bg-transparent hover:bg-blue-500 text-grey-500 font-semibold py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+  onClick={handleUpload}
+  disabled={loading} // Disable the button when loading
+>
+  {loading ? (
+        <div className="flex items-center justify-center mt-4">
+          <BarLoader color="#4A90E2" loading={loading} />
+        </div>
+      ) : 'Upload Document'}
+
+</button>
+           
+      </div>
+  
+
+      <li>
+      {Array.isArray(botFiles) && botFiles.length > 0 ? (
+  <div className="flex flex-col gap-2">
+    {botFiles.map((file, index) => (
+      <div key={index} className="flex items-center border p-2">
+        {/* Add your icon (replace the placeholder below) */}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+</svg>
+
+        <span className="text-ellipsis">{file.filename.slice(0, 30) + file.filename.slice(file.filename.lastIndexOf('.'))}</span>
+        <button
+          className="text-red-500 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white active:bg-red-800 font-bold uppercase text-xs px-2 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          onClick={() => handleDeleteFile(file.filename)}
+        >
+          Delete
         </button>
       </div>
+    ))}
+  </div>
+) : (
+  <p>This bot has no files</p>
+)}
+      </li>
+      <div>
+      {embedCode && (
+        
+        <div className='mx-4 mt-8'>
+          <h3>Embed Code:</h3>
+          <SyntaxHighlighter language="javascript" style={dracula}>
+          {embedCode}
+      </SyntaxHighlighter>
+          
+          
+        </div>
+      )};
+      </div>
+      <div className="mt-16 ">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={createBot}>
+          Save Changes/Test
+        </button>
+        <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' onClick={handleGenerateEmbedClick} style = {{backgroundColor: "#2D3748"}}>View Current embed</button>
+      </div>
+
+      <button block className="mt-2 bg-red-500 text-white px-8 py-2 rounded justify-center items-center" onClick={deleteBot} >
+         Delete My bot
+        </button>
     </div>
   );
 };

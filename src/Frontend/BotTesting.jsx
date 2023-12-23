@@ -28,6 +28,9 @@ function BotTesting({ userId }) {
     navigate('/BotDashboardWithUsers' );
   };
    
+
+  
+
   const generateEmbedCode = () => {
     
     return `//Insert this div in whichever pages you want your bot on
