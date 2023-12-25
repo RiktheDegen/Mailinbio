@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react'
+import React, { useState, useContext, useEffect }  from 'react'
 import ReactDOMServer from 'react-dom/server';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext'
@@ -18,6 +18,21 @@ function BotTesting({ userId }) {
   const context = useContext(UserContext);
   const [showOverlay, setShowOverlay] = useState(true);
   const [embedCode, setEmbedCode] = useState(null);
+
+  useEffect(() => {
+    // Function to fetch the user's name
+    const fetchUserName = async () => {
+      if (!context.user || !context.user.uid) {
+        // Redirect to the desired page if UID is null
+        navigate('/Signin'); // Change '/login' to the path you want to redirect to
+        return;
+      }
+      
+    };
+
+    fetchUserName();
+  }, [context.user, navigate]); 
+
 
   const handleGotItClick = () => {
     setShowOverlay(false);

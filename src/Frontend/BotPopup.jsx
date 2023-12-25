@@ -36,13 +36,13 @@ const BotPopup = ({ botId, onClose }) => {
       try {
         const snapshot = await get(botFilesRef);
         const filesData = snapshot.val();
-        console.log('filesData:', filesData); 
+        // console.log('filesData:', filesData); 
         // console.log(UserfilesData);
         setUserAssitant(UserfilesData.AssitantId)
         const filesDataArray = Object.values(filesData).map(entry => ({
           filename: entry.fileName,
         }));
-        console.log(filesDataArray);
+        // console.log(filesDataArray);
         // Ensure botFiles is an array
         setBotFiles(filesDataArray || []);
       } catch (error) {
@@ -251,54 +251,141 @@ const BotPopup = ({ botId, onClose }) => {
  
 
 
-  const createBot = async (fileName) => {
-    setBotLoading(true);
-    const db = getDatabase();
-    const botFilesRef = ref(db, `users/${context.user.uid}/files`);
-    const storageRef = firebase.storage().ref(`${context.user.uid}/${document.name}`);
-    const snapshot = await get(botFilesRef);
-    const filesData = snapshot.val();
-    const filesDataArray = Object.values(filesData).map(entry => ({
-      filename: entry.fileName,
-    }));
-    // console.log(filesDataArray);
+  // const createBot = async (fileName) => {
+  //   setBotLoading(true);
+  //   const db = getDatabase();
+  //   const botFilesRef = ref(db, `users/${context.user.uid}/files`);
+  //   const snapshot = await get(botFilesRef);
+  //   const filesData = snapshot.val();
+    
+  //   const filesDataArray = Object.values(filesData).map(entry => ({
+  //     filename: entry.fileName, 
+  //   }));
+    
 
-    if (filesDataArray.length<1) {
-              return  alert('please upload files to continue');
-              setBotLoading(false);
-            }
+  //   for (const item of filesDataArray) {
+  //     const fileName = item.filename;
+
+  //     try {
+  //       const storageRef = firebase.storage().ref(`${context.user.uid}/${fileName}`);
+  //       const downloadURL = await storageRef.getDownloadURL();
+  //       const newDocument = { name: fileName, url: downloadURL };
+  //       uploadedDocuments.push(newDocument);
+  //     } catch (error) {
+  //       console.error(`Error uploading file "${fileName}":`, error);
+  //       // Handle the error as needed
+  //     }
+  //   }
+
+  //   // Now, uploadedDocuments contains an array of objects with 'name' and 'url' properties
+  //   // Update your state or perform further actions with the uploadedDocuments array
+  //   setUploadedDocuments((prevDocuments) => [...prevDocuments, ...uploadedDocuments]);
+
+  
+    
+
+  //   console.log("final array" + newDocument);
+  //   if (filesDataArray.length<1) {
+  //             return  alert('please upload files to continue');
+  //             setBotLoading(false);
+  //           }
 
              
             
-            setBotLoading(true);
+  //           setBotLoading(true);
             
-            const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
-              dataArray: filesDataArray,
+  //           const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
+  //             dataArray: uploadedDocuments,
                  
-    }  
-    )
+  //   }  
+  //   )
       
-    const botId = response.data.botResponse;
-    console.log('Bot succesfully made ' + botId);
-    const assistantId = botId;
-    writeUserBot(botId, 'true');
-    const charSet = 'asst';
-    var hasAsst = charSet.split('').every(char => botId.includes(char))
-    console.log(hasAsst);
-    setBotLoading(false);
-    if (hasAsst){
-      // Navigate('/BotTesting');
-      Navigate(`/BotTesting/${assistantId}`);
-    };
+  //   const botId = response.data.botResponse;
+  //   console.log('Bot succesfully made ' + botId);
+  //   const assistantId = botId;
+  //   writeUserBot(botId, 'true');
+  //   const charSet = 'asst';
+  //   var hasAsst = charSet.split('').every(char => botId.includes(char))
+  //   console.log(hasAsst);
+  //   setBotLoading(false);
+  //   if (hasAsst){
+  //     // Navigate('/BotTesting');
+  //     Navigate(`/BotTesting/${assistantId}`);
+  //   };
      
     
     
-  };
+  // };
 
+  const createBot = async () => {
+    setBotLoading(true);
+  
+    const db = getDatabase();
+    const botFilesRef = ref(db, `users/${context.user.uid}/files`);
+    const snapshot = await get(botFilesRef);
+    const filesData = snapshot.val();
+  
+    if (!filesData || Object.keys(filesData).length < 1) {
+      setBotLoading(false);
+      return alert('Please upload files to continue');
+    }
+  
+    const filesDataArray = Object.values(filesData).map(entry => ({
+      filename: entry.fileName,
+    }));
+  
+    const uploadedDocuments = [];
+  
+    for (const item of filesDataArray) {
+      const fileName = item.filename;
+  
+      try {
+        const storageRef = firebase.storage().ref(`${context.user.uid}/${fileName}`);
+        const downloadURL = await storageRef.getDownloadURL();
+        const newDocument = { name: fileName, url: downloadURL };
+        uploadedDocuments.push(newDocument);
+      } catch (error) {
+        console.error(`Error uploading file "${fileName}":`, error);
+        // Handle the error as needed
+      }
+    }
+  
+    // Now, uploadedDocuments contains an array of objects with 'name' and 'url' properties
+  
+    if (uploadedDocuments.length < 1) {
+      setBotLoading(false);
+      return alert('Error uploading files');
+    }
+  
+    setUploadedDocuments((prevDocuments) => [...prevDocuments, ...uploadedDocuments]);
+    console.log(uploadedDocuments);
+    try {
+      const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
+        dataArray: uploadedDocuments,
+      });
+  
+      const botId = response.data.botResponse;
+      console.log('Bot successfully made ' + botId);
+      writeUserBot(botId, 'true');
+      const charSet = 'asst';
+      const hasAsst = charSet.split('').every(char => botId.includes(char));
+  
+      setBotLoading(false);
+  
+      if (hasAsst) {
+        Navigate(`/BotTesting/${botId}`);
+      }
+    } catch (error) {
+      console.error('Error creating bot:', error);
+      setBotLoading(false);
+      // Handle the error as needed
+    }
+  };
+  
   return (
     <div className=" p-4 bg-white shadow-md h-full overflow-y-auto max-w-[700px]">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold">Bot Files</h2>
+        <h2 className="text-lg text-helvetica-neue font-medium ">Bot Files</h2>
         <button className="text-sm text-gray-500" onClick={onClose}>
           Close
         </button>

@@ -26,6 +26,11 @@ function BotDashboardWithUsers() {
   useEffect(() => {
     // Function to fetch the user's name
     const fetchUserName = async () => {
+      if (!context.user || !context.user.uid) {
+        // Redirect to the desired page if UID is null
+        navigate('/Signin'); // Change '/login' to the path you want to redirect to
+        return;
+      }
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
 
@@ -65,7 +70,7 @@ function BotDashboardWithUsers() {
     
   
     fetchUserName();
-  }, [context.user.uid]); // Dependency to re-run the effect when the user ID changes
+  }, [context.user, navigate]); // Dependency to re-run the effect when the user ID changes
 
   function goToUpload (){
    
@@ -85,12 +90,12 @@ function BotDashboardWithUsers() {
   
     return(
 
-    <div>
+    <div className='text-helvetica-neue'>
     <div className="flex h-screen bg-gray-100">
    {/* Left Sidebar */}
-   <div className="w-64 bg-gray-800 p-4 text-white">
+   <div className="w-64 p-4 text-white" style={{backgroundColor: "#2D3748"}}>
      <div className="mb-8">
-       <div className="text-2xl font-bold mb-4">My Dashboard</div>
+       <div className="text-2xl text-helvetica-neue font-medium mb-4">My Dashboard</div>
        <div className="border-b border-gray-600 pb-2 mb-4">
          <div className="text-sm font-semibold mb-2">My Bots</div>
          <ul>
@@ -130,8 +135,8 @@ function BotDashboardWithUsers() {
 <div className="flex items-center justify-between border-b border-gray-300 pb-4 mb-4">
  {/* User's Workspace and Plan */}
  <div className="flex items-center">
-   <div className="text-2xl font-bold mr-4">{userName}'s Workspace</div>
-   <div className="bg-blue-500 text-white px-2 py-1 rounded">{userPlan}</div>
+   <div className="text-3xl text-helvetica-neue font-medium mr-4">{userName}'s Workspace</div>
+   <div className="text-helvetica-neue text-white px-2 py-1 rounded" style = {{backgroundColor: "#21C55D"}}>{userPlan}</div>
  </div>
 </div>
 
@@ -149,7 +154,7 @@ function BotDashboardWithUsers() {
 
 </button>
 {/* Bot name */}
-<div className="text-sm text-gray-700 mt-2 "><strong>{userBotName}</strong></div>
+<div className="text-helvetica-neue font-medium text-gray-700 mt-2 "><strong>{userBotName}</strong></div>
 </div>
 
 
