@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom';
 import './NewHome.css'
 import axios from 'axios'
 
@@ -231,7 +232,7 @@ function NewHome() {
               <p className="mb-2">Custom Integrations</p>
             </div>
             {/* Buy Button */}
-            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session" method="POST">
+            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-premium" method="POST">
               <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
                 Choose Plan
               </button>
@@ -264,7 +265,7 @@ function NewHome() {
               <p className="mb-2">Custom Integrations</p>
             </div>
             {/* Buy Button */}
-            <form action="https://your-server.com/create-checkout-session" method="POST">
+            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-advanced" method="POST">
               <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
                 Choose Plan
               </button>
@@ -296,11 +297,11 @@ function NewHome() {
               <p className="mb-2">Custom Integrations</p>
             </div>
             {/* Buy Button */}
-            <form action="https://your-server.com/create-checkout-session" method="POST">
-              <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
-                Choose Plan
+           
+              <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="disabled">
+                Coming soon
               </button>
-            </form>
+       
           </div>
           {/* You can copy and modify the above structure for the other plans */}
         </div>
@@ -313,7 +314,7 @@ function NewHome() {
   <p className="text-gray-600 mb-4">Get started today and have a working agent with three simple steps</p>
 
   <div className="flex space-x-4 md:items-center justify-center">
-    <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} >Get Started</button>
+    <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
     <button className="border border-21C55D text-21C55D py-2 px-4 rounded-md" style={{ color: '#C2C2C2' }}>View Pricing</button>
   </div>
