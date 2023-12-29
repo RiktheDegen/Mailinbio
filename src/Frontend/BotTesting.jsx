@@ -50,11 +50,11 @@ function BotTesting({ userId }) {
     
     return `//Insert this div in whichever pages you want your bot on
 
-    <div class="Api-chat-widget" data-symbol=${userAssitant}></div>
+    <div class="Api-chat-widget" data-symbol="${userAssitant}"></div>
     
     //Insert this CSS file above any existing stylesheets in the head tag
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/assets/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/index.css">
     
     //Insert this in the bottom of any html page 
     
