@@ -32,6 +32,10 @@ import PopupModal from './Frontend/PopupModal';
 import NewDocumentUpload from './Frontend/NewUpload';
 import BotEmbed from './ReusableComponents/BotEmbed';
 import NewHome from './Frontend/NewHome';
+import PaymentFailureAdv from './Frontend/PaymentFailureAdv';
+import PaymentSuccessAdv from './Frontend/PaymentSuccessAdv';
+import PaymentFailurePre from './Frontend/PaymentFailurePre';
+import PaymentSuccessPre from './Frontend/PaymentSuccessPre';
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -75,6 +79,10 @@ function App() {
           <Route exact path="/PopupModal" element={<PopupModal />}/>
           <Route exact path="/NewUpload" element={<NewDocumentUpload />}/>
           <Route exact path="/NewHome" element={<NewHome />}/>
+          <Route exact path="/advanced?canceled=true" element={<PaymentFailureAdv />}/>
+          <Route exact path="/advanced?success=true" element={<PaymentSuccessAdv />}/>
+          <Route exact path="/premium?canceled=true" element={<PaymentFailurePre />}/>
+          <Route exact path="/premium?success=true" element={<PaymentSuccessPre />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
