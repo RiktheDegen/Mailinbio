@@ -50,7 +50,7 @@ function BotDashboard({HasBot}) {
           return
         }
         
-
+//new comment
         
       } catch (error) {
         console.error('Error fetching user data:', error.message);
