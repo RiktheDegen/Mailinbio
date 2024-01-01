@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import './NewHome.css'
 import axios from 'axios'
+import HeroBanner from '../static/Group 16.png'
+import sectionOne from '../static/Group 11.png'
+import sectionTwo from '../static/Group 12.png'
+import sectionThree from '../static/Frame 6.png'
 
 function NewHome() {
     const [activeStep, setActiveStep] = useState(1);
@@ -67,7 +71,7 @@ function NewHome() {
       <div className="mt-8 md:w-2/3 mx-auto">
       <img
  
-  src="../src/assets/Group 16.png" // Default image for browsers that do not support srcset
+  src={HeroBanner} // Default image for browsers that do not support srcset
   alt="Description of the image"
   className="mb-8 mx-auto text-center w-full h-auto rounded-2"
 />
@@ -91,7 +95,7 @@ function NewHome() {
       {/* Image Section */}
       <div className="md:ml-8">
         <img
-          src="../src/assets/Group 11.png"  // Replace with your image path
+          src={sectionOne}  // Replace with your image path
           alt="Description of the image"
           className="mx-auto max-w-[1/2vw] self-right"
         />
@@ -102,7 +106,7 @@ function NewHome() {
   {/* Image Section */}
   <div className="md:w-1/2 md:max-w-[calc(100% - 2rem)] md:mr-4 mb-4">
     <img
-      src="../src/assets/Group 12.png"  // Replace with your image path
+      src={sectionTwo}  // Replace with your image path
       alt="Description of the image"
       className="mx-auto w-auto h-auto"
     />
@@ -138,7 +142,7 @@ function NewHome() {
       {/* Image Section */}
       <div className="md:ml-8">
         <img
-          src="../src/assets/Frame 6.png"  // Replace with your image path
+          src={sectionThree}  // Replace with your image path
           alt="Description of the image"
           className="mx-auto max-w-[1/2vw] self-right"
         />

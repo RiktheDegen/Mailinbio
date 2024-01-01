@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
+import logo from '../static/icon (1).png'
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
             <div className="mb-6 md:mb-0 items-center justify-center">
                 <Link to="/" className="flex items-center justify-center">
                     <img
-                        src="../src/assets/icon (1).png"
+                        src={logo}
                         className="mr-3 h-20"
                         alt="Logo"
                     />

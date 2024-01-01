@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import logo from '../static/icon (1).png'
 
 export default function Header() {
   const context = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function Header() {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
-              src="../src/assets/icon (1).png"
+              src={logo}
               className="mr-3 h-20"
               alt="Logo"
             />
