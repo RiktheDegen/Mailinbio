@@ -1,128 +1,4 @@
-// import React, { useContext, useState } from 'react'
-// import {Container, Form, Button, Row, Col, FormGroup, Label, Input, Card,CardBody, CardHeader, CardFooter } from 'reactstrap'
-
-// import firebase from 'firebase/compat/app'
-// import "firebase/compat/auth";
-// import { getDatabase,ref, set, get,child  } from 'firebase/database';
-
-
-// import { UserContext } from '../context/UserContext'
-// import { useNavigate } from 'react-router-dom'
-// import { toast } from 'react-toastify'
-
-
-
-
-
-// const Signin = () => {
-//   const navigate = useNavigate();
-//   const context = useContext(UserContext)
-//   const[email, setEmail] = useState('')
-//   const[password, setPassword] = useState('')
-//   const userId = context.user?.uid;
-
-
-//   const handleSignup = () => {
-//     firebase
-//     .auth()
-//     .signInWithEmailAndPassword(email, password)
-//     .then( res => {
-//       console.log(res);
-//       context.setUser({email:res.user.email, uid: res.user.uid, botStatus:'false'})
-//     }
-//     )
-//     .catch(error => {
-//       console.log(error)
-//       toast(error.message, {
-//         type: 'error'
-//       })
-//     }) }
-
-//   const handleSubmit = e => {
-//     console.log("called function");
-//     e.preventDefault()
-//     handleSignup()
-//   }
-
-  
-
-
-
- 
-
-//   if ( context.user?.uid )  {
-//     const checkForBot = async() => {
-//       const db = getDatabase();
-//       const userRef = ref(db, 'users/' + context.user.uid);
-//        // Retrieve updated data
-//     const snapshot = await get(userRef);
-//     const updatedUserData = snapshot.val();
-//     const userHasBot = updatedUserData.HasBotStatus;
-      
-//     if (userHasBot === 'true') {
-//       navigate("/BotDashboardWithUsers");
-//     } else {
-//       navigate("/BotDashboard");
-//     }
-
-//     }
-
-//     checkForBot();
-    
-//    }
-   
-  
-
-//   return(
-//     <Container className='mt-4 text-center' style={{ minHeight: '60vh' }}>
-//       <Row>
-//         <Col lg={6} className='offset-lg-3 mt-5 '>
-//           <Card>
-//             <Form onSubmit = {handleSubmit} >
-//               <CardHeader className=''>SignIn here</CardHeader> 
-//               <CardBody>
-//                 <FormGroup row>
-//                   <Label for='email' sm={3}>Email</Label>
-//                   <Col sm={9}>
-//                       <Input
-//                       type='email'
-//                       name='email'
-//                       id='email'
-//                       placeholder='provide your email'
-//                       value={email}
-//                       onChange={e => setEmail(e.target.value)}
-//                       />
-//                         </Col>
-//                         </FormGroup>
-//                         <FormGroup row>
-//                         <Label for='password' sm={3}>Password</Label>
-//                           <Col sm={9}>
-//                             <Input
-//                                 type='password'
-//                                 name='password'
-//                                 id='password'
-//                                 placeholder='your password here'
-//                                 value={password}
-//                                 onChange={e => setPassword(e.target.value)}/>
-//                                   </Col>
-//                                   </FormGroup>
-//                                   </CardBody>
-//                                   <CardFooter>
-//                           <Button type='submit' block color='primary' >Sign in</Button>
-//                                   </CardFooter>
-//                   </Form>
-//                   </Card>
-//                   </Col>
-//                   </Row>
-//                   </Container>
-//   );
-  
-// }
-
-// export default Signin
-
-
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col, FormGroup, Label, Input, Card, CardBody, CardFooter } from 'reactstrap';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -131,11 +7,16 @@ import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+
 const Signin = () => {
   const navigate = useNavigate();
   const context = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
+
+
 
   const handleSignin = () => {
     firebase
@@ -153,6 +34,30 @@ const Signin = () => {
       });
   };
 
+  
+
+  const handleSignInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        // You may want to check if the user is new here as well
+        context.setUser({ email: user.email, uid: user.uid });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast(error.message, {
+          type: 'error',
+        });
+      });
+  };
+
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSignin();
@@ -164,11 +69,14 @@ const Signin = () => {
       const userRef = ref(db, 'users/' + context.user.uid);
       const snapshot = await get(userRef);
       const updatedUserData = snapshot.val();
+
       const userHasBot = updatedUserData.HasBotStatus;
+
 
       if (userHasBot === 'true') {
         navigate('/BotDashboardWithUsers');
-      } else {
+      }
+      else {
         navigate('/BotDashboard');
       }
     };
@@ -219,6 +127,22 @@ const Signin = () => {
             </div>
         </Form>
       </Card>
+
+      <div className='max-w-[550px] justify-center mx-auto'>
+       <button
+                type="button"
+                
+                onClick={handleSignInWithGoogle}
+                className=" p-3 text-xl " 
+              >
+                <div className="flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48" className='mx-2'>
+<path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+</svg>
+                  Sign In with Google
+                </div>
+              </button>
+              </div>
     </Container>
   
   );

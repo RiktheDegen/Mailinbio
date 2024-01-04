@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Routes, Route, Navigate, Link} from "react-router-dom"
@@ -32,7 +32,7 @@ import PopupModal from './Frontend/PopupModal';
 import NewDocumentUpload from './Frontend/NewUpload';
 import BotEmbed from './ReusableComponents/BotEmbed';
 import NewHome from './Frontend/NewHome';
-import PaymentFailureAdv from './Frontend/PaymentFailureAdv';
+import EmailVerification from './Frontend/EmailVerification';
 import PaymentSuccessAdv from './Frontend/PaymentSuccessAdv';
 
 import PaymentSuccessPre from './Frontend/PaymentSuccessPre';
@@ -58,6 +58,16 @@ const prod = firebase.initializeApp(firebaseConfig);
 function App() {
   const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    // Check if the user is already authenticated
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    // Cleanup the subscription when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
   return (
   
   
@@ -81,6 +91,7 @@ function App() {
           <Route exact path="/NewHome" element={<NewHome />}/>
           <Route exact path="/advanced" element={<PaymentSuccessAdv />}/>
           <Route exact path="/premium" element={<PaymentSuccessPre />}/>
+          <Route exact path="/EmailVerification" element={<EmailVerification />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>

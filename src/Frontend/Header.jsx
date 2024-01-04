@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import logo from '../static/icon (1).png'
 
+
 export default function Header() {
   const context = useContext(UserContext);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
