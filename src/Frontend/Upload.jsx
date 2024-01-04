@@ -54,7 +54,6 @@ const DocumentUpload = ({ userId }) => {
 
 
 
-        const [document, setDocument] = useState(null);
         
         const handleUpload = async () => {
           // Ensure a document is selected

@@ -63,26 +63,44 @@ const Signin = () => {
     handleSignin();
   };
 
-  if (context.user?.uid) {
+ 
     const checkForBot = async () => {
+      if ( context.user.emailVerified = true) {
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
       const snapshot = await get(userRef);
       const updatedUserData = snapshot.val();
 
       const userHasBot = updatedUserData.HasBotStatus;
+      console.log('HasBotStatus:', userHasBot);
 
+      
+        console.log('email is verified');
+        if (userHasBot === "true") {
+          navigate('/BotDashboardWithUsers');
+        }
 
-      if (userHasBot === 'true') {
-        navigate('/BotDashboardWithUsers');
+        else {
+          navigate('/BotDashboard');
+        }
+
+      } else if(context.user.emailVerified === false){
+        navigate('/EmailVerification');
       }
-      else {
-        navigate('/BotDashboard');
-      }
+
+     
     };
 
-    checkForBot();
-  }
+  
+
+  useEffect(() => {
+    if (context.user?.uid) {
+        // Use an async IIFE to wait for the asynchronous checkForBot function
+    (async () => {
+      await checkForBot();
+    })();
+    }
+  }, [context.user]);
 
   return (
     
