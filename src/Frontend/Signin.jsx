@@ -153,7 +153,7 @@ const Signin = () => {
         </Form>
       </Card>
 
-      <div className='max-w-[550px] justify-center mx-auto'>
+      {/* <div className='max-w-[550px] justify-center mx-auto'>
        <button
                 type="button"
                 
@@ -167,7 +167,7 @@ const Signin = () => {
                   Sign In with Google
                 </div>
               </button>
-              </div>
+              </div> */}
     </Container>
   
   );

@@ -149,7 +149,7 @@ const Signup = () => {
           </div>
       </Form>
     </Card>
-    <Button
+    {/* <Button
   onClick={handleSignupWithGoogle}
   block
   className="p-2 mx-auto text-lg mt-8 max-w-[550px]"  // Adjusted button height and text size
@@ -191,7 +191,7 @@ const Signup = () => {
     </svg>
     Sign up with Google
   </div>
-</Button>
+</Button> */}
 </Container>
           
           

@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 import PopupModal from './PopupModal';
 import { json } from 'body-parser';
+import PricingPopup from './PricingPopup';
 
 function BotDashboard({HasBot}) {
 //comment
@@ -13,6 +14,10 @@ function BotDashboard({HasBot}) {
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
   
+  const [PricingModalIsOpen, setPricingModalIsOpen] = useState(false);
+  const PricingOpenModal = () => setPricingModalIsOpen(true);
+  const PricingCloseModal = () => setPricingModalIsOpen(false);
+
   const navigate = useNavigate();
   const [userName, setUserName] = useState(null); // State to store the user's name
   const [userBotName, setUserBotName] = useState(null);
@@ -37,7 +42,7 @@ function BotDashboard({HasBot}) {
         
         setUserName(userData ? userData.Name : 'No Name'); // Default to 'No Name' if the user data is not available
         setUserBotName(userData.botName ? userData.botName : 'No Name');
-        setUserPlan(userData.hasPaidStatus ? 'Starter Plan' : 'No Plan selected'); // Default to 'No Name' if the user data is not available
+        setUserPlan(userData.PlanName? userData.PlanName : 'No Plan selected'); // Default to 'No Name' if the user data is not available
         
         var userBotStatus = userData.HasBotStatus;
         // console.log(userBotStatus);
@@ -63,7 +68,7 @@ function BotDashboard({HasBot}) {
     
   
     fetchUserName();
-  }, [context.user.uid]); // Dependency to re-run the effect when the user ID changes
+  }, [context.user?.uid]); // Dependency to re-run the effect when the user ID changes
 
   function goToUpload (){
    
@@ -119,6 +124,13 @@ function BotDashboard({HasBot}) {
           <div className="flex items-center border-b border-gray-300 pb-4 mb-4">
             <div className="text-3xl text-helvetica-neue font-medium mr-4">{userName}'s Workspace</div>
             <div className="text-helvetica-neue text-white px-2 py-1 rounded" style = {{backgroundColor: "#21C55D"}}>{userPlan}</div>
+           
+            {userPlan === 'No Plan selected' && (
+      <p className="ml-2 mt-4 text-helvetica-neue text-gray-600 mb-4" onClick={PricingOpenModal}>
+        Upgrade now
+      </p>
+    )}
+            
           </div>
     
           <div className=" p-4 rounded text-center">
@@ -127,6 +139,7 @@ function BotDashboard({HasBot}) {
               Bring your API Docs to life — we can’t wait to see what you’ve got!
             </p>
             <button className="bg-blue-500 text-white py-2 px-4 rounded" style={{backgroundColor: "#2D3748"}} onClick={openModal}>+ New Bot</button>
+            <PricingPopup isOpen={PricingModalIsOpen} onRequestClose={PricingCloseModal} />
             <PopupModal isOpen={modalIsOpen} onRequestClose={closeModal} />
           </div>
         </div>

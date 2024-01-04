@@ -36,6 +36,8 @@ import EmailVerification from './Frontend/EmailVerification';
 import PaymentSuccessAdv from './Frontend/PaymentSuccessAdv';
 
 import PaymentSuccessPre from './Frontend/PaymentSuccessPre';
+import PricingPopup from './Frontend/PricingPopup';
+
 
  const firebaseConfig = {
   apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
@@ -92,6 +94,7 @@ function App() {
           <Route exact path="/advanced" element={<PaymentSuccessAdv />}/>
           <Route exact path="/premium" element={<PaymentSuccessPre />}/>
           <Route exact path="/EmailVerification" element={<EmailVerification />}/>
+          <Route exact path="/PricingPopup" element={<PricingPopup />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>

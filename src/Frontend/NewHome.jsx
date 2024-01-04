@@ -209,8 +209,9 @@ function NewHome() {
 {/* Pricing Section */}
 <section className="py-16 " style={{ background: '#1F2937' }} >
 <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: '#C2C2C2' }}>Choose Your Plan</h2>
-        <div className="flex justify-center items-center flex-wrap">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#C2C2C2' }}>Choose Your Plan</h2>
+        <p className="mb-2 text-xl" style={{ color: '#C2C2C2' }}>Apichat is free till you are ready to integrate it into your website</p>
+        <div className="mt-8 flex justify-center items-center flex-wrap">
           {/* Pricing cards for Premium, Advanced, and Enterprise plans */}
           <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6">
             <h3 className="text-xl text-gray-600 font-bold mb-2">Premium</h3>
@@ -237,11 +238,17 @@ function NewHome() {
               <p className="mb-2">Custom Integrations</p>
             </div>
             {/* Buy Button */}
-            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-premium" method="POST">
+          <Link to="/Signup">
+              <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
+                Start for free
+              </button>
+              </Link>
+
+            {/* <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-premium" method="POST">
               <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
                 Choose Plan
               </button>
-            </form>
+            </form> */}
           </div>
 
           {/* Repeat the above structure for Advanced and Enterprise plans */}
@@ -270,11 +277,16 @@ function NewHome() {
               <p className="mb-2">Custom Integrations</p>
             </div>
             {/* Buy Button */}
-            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-advanced" method="POST">
+            <Link to="/Signup">
+              <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit" >
+                Start for free
+              </button></Link>
+         
+            {/* <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-advanced" method="POST">
               <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
                 Choose Plan
               </button>
-            </form>
+            </form> */}
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6">

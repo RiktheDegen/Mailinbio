@@ -45,7 +45,7 @@ function BotDashboardWithUsers() {
         
         setUserName(userData ? userData.Name : 'No Name'); // Default to 'No Name' if the user data is not available
         setUserBotName(userData.botName ? userData.botName : 'No Name');
-        setUserPlan(userData.hasPaidStatus ? 'Starter Plan' : 'No Plan selected'); // Default to 'No Name' if the user data is not available
+        setUserPlan(userData.PlanName? userData.PlanName : 'No Plan selected'); // Default to 'No Name' if the user data is not available
         
         var userBotStatus = userData.HasBotStatus;
         // console.log(userBotStatus);
@@ -71,7 +71,7 @@ function BotDashboardWithUsers() {
     
   
     fetchUserName();
-  }, [context.user, navigate]); // Dependency to re-run the effect when the user ID changes
+  }, [context.user?.uid, navigate]); // Dependency to re-run the effect when the user ID changes
 
   function goToUpload (){
    
@@ -145,6 +145,11 @@ function BotDashboardWithUsers() {
  <div className="flex items-center">
    <div className="text-3xl text-helvetica-neue font-medium mr-4">{userName}'s Workspace</div>
    <div className="text-helvetica-neue text-white px-2 py-1 rounded" style = {{backgroundColor: "#21C55D"}}>{userPlan}</div>
+   {userPlan === 'No Plan selected' && (
+      <p className="ml-2 mt-4 text-helvetica-neue text-gray-600 mb-4" onClick={PricingOpenModal}>
+        Upgrade now
+      </p>
+    )}
  </div>
 </div>
 
