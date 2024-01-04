@@ -57,7 +57,7 @@ function NewHome() {
     
     
       <section className="mb-16 bg-gradient-to-r from-gray-100 to-gray-200  p-8 md:p-16 text-left md:text-center">
-      <h3 className="text-helvetica-neue font-bold mb-8 text-6xl sm:text-6xl  md:text-6xl lg:text-6xl  text-left md:text-center">
+      <h3 className="text-helvetica-neue font-bold mb-8 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl  text-left md:text-center">
       Supercharge your API docs with AI chat
       </h3>
       <p className="text-helvetica-neue font-regular mb-8 text-xl md:text-xl lg:text-2xl  text-left md:text-center">
