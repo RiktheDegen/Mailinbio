@@ -25,6 +25,12 @@ const Signin = () => {
       .then((res) => {
         console.log(res);
         context.setUser({ email: res.user.email, uid: res.user.uid, botStatus: 'false' });
+        const authUser = res.user; // <-- This is the authenticated user
+        if (authUser.emailVerified) {
+          checkForBot(authUser);
+        } else {
+          navigate('/EmailVerification');
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -48,6 +54,7 @@ const Signin = () => {
 
         // You may want to check if the user is new here as well
         context.setUser({ email: user.email, uid: user.uid });
+    
       })
       .catch((error) => {
         console.error(error);
@@ -65,7 +72,9 @@ const Signin = () => {
 
  
     const checkForBot = async () => {
-      if ( context.user.emailVerified = true) {
+      console.log('Email Verified:', context.user);
+    
+  
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
       const snapshot = await get(userRef);
@@ -84,9 +93,7 @@ const Signin = () => {
           navigate('/BotDashboard');
         }
 
-      } else if(context.user.emailVerified === false){
-        navigate('/EmailVerification');
-      }
+      
 
      
     };
