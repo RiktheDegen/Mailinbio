@@ -56,30 +56,28 @@ function NewHome() {
     <>
     
     
-    <section className="mb-16 bg-gradient-to-r from-gray-100 to-gray-200 p-8 md:p-16 text-left md:text-center">
-  <h3 className="text-helvetica-neue font-bold mb-8 text-5xl md:text-5xl lg:text-6xl">
-    Supercharge your API docs with AI chat
-  </h3>
-  <p className="text-helvetica-neue font-regular mb-8 text-lg md:text-xl lg:text-2xl">
-    Convert and Retain More Developers With AI That Understands Your Docs
-  </p>
-  <div className="flex space-x-4 md:items-center justify-center">
-    <button className="py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105" style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }}>
-      Get Started
-    </button>
-    <button className="border border-black text-grey py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105">
-      View Pricing
-    </button>
+      <section className="mb-16 bg-gradient-to-r from-gray-100 to-gray-200  p-8 md:p-16 text-left md:text-center">
+      <h3 className="text-helvetica-neue font-bold mb-8 text-5xl  md:text-6xl lg:text-8xl  text-left md:text-center">
+      Supercharge your API docs with AI chat
+      </h3>
+      <p className="text-helvetica-neue font-regular mb-8 text-xl md:text-xl lg:text-2xl  text-left md:text-center">
+      Convert and Retain More Developers With AI That Understands Your Docs
+      </p>
+      <div className="flex space-x-4 md:items-center justify-center">
+    <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} >Get Started</button>
+    
+    <button className="border border-black text-grey py-2 px-4 rounded-md" >View Pricing</button>
+   
   </div>
-  <div className="mt-8 md:w-2/3 mx-auto">
-    <img
-      src={HeroBanner}
-      alt="Description of the image"
-      className="mb-8 mx-auto w-full h-auto rounded-2"
-    />
-  </div>
-</section>
-
+      <div className="mt-8 md:w-2/3 mx-auto">
+      <img
+ 
+  src={HeroBanner} // Default image for browsers that do not support srcset
+  alt="Description of the image"
+  className="mb-8 mx-auto text-center w-full h-auto rounded-2"
+/>
+      </div>
+    </section>
 
     <section className="mt-8 mb-8 flex flex-col md:flex-row bg-white p-8 md:p-16 max-w-[1200px] mx-auto ">
       {/* Text Section */}
