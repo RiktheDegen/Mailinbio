@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react';
 import { getDatabase, ref, get } from 'firebase/database';
 import { Link, NavLink } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 import PopupModal from './PopupModal';
+import PricingPopup from './PricingPopup';
 import { json } from 'body-parser';
 import BotPopup from './BotPopup'
 
@@ -15,6 +15,10 @@ function BotDashboardWithUsers() {
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
   
+  const [PricingModalIsOpen, setPricingModalIsOpen] = useState(false);
+  const PricingOpenModal = () => setPricingModalIsOpen(true);
+  const PricingCloseModal = () => setPricingModalIsOpen(false);
+
   const navigate = useNavigate();
   const [userName, setUserName] = useState(null); // State to store the user's name
   const [userBotName, setUserBotName] = useState(null);
@@ -23,6 +27,7 @@ function BotDashboardWithUsers() {
   const [loading, setLoading] = useState(true); 
   const context = useContext(UserContext);
   const [selectedBotId, setSelectedBotId] = useState(null);
+  const [hasPaidStatus, setHasPaidStatus] = useState(null);
   
   useEffect(() => {
     // Function to fetch the user's name
@@ -42,7 +47,7 @@ function BotDashboardWithUsers() {
         const snapshot = await get(userRef);
         const userData = snapshot.val();
         // Set the user's name in the component's state
-        
+        setHasPaidStatus(userData.hasPaidStatus);
         setUserName(userData ? userData.Name : 'No Name'); // Default to 'No Name' if the user data is not available
         setUserBotName(userData.botName ? userData.botName : 'No Name');
         setUserPlan(userData.PlanName? userData.PlanName : 'No Plan selected'); // Default to 'No Name' if the user data is not available
@@ -71,7 +76,7 @@ function BotDashboardWithUsers() {
     
   
     fetchUserName();
-  }, [context.user?.uid, navigate]); // Dependency to re-run the effect when the user ID changes
+  }, [context.user?.uid, navigate, hasPaidStatus]); // Dependency to re-run the effect when the user ID changes
 
   function goToUpload (){
    
@@ -169,7 +174,7 @@ function BotDashboardWithUsers() {
 {/* Bot name */}
 <div className="text-helvetica-neue font-medium text-gray-700 mt-2 "><strong>{userBotName}</strong></div>
 </div>
-
+<PricingPopup isOpen={PricingModalIsOpen} onRequestClose={PricingCloseModal} />
 
 {selectedBotId && <BotPopup botId={selectedBotId} onClose={handleClosePopup} />}
  </div>

@@ -77,3 +77,22 @@
 z-index: 52;
 box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
+
+.loading-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+  margin-left: 8px; /* Adjust the margin as needed */
+}
+
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}
+

@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { getDatabase, ref, get } from 'firebase/database';
-import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 import PopupModal from './PopupModal';

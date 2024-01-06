@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import axios from 'axios';
+import PricingPopup from './PricingPopup';
 
 const BotPopup = ({ botId, onClose }) => {
   const [botFiles, setBotFiles] = useState([]);
@@ -22,7 +23,12 @@ const BotPopup = ({ botId, onClose }) => {
   const [embedCode, setEmbedCode] = useState(null);
   const [userAssitant, setUserAssitant] = useState('');
   const [Botloading, setBotLoading] = useState(false);
+  const [upgradeAlert, setUpgradeAlert] = useState(null);
+  const [hasPaidStatus, setHasPaidStatus] = useState(null);
 
+  const [PricingModalIsOpen, setPricingModalIsOpen] = useState(false);
+  const PricingOpenModal = () => setPricingModalIsOpen(true);
+  const PricingCloseModal = () => setPricingModalIsOpen(false);
   const Navigate = useNavigate();
  
   useEffect(() => {
@@ -39,6 +45,12 @@ const BotPopup = ({ botId, onClose }) => {
         // console.log('filesData:', filesData); 
         // console.log(UserfilesData);
         setUserAssitant(UserfilesData.AssitantId)
+        const hasPaidStatusValue = UserfilesData.HasPaidStatus;
+        
+  if (hasPaidStatusValue !==  undefined) {
+    setHasPaidStatus(hasPaidStatusValue);
+  }
+        
         const filesDataArray = Object.values(filesData).map(entry => ({
           filename: entry.fileName,
         }));
@@ -57,7 +69,7 @@ const BotPopup = ({ botId, onClose }) => {
 
   // Clean up the interval when the component unmounts
   return () => clearInterval(intervalId);
-  }, [context.user.uid]);
+  }, [context.user?.uid, hasPaidStatus]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
@@ -82,10 +94,7 @@ const BotPopup = ({ botId, onClose }) => {
     }
   };
 
-  const handleTestBot = () => {
-    // Add logic for testing the bot
-    // For example, navigate to the testing page with the botId
-  };
+ 
 
   const generateEmbedCode = () => {
     
@@ -103,12 +112,22 @@ const BotPopup = ({ botId, onClose }) => {
   };
 
   const handleGenerateEmbedClick = () => {
+    
     console.log('1');
     const code = generateEmbedCode();
     console.log('2');
-    setEmbedCode(code);
+    console.log(hasPaidStatus);
+    if (hasPaidStatus === 'true') {
+      console.log(context.user);
+      setEmbedCode(code);
+    }
+    else {
+     
+      setUpgradeAlert(`Please choose a plan to view your embed` )
+      console.log(upgradeAlert);
+    }
+    
   };
-
   function writeUserData(HasUploads, UploadCount) {
       
     const db = getDatabase();
@@ -251,72 +270,6 @@ const BotPopup = ({ botId, onClose }) => {
  
 
 
-  // const createBot = async (fileName) => {
-  //   setBotLoading(true);
-  //   const db = getDatabase();
-  //   const botFilesRef = ref(db, `users/${context.user.uid}/files`);
-  //   const snapshot = await get(botFilesRef);
-  //   const filesData = snapshot.val();
-    
-  //   const filesDataArray = Object.values(filesData).map(entry => ({
-  //     filename: entry.fileName, 
-  //   }));
-    
-
-  //   for (const item of filesDataArray) {
-  //     const fileName = item.filename;
-
-  //     try {
-  //       const storageRef = firebase.storage().ref(`${context.user.uid}/${fileName}`);
-  //       const downloadURL = await storageRef.getDownloadURL();
-  //       const newDocument = { name: fileName, url: downloadURL };
-  //       uploadedDocuments.push(newDocument);
-  //     } catch (error) {
-  //       console.error(`Error uploading file "${fileName}":`, error);
-  //       // Handle the error as needed
-  //     }
-  //   }
-
-  //   // Now, uploadedDocuments contains an array of objects with 'name' and 'url' properties
-  //   // Update your state or perform further actions with the uploadedDocuments array
-  //   setUploadedDocuments((prevDocuments) => [...prevDocuments, ...uploadedDocuments]);
-
-  
-    
-
-  //   console.log("final array" + newDocument);
-  //   if (filesDataArray.length<1) {
-  //             return  alert('please upload files to continue');
-  //             setBotLoading(false);
-  //           }
-
-             
-            
-  //           setBotLoading(true);
-            
-  //           const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/createBot', {
-  //             dataArray: uploadedDocuments,
-                 
-  //   }  
-  //   )
-      
-  //   const botId = response.data.botResponse;
-  //   console.log('Bot succesfully made ' + botId);
-  //   const assistantId = botId;
-  //   writeUserBot(botId, 'true');
-  //   const charSet = 'asst';
-  //   var hasAsst = charSet.split('').every(char => botId.includes(char))
-  //   console.log(hasAsst);
-  //   setBotLoading(false);
-  //   if (hasAsst){
-  //     // Navigate('/BotTesting');
-  //     Navigate(`/BotTesting/${assistantId}`);
-  //   };
-     
-    
-    
-  // };
-
   const createBot = async () => {
     setBotLoading(true);
   
@@ -392,7 +345,7 @@ const BotPopup = ({ botId, onClose }) => {
       </div>
       <div className="mb-4">
      
-
+      <PricingPopup isOpen={PricingModalIsOpen} onRequestClose={PricingCloseModal} />
 
       <div className="flex ">
         <label htmlFor="fileInput" className="cursor-pointer mt-3">
@@ -468,8 +421,17 @@ const BotPopup = ({ botId, onClose }) => {
           
           
         </div>
+        
       )};
       </div>
+      {upgradeAlert && (
+      <div className="text-center justify-center ml-2 mt-4 text-helvetica-neue text-gray-600 mb-4">
+        {upgradeAlert}
+        <button  className="ml-2 py-2 px-4 rounded" style={{ backgroundColor: "#2D3748", color: "#FFFFFF" }} onClick={PricingOpenModal}>
+          Upgrade now
+        </button>
+      </div>
+    )}
       <div className="mt-16 ">
         <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={createBot}>
           Save Changes/Test

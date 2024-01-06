@@ -45,7 +45,7 @@ function PaymentSuccessPre() {
         } catch (error) {
           console.error('Error fetching user data:', error.message);
         }
-        fetchPlanName();
+        
       }
       };
   
