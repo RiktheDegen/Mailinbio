@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useParams } from 'react-router-dom';
 
+
 export const defaultConfig = {
   title: 'ChatGPT',
   theme: 'gray', // Add more configuration options as needed
@@ -16,19 +17,37 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
 
   
   const userAssitant = AssistantId;
+
   
 
   const [collapsed, setCollapsed] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  
+  const [hideComponent, setHideComponent] = useState(false);
+
   const chatContainerRef = useRef(null);
 
-  const scrollToBottom = () => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }
+  const handleResize = () => {
+    setHideComponent(window.innerWidth < 425);
   };
+
+  useEffect(() => {
+    // Add an event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Call handleResize once on component mount
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  if (hideComponent) {
+    return null; // Render nothing if hideComponent is true
+  }
+ 
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);

@@ -10,6 +10,9 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import axios from 'axios';
 import PricingPopup from './PricingPopup';
 
+
+
+
 const BotPopup = ({ botId, onClose }) => {
   const [botFiles, setBotFiles] = useState([]);
   const [newFile, setNewFile] = useState(null);
@@ -138,9 +141,24 @@ const BotPopup = ({ botId, onClose }) => {
     });
   }
 
-  function deleteBot() {
+  const deleteBot = async() => {
     const db = getDatabase();
+
     const userRef = ref(db, 'users/' + context.user.uid);
+    // const snapshot = await get(userRef);
+    // const userData = snapshot.val();
+    // const userAssitant = userData.AssitantId;
+    // console.log(userAssitant);
+  
+    //   const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/deleteBot', {
+    //     userAssitant: userAssitant,
+    //   });
+  
+    //   const botId = response.data.sendResponse;
+    //   console.log(botId);
+
+   
+
     update(userRef, {
       AssitantId: '',
       HasBotStatus: 'False',
