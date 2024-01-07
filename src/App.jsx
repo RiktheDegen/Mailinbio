@@ -40,7 +40,7 @@ import PricingPopup from './Frontend/PricingPopup';
 
 
  const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyByWWvzq0_Rqef_n8kZu58mQA6IENhL0UU",
   authDomain: "mailinbio-e8100.firebaseapp.com",
   projectId: "mailinbio-e8100",
   storageBucket: "mailinbio-e8100.appspot.com",
