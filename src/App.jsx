@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Routes, Route, Navigate, Link} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation} from "react-router-dom"
 import Home from './Home';
 import Signin from './Frontend/Signin'
 import Singup from './Frontend/Singup'
@@ -10,7 +10,7 @@ import Upload from './Frontend/Upload'
 import Mybotbckend from './ReusableComponents/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
-
+import ReactGA from 'react-ga';
 
 
 //toast 
@@ -59,16 +59,25 @@ const prod = firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState(null)
-
+  const location = useLocation();
   useEffect(() => {
     // Check if the user is already authenticated
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
     });
 
+    
     // Cleanup the subscription when the component unmounts
     return () => unsubscribe();
+
   }, []);
+  useEffect(() => {
+    ReactGA.initialize('G-95Y59PQSJW');
+  }, []);
+
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
 
   return (
   
