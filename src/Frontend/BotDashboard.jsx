@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { getDatabase, ref, get } from 'firebase/database';
 import { UserContext } from '../context/UserContext'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import PopupModal from './PopupModal';
 import { json } from 'body-parser';
 import PricingPopup from './PricingPopup';
@@ -38,11 +38,17 @@ function BotDashboard({HasBot}) {
         const snapshot = await get(userRef);
         const userData = snapshot.val();
         // Set the user's name in the component's state
-        
+        if (userData.HasBotStatus) {
+          return  navigate("/BotDashboardWithUsers");
+          
+        }
+
+
         setUserName(userData ? userData.Name : 'No Name'); // Default to 'No Name' if the user data is not available
         setUserBotName(userData.botName ? userData.botName : 'No Name');
         setUserPlan(userData.PlanName? userData.PlanName : 'No Plan selected'); // Default to 'No Name' if the user data is not available
         
+
         var userBotStatus = userData.HasBotStatus;
         // console.log(userBotStatus);
         setUserHasBot(userBotStatus);

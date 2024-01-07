@@ -12,10 +12,31 @@ export default function Header() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [HasBotStatus, setHasBotStatus] = useState(false);
   const [activeUser, setActiveUser] = useState(true);
+  
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
+  
+
+  // if (context.user) {
+  //   const checkBotStatus= async () => {
+  //     setActiveUser(true)
+  //     const db = getDatabase();
+  //     const userRef = ref(db, 'users/' + context.user.uid);
+  //     const snapshot = await get(userRef);
+  //         const userData = snapshot.val();
+  //         if (userData.HasBotStatus == 'true') {
+  //           setHasBotStatus(true);
+  //         }
+  //         else if (userData.HasBotStatus == 'false') {
+  //           setHasBotStatus(true);
+  //         }
+  //   }
+  // }
+  // else if (!context.user) {
+  //   setActiveUser(false)
+  // }
  
 
   return (
@@ -56,7 +77,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/About"
                   onClick={toggleDropdown}
                   className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0"
                   style={{ textDecoration: 'none', color: '#1F2937' }}
@@ -154,7 +175,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/About"
                   style={{ textDecoration: 'none', color: '#1F2937' }}
                   className={() =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
@@ -165,7 +186,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to="/"
+                  to="/BotDashboard"
                   style={{ textDecoration: 'none', color: '#1F2937' }}
                   className={() =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
