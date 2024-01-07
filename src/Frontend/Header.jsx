@@ -1,5 +1,7 @@
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import firebase from 'firebase/compat/app';
+import { getDatabase, ref, get, update, push, set } from 'firebase/database';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import logo from '../static/icon (1).png'
@@ -8,10 +10,13 @@ import logo from '../static/icon (1).png'
 export default function Header() {
   const context = useContext(UserContext);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+  const [HasBotStatus, setHasBotStatus] = useState(false);
+  const [activeUser, setActiveUser] = useState(true);
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
+
+ 
 
   return (
     <header className="shadow sticky z-50 top-0">
