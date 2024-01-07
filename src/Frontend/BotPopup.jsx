@@ -401,7 +401,7 @@ const BotPopup = ({ botId, onClose }) => {
   };
   
   return (
-    <div className=" p-4 bg-white shadow-md h-full overflow-y-auto max-w-[700px]">
+    <div className=" p-4 bg-white h-full overflow-y-auto max-w-[700px]">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg text-helvetica-neue font-medium ">Bot Files</h2>
         <button className="text-sm text-gray-500" onClick={onClose}>
