@@ -64,15 +64,15 @@ function BotTesting({ userId }) {
     
       return `//Insert this div in whichever pages you want your bot on
 
-      <div class="Api-chat-widget" data-symbol="${userAssitant}"></div>
+      <div class="Api-chat-widget" data-symbol="${userAssitant}" data-uid="${context.user.uid}"></div>
       
       //Insert this CSS file above any existing stylesheets in the head tag
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/index.css">
+      <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css">
       
       //Insert this in the bottom of any html page 
       
-      <script type="module" src="https://cdn.jsdelivr.net/gh/RiktheDegen/Myfinnewbot@master/dist/assets/index-hgqPCg92.js"></script>`
+      <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>`
     
    
    ;
@@ -139,7 +139,7 @@ function BotTesting({ userId }) {
 <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>
     <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
     </Helmet>
-    
+
       {/* Overlay */}
       {showOverlay && (
         <div className="overlay">

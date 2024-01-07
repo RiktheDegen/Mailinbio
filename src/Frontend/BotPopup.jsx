@@ -29,7 +29,7 @@ const BotPopup = ({ botId, onClose }) => {
   const [upgradeAlert, setUpgradeAlert] = useState(null);
   const [hasPaidStatus, setHasPaidStatus] = useState(null);
   const [msgCount, setMsgCount] = useState(0); // New state for message count
-  const [totalMessages, setTotalMessages] = useState(5000); // Set your threshold here
+  const [totalMessages, setTotalMessages] = useState(null); // Set your threshold here
 
 
   const [PricingModalIsOpen, setPricingModalIsOpen] = useState(false);
@@ -56,12 +56,19 @@ const BotPopup = ({ botId, onClose }) => {
         // console.log('filesData:', filesData); 
         // console.log(UserfilesData);
         setUserAssitant(UserfilesData.AssitantId)
+        console.log(UserfilesData);
         const UserMsgCountRef = ref(db, `users/${context.user.uid}/${userAssitant}`);
-        
+        if (UserfilesData.PlanName == 'Premium') {
+          setTotalMessages(5000)
+        } else if(UserfilesData.PlanName == 'Advance'){
+          setTotalMessages(10000)
+        }
+
+
         const snapshotMsgCount = await get(UserMsgCountRef);
         const msgData = snapshotMsgCount.val();
         console.log(msgData?.msgCount);
-        setMsgCount(msgData?.msgCount || 100); 
+        setMsgCount(msgData?.msgCount || 0); 
         const hasPaidStatusValue = UserfilesData.HasPaidStatus;
 
         
@@ -89,7 +96,7 @@ const BotPopup = ({ botId, onClose }) => {
 
   // Clean up the interval when the component unmounts
   return () => clearInterval(intervalId);
-  }, [context.user?.uid, hasPaidStatus, msgCount]);
+  }, [context.user?.uid, hasPaidStatus, msgCount, totalMessages]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
@@ -120,15 +127,15 @@ const BotPopup = ({ botId, onClose }) => {
     
     return `//Insert this div in whichever pages you want your bot on
 
-    <div class="Api-chat-widget" data-symbol="${userAssitant}"></div>
+    <div class="Api-chat-widget" data-symbol="${userAssitant}" data-uid="${context.user.uid}"></div>
     
     //Insert this CSS file above any existing stylesheets in the head tag
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RiktheDegen/MyBot@main/MyBot/dist/index.css">
+    <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css">
     
     //Insert this in the bottom of any html page 
     
-    <script type="module" src="https://cdn.jsdelivr.net/gh/RiktheDegen/Myfinnewbot@master/dist/assets/index-hgqPCg92.js"></script>`;
+    <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>`;
   };
 
   const handleGenerateEmbedClick = () => {
