@@ -10,6 +10,7 @@ import Mybot from '../ReusableComponents/Mybotbckend';
 import './BotTesting.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import PricingPopup from './PricingPopup';
+import { Helmet } from 'react-helmet';
 
 function BotTesting({ userId }) {
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ function BotTesting({ userId }) {
     //    }
   return (
     <div>
+
       {embedCode && (
         
         <div className='mx-4 mt-8'>
@@ -128,8 +130,16 @@ function BotTesting({ userId }) {
 
 <PricingPopup isOpen={PricingModalIsOpen} onRequestClose={PricingCloseModal} />
 
-    <Mybot AssistantId={AssistantId} />
+ 
 
+    <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="fIs6as1yB4WYfbncQojRHT0J4lG3"
+    data-theme="dark"></div>
+
+<Helmet>
+<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>
+    <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
+    </Helmet>
+    
       {/* Overlay */}
       {showOverlay && (
         <div className="overlay">

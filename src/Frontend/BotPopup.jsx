@@ -28,6 +28,9 @@ const BotPopup = ({ botId, onClose }) => {
   const [Botloading, setBotLoading] = useState(false);
   const [upgradeAlert, setUpgradeAlert] = useState(null);
   const [hasPaidStatus, setHasPaidStatus] = useState(null);
+  const [msgCount, setMsgCount] = useState(0); // New state for message count
+  const [totalMessages, setTotalMessages] = useState(5000); // Set your threshold here
+
 
   const [PricingModalIsOpen, setPricingModalIsOpen] = useState(false);
   const PricingOpenModal = () => setPricingModalIsOpen(true);
@@ -39,7 +42,12 @@ const BotPopup = ({ botId, onClose }) => {
       const db = getDatabase();
       const botFilesRef = ref(db, `users/${context.user.uid}/files`);
       const UserFilesRef = ref(db, `users/${context.user.uid}`);
+      
+
+
     
+
+
         const snapshotUser = await get(UserFilesRef);
         const UserfilesData = snapshotUser.val();
       try {
@@ -48,7 +56,14 @@ const BotPopup = ({ botId, onClose }) => {
         // console.log('filesData:', filesData); 
         // console.log(UserfilesData);
         setUserAssitant(UserfilesData.AssitantId)
+        const UserMsgCountRef = ref(db, `users/${context.user.uid}/${userAssitant}`);
+        
+        const snapshotMsgCount = await get(UserMsgCountRef);
+        const msgData = snapshotMsgCount.val();
+        console.log(msgData?.msgCount);
+        setMsgCount(msgData?.msgCount || 100); 
         const hasPaidStatusValue = UserfilesData.HasPaidStatus;
+
         
   if (hasPaidStatusValue !==  undefined) {
     setHasPaidStatus(hasPaidStatusValue);
@@ -60,6 +75,8 @@ const BotPopup = ({ botId, onClose }) => {
         // console.log(filesDataArray);
         // Ensure botFiles is an array
         setBotFiles(filesDataArray || []);
+
+        
       } catch (error) {
         console.error('Error fetching bot files:', error.message);
       }
@@ -72,7 +89,7 @@ const BotPopup = ({ botId, onClose }) => {
 
   // Clean up the interval when the component unmounts
   return () => clearInterval(intervalId);
-  }, [context.user?.uid, hasPaidStatus]);
+  }, [context.user?.uid, hasPaidStatus, msgCount]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
@@ -285,6 +302,7 @@ const BotPopup = ({ botId, onClose }) => {
     });
   }
 
+
  
 
 
@@ -352,6 +370,28 @@ const BotPopup = ({ botId, onClose }) => {
       // Handle the error as needed
     }
   };
+
+  const progressBarStyle = {
+    container: {
+      width: '100%',
+      height: '100%',
+      border: '1px solid black', // Adjust the border color as needed
+      borderRadius: '0.25rem',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    progressBar: {
+      width: `${(msgCount / totalMessages) * 100}%`,
+      height: '100%',
+      Color: 'green', // Adjust the color as needed
+      borderRadius: '0.25rem',
+    },
+    label: {
+      marginLeft: '8px',
+      color: '#333', // Adjust the text color as needed
+      fontWeight: 'bold',
+    },
+  };
   
   return (
     <div className=" p-4 bg-white shadow-md h-full overflow-y-auto max-w-[700px]">
@@ -377,13 +417,16 @@ const BotPopup = ({ botId, onClose }) => {
             onChange={(e) => setDocument(e.target.files[0])}
           />
         </label>
+       
         {document && (
             <div className="ml-4 mt-3">
+              
               <p className="font-semibold">{document.name}</p>
               <p className="font-semibold">{docType}</p>
               {/* You can also display other information like size, type, etc. */}
               {/* <p>{`Type: ${document.type}`}</p> */}
               {/* <p>{`Size: ${document.size} bytes`}</p> */}
+             
             </div>
           )}
       </div>
@@ -392,6 +435,8 @@ const BotPopup = ({ botId, onClose }) => {
   onClick={handleUpload}
   disabled={loading} // Disable the button when loading
 >
+
+
   {loading ? (
         <div className="flex items-center justify-center mt-4">
           <BarLoader color="#4A90E2" loading={loading} />
@@ -399,7 +444,11 @@ const BotPopup = ({ botId, onClose }) => {
       ) : 'Upload Document'}
 
 </button>
-           
+        <p className='text-helvetica-neue font-semibold'> Current message count:</p>
+            <div style={progressBarStyle.container}>
+  <div style={progressBarStyle.progressBar}></div>
+  <div style={progressBarStyle.label}>{`${msgCount}/${totalMessages}`}</div>
+</div>
       </div>
   
 
@@ -440,7 +489,7 @@ const BotPopup = ({ botId, onClose }) => {
           
         </div>
         
-      )};
+      )}
       </div>
       {upgradeAlert && (
       <div className="text-center justify-center ml-2 mt-4 text-helvetica-neue text-gray-600 mb-4">
