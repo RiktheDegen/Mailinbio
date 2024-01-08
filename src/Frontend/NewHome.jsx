@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import './NewHome.css'
 import axios from 'axios'
@@ -9,6 +9,12 @@ import sectionThree from '../static/Frame 6.png'
 
 function NewHome() {
     const [activeStep, setActiveStep] = useState(1);
+
+    const targetRef = useRef(null);
+
+    const scrollToSection = () => {
+      targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,9 +70,9 @@ function NewHome() {
       Convert and Retain More Developers With AI That Understands Your Docs
       </p>
       <div className="flex space-x-4 md:items-center justify-center">
-    <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} >Get Started</button>
+    <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
-    <button className="border border-black text-grey py-2 px-4 rounded-md" >View Pricing</button>
+    <button className="border border-black text-grey py-2 px-4 rounded-md" onClick={scrollToSection}>View Pricing</button>
    
   </div>
       <div className="mt-8 md:w-2/3 mx-auto">
@@ -207,7 +213,7 @@ function NewHome() {
 </div>
 
 {/* Pricing Section */}
-<section className="py-16 " style={{ background: '#1F2937' }} >
+<section className="py-16 " style={{ background: '#1F2937' }} ref={targetRef}>
 <div className="container mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#C2C2C2' }}>Choose Your Plan</h2>
         <p className="mb-2 text-xl" style={{ color: '#C2C2C2' }}>Apichat is free till you are ready to integrate it into your website</p>
@@ -333,7 +339,7 @@ function NewHome() {
   <div className="flex space-x-4 md:items-center justify-center">
     <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
-    <button className="border border-21C55D text-21C55D py-2 px-4 rounded-md" style={{ color: '#C2C2C2' }}>View Pricing</button>
+    <button className="border border-21C55D text-21C55D py-2 px-4 rounded-md" style={{ color: '#C2C2C2' }} onClick={scrollToSection}>View Pricing</button>
   </div>
 </div>
 
