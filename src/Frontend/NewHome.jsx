@@ -221,7 +221,7 @@ function NewHome() {
         Let Users debug code & launch faster
         </h2>
         <p className="text-helvetica-neue mb-4">
-        Developers can debug issues with your code directly on your platform - allowing them to code solve problems and push to production faster than ever before directly on your docs page        </p>
+        Developers can debug issues with your code directly on your platform - allowing them to code solve problems and push to production faster than ever before directly on your docs page</p>
       </div>
 
       {/* Image Section */}
@@ -239,11 +239,11 @@ function NewHome() {
 {/* Pricing Section */}
 <section className="py-16 " style={{ background: '#1F2937' }} ref={targetRef}>
 <div className="container mx-auto text-center">
-        <h2 className="text-helvetica-neue text-3xl md:text-5xl font-semibold mb-4" style={{ color: '#C2C2C2' }}>DocMonster is free till you're ready to share your bot</h2>
-        <p className="mb-2 text-xl" style={{ color: '#C2C2C2' }}>Apichat is free till you are ready to integrate it into your website</p>
+        <h2 className="text-helvetica-neue text-3xl md:text-5xl font-semibold mb-4 mt-10" style={{ color: '#C2C2C2' }}>DocMonster is free till you're ready to start</h2>
+        <p className="mb-2 text-xl" style={{ color: '#C2C2C2' }}>Get started today with simple pricing. Never pay for more than you use.</p>
         <div className="mt-8 flex justify-center items-center flex-wrap">
           {/* Pricing cards for Premium, Advanced, and Enterprise plans */}
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6">
+          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6 flex-grow">
             <h3 className="text-xl text-gray-600 font-bold mb-2">Premium</h3>
             <p className="text-3xl font-bold text-gray-800 mb-4">$99/month</p>
             {/* Gradient Line */}
@@ -282,7 +282,7 @@ function NewHome() {
           </div>
 
           {/* Repeat the above structure for Advanced and Enterprise plans */}
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6">
+          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6 flex-grow">
             <h3 className="text-xl text-gray-600 font-bold mb-2">Advanced</h3>
             <p className="text-3xl font-bold text-gray-800 mb-4">$199/month</p>
             {/* Gradient Line */}
@@ -319,7 +319,7 @@ function NewHome() {
             </form> */}
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6">
+          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6 flex-grow">
             <h3 className="text-xl text-gray-600 font-bold mb-2">Enterprise</h3>
             <p className="text-3xl font-bold text-gray-800 mb-4">Let's Chat</p>
             {/* Gradient Line */}
