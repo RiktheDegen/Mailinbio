@@ -67,19 +67,19 @@ function NewHome() {
     
     <section>
       <div className="bg-gradient-to-r from-gray-100 to-gray-200 text-black">
-        <div className="container mx-auto px-2 py-10">
+        <div className="p-8">
           <div className="flex flex-col items-center md:flex-row">
             <div className="md:w-1/2">
-              <h1 className="text-helvetica-neue font-bold mb-6 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl ">
+              <h1 className="text-helvetica-neue font-bold mb-8 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl ">
               Supercharge your API docs with AI chat
               </h1>
               <p className="mb-8 text-lg md:text-xl">
                 Connect with users through various channels—from text messages to emails, phone calls to video, intelligent chatbots, and more—within a single powerful platform.
               </p>
-              <div className="flex space-x-4 md:items-center ">
+              <div className="flex mx-auto   items-center md:items-center ">
     <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
-    <button className="border border-black text-grey py-2 px-4 rounded-md" onClick={scrollToSection}>View Pricing</button>
+    <button className="border ml-4  border-black text-grey py-2 px-4 rounded-md" onClick={scrollToSection}>View Pricing</button>
    
   </div>
             </div>
