@@ -67,7 +67,7 @@ function NewHome() {
     
     <section>
       <div className="bg-gradient-to-r from-gray-100 to-gray-200 text-black">
-        <div className="container mx-auto px-6 py-20">
+        <div className="container mx-auto px-2 py-20">
           <div className="flex flex-col items-center md:flex-row">
             <div className="md:w-1/2">
               <h1 className="text-helvetica-neue font-bold mb-6 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl ">
