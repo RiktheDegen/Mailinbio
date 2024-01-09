@@ -6,7 +6,7 @@ import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/Group 12.png'
 import sectionThree from '../static/Frame 6.png'
-
+import logo from '../static/icon (1).png'
 
 function NewHome() {
     const [activeStep, setActiveStep] = useState(1);
@@ -83,7 +83,7 @@ function NewHome() {
         <div className="p-8 md:p-16 max-w-[1200px] mx-auto">
           <div className="flex flex-col items-center md:flex-row">
             <div className="md:w-1/2">
-              <h1 className="text-helvetica-neue font-bold mb-8 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl ">
+              <h1 className="text-helvetica-neue font-bold mb-8 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl " style={{ color: "#1F2937"}}>
               Supercharge your API docs with AI chat
               </h1>
               <p className=" text-helvetica-neue mb-8 text-lg md:text-xl">
@@ -111,49 +111,50 @@ function NewHome() {
       </div>
     </section>
    
-    <div className="bg-gradient-to-r from-gray-100 to-gray-200 md: p-8 lg: p-8 ">
-    <h2  className="text-5xl mt-16 font-semibold px-2 md:text-left md:text-center">
+    <div className=" bg-gradient-to-r from-gray-100 to-gray-200 ">
+      <img className='max-w-[150px] mx-auto' src={logo} />
+    <h2  className="text-helvetica-neue text-5xl font-semibold md:text-left md:text-center">
     How DocMonster Works
     </h2>
-    <p className="mb-2 text-xl mt-8 mx-auto px-2 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
+    <p className="text-helvetica-neue mb-8 text-xl mt-8 mx-auto px-2 p-2 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
   
-  <div className="container  mt-8 mb-16">
+  <div className="container text-helvetica-neue mt-8 mb-16">
     <div className="flex flex-col lg:flex-row flex-grow ">
       {/* Step 1 */}
       <div className="flex items-center justify-center flex-grow mt-4">
       <div className="flex-1 text-center items-center ">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
 </svg>
 
-          <h2 className="text-lg font-semibold mb-2">Upload docs</h2>
-          <p className="text-gray-600">Upload upto 20 files per agent </p>
+          <h2 className="text-lg font-bold mb-2">Upload docs</h2>
+          <p className="text-gray-600 font-medium">Upload upto 20 files per agent </p>
         </div>
       </div>
 
       {/* Step 2 */}
       <div  className="flex items-center justify-center flex-grow mt-4 lg:mt-0 lg:ml-4">
       <div className="flex-1 text-center items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
 </svg>
 
 
 
           <h2 className="text-lg font-semibold mb-2">Test it</h2>
-          <p className="text-gray-600">Test your agent rigorously</p>
+          <p className="text-gray-600 font-medium">Test your agent rigorously</p>
         </div>
       </div>
 
       {/* Step 3 */}
       <div  className="flex items-center justify-center flex-grow mt-4 lg:mt-0 lg:ml-4">
       <div className="flex-1 text-center items-center ">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
 </svg>
 
           <h2 className="text-lg font-semibold mb-2">Embed it</h2>
-          <p className="text-gray-600">Embed it with three lines of code</p>
+          <p className="text-gray-600 font-medium">Embed it with three lines of code</p>
         </div>
       </div>
     </div>
