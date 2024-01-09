@@ -96,7 +96,7 @@ const BotPopup = ({ botId, onClose }) => {
 
   // Clean up the interval when the component unmounts
   return () => clearInterval(intervalId);
-  }, [context.user?.uid, hasPaidStatus, msgCount, totalMessages]);
+  }, [context.user?.uid, hasPaidStatus, msgCount, totalMessages, botFiles]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
