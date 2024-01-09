@@ -18,6 +18,21 @@ function NewHome() {
       targetRef.current.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const [answersVisible, setAnswersVisible] = useState({
+      answer1: false,
+      answer2: false,
+      answer3: false,
+      answer4: false,
+      answer5: false,
+      answer6: false,
+    });
+  
+    const toggleAnswer = (questionId) => {
+      setAnswersVisible((prev) => ({
+        ...prev,
+        [questionId]: !prev[questionId],
+      }));
+    };
     
 
     useEffect(() => {
@@ -354,6 +369,124 @@ function NewHome() {
         </div>
       </div>
       </section>
+
+      
+    <div className="container mx-auto mt-8">
+      <div className="grid grid-cols-1 md: gap-8">
+
+        {/* FAQ Item 1 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer1')}
+          >
+            <h2 className="text-lg font-semibold">How does your AI chat work?</h2>
+            <span className="text-gray-500">{answersVisible.answer1 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer1 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                Our AI chat uses advanced natural language processing to understand user queries and provide relevant responses. It continuously learns and adapts to improve user interactions over time.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* FAQ Item 2 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer2')}
+          >
+            <h2 className="text-lg font-semibold">Is my data secure with your platform?</h2>
+            <span className="text-gray-500">{answersVisible.answer2 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer2 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                We prioritize the security of your data. Our platform employs robust encryption protocols and follows industry best practices to ensure the confidentiality and integrity of your information.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* FAQ Item 3 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer3')}
+          >
+            <h2 className="text-lg font-semibold">How can I integrate your service with my website?</h2>
+            <span className="text-gray-500">{answersVisible.answer3 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer3 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                Integrating our service with your website is straightforward. We provide comprehensive documentation and support to guide you through the process. Additionally, our team is available to assist you if needed.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* FAQ Item 4 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer4')}
+          >
+            <h2 className="text-lg font-semibold">What pricing plans do you offer?</h2>
+            <span className="text-gray-500">{answersVisible.answer4 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer4 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                We offer flexible pricing plans tailored to meet the needs of different users. You can find detailed information about our pricing on our pricing page, or feel free to contact our sales team for personalized assistance.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* FAQ Item 5 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer5')}
+          >
+            <h2 className="text-lg font-semibold">Can I cancel my subscription at any time?</h2>
+            <span className="text-gray-500">{answersVisible.answer5 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer5 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                Yes, you can cancel your subscription at any time. There are no long-term commitments, and we believe in providing our users with flexibility and freedom.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* FAQ Item 6 */}
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer6')}
+          >
+            <h2 className="text-lg font-semibold">Do you offer customer support?</h2>
+            <span className="text-gray-500">{answersVisible.answer6 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer6 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+                Absolutely! We provide dedicated customer support to assist you with any questions, issues, or customization needs. Our support team is available via email and live chat during business hours.
+              </p>
+            </div>
+          )}
+        </div>
+
+      </div>
+    </div>
+
+
+
 {/* Let's Get Started Section */}
 
 <div className=" p-8 mt-8 items-center justify-center md:text-left md:text-center ">
