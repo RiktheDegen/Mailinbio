@@ -112,11 +112,11 @@ function NewHome() {
     </section>
    
     <div className=" bg-gradient-to-r from-gray-100 to-gray-200 ">
-      <img className='max-w-[150px] mx-auto' src={logo} />
-    <h2  className="text-helvetica-neue text-5xl font-semibold md:text-left md:text-center">
+      <img className='max-w-[150px] md:mx-auto' src={logo} />
+    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
     How DocMonster Works
     </h2>
-    <p className="text-helvetica-neue mb-8 text-xl mt-8 mx-auto px-2 p-2 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
+    <p className="text-helvetica-neue mb-8 text-xl  mx-auto px-8 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
   
   <div className="container text-helvetica-neue mt-8 mb-16">
     <div className="flex flex-col lg:flex-row flex-grow ">
