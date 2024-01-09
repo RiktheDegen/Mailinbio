@@ -6,7 +6,7 @@ import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/Group 12.png'
 import sectionThree from '../static/Frame 6.png'
-import { FaCaretRight } from 'react-icons/fa';
+
 
 function NewHome() {
     const [activeStep, setActiveStep] = useState(1);
