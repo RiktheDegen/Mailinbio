@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import './NewHome.css'
 import axios from 'axios'
-import HeroBanner from '../static/Group 16.png'
+import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/Group 12.png'
 import sectionThree from '../static/Frame 6.png'
+import { FaCaretRight } from 'react-icons/fa';
 
 function NewHome() {
     const [activeStep, setActiveStep] = useState(1);
@@ -62,28 +63,39 @@ function NewHome() {
     <>
     
     
-      <section className="mb-16 bg-gradient-to-r from-gray-100 to-gray-200  p-8 md:p-16 text-left md:text-center">
-      <h3 className="text-helvetica-neue font-bold mb-8 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl  text-left md:text-center">
-      Supercharge your API docs with AI chat
-      </h3>
-      <p className="text-helvetica-neue font-regular mb-8 text-xl md:text-xl lg:text-2xl  text-left md:text-center">
-      Convert and Retain More Developers With AI That Understands Your Docs
-      </p>
-      <div className="flex space-x-4 md:items-center justify-center">
+     
+    
+    <section>
+      <div className="bg-gradient-to-r from-gray-100 to-gray-200 text-black">
+        <div className="container mx-auto px-6 py-20">
+          <div className="flex flex-col items-center md:flex-row">
+            <div className="md:w-1/2">
+              <h1 className="text-helvetica-neue font-bold mb-6 text-5xl sm:text-6xl  md:text-6xl lg:text-6xl ">
+              Supercharge your API docs with AI chat
+              </h1>
+              <p className="mb-8 text-lg md:text-xl">
+                Connect with users through various channels—from text messages to emails, phone calls to video, intelligent chatbots, and more—within a single powerful platform.
+              </p>
+              <div className="flex space-x-4 md:items-center ">
     <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
     <button className="border border-black text-grey py-2 px-4 rounded-md" onClick={scrollToSection}>View Pricing</button>
    
   </div>
-      <div className="mt-8 md:w-2/3 mx-auto">
-      <img
- 
-  src={HeroBanner} // Default image for browsers that do not support srcset
-  alt="Description of the image"
-  className="mb-8 mx-auto text-center w-full h-auto rounded-2"
-/>
+            </div>
+            <div className="mt-8 md:mt-0 md:w-1/2">
+              <img
+                className="rounded-lg"
+                src={HeroBanner} // replace with your image path
+                alt="Your Image"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+   
+   
 
     <section className="mt-8 mb-8 flex flex-col md:flex-row bg-white p-8 md:p-16 max-w-[1200px] mx-auto ">
       {/* Text Section */}
@@ -203,6 +215,7 @@ function NewHome() {
       </div>
     </div>
   </div>
+  
 <div className="flex items-center justify-center flex-grow mt-4 lg:mt-0 lg:ml-4">
   <div className="flex-1 flex items-center"> 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
