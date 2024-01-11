@@ -173,11 +173,11 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
     <div key={index} className={msg.type === 'user' ? 'user-bubble' : 'bot-bubble'}>
       {msg.type === 'bot' ? (
           <div className="bot-response">
-         <div className={msg.loading ? '' : 'typewriter-word'}>
+        
   {Array.from(msg.text).map((char, index) => (
     <span key={index} >{char}</span>
   ))}
-</div>
+
 
           {msg.loading && <div className="loading-indicator"></div>}
         </div>
