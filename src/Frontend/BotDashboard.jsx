@@ -38,7 +38,7 @@ function BotDashboard({HasBot}) {
         const snapshot = await get(userRef);
         const userData = snapshot.val();
         // Set the user's name in the component's state
-        if (userData.HasBotStatus) {
+        if (userData.HasBotStatus === 'true') {
           return  navigate("/BotDashboardWithUsers");
           
         }
@@ -65,7 +65,7 @@ function BotDashboard({HasBot}) {
       } catch (error) {
         console.error('Error fetching user data:', error.message);
       }
-      fetchUserName();
+     
     };
 
     // // Call the function to fetch the user's name

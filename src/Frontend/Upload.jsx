@@ -30,11 +30,8 @@ const DocumentUpload = ({ userId }) => {
         HasUploads: HasUploads,
         UploadCount: UploadCount,
       });
-    }
+    };
     
-    
-
-
     function writeUserBot(AssitantId, HasBotStatus) {
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
@@ -44,15 +41,7 @@ const DocumentUpload = ({ userId }) => {
       });
     }
 
-    
-    
-  
-
     if (context.user?.uid) {
-
-    
-
-
 
         
         const handleUpload = async () => {
@@ -63,8 +52,9 @@ const DocumentUpload = ({ userId }) => {
             // Specify the allowed file types
           
             if (uploadedDocuments.length >= 20) {
-              alert('You can only upload up to 20 files.');
-              return;
+              
+              setLoading(false);
+              return alert('You can only upload up to 20 files.');;
             }
 
           const allowedFileTypes = ['.c', '.cpp', '.csv', '.docx', '.html', '.java', '.json', '.md', '.pdf', '.php', '.pptx', '.py', '.rb', '.tex', '.txt', '.css'];
@@ -74,7 +64,7 @@ const DocumentUpload = ({ userId }) => {
 
           if (!isValidFileType) {
             setDocType('Invalid file type. Please select a supported file type.');
-            
+            setLoading(false);
             return;
           }
 
@@ -128,8 +118,9 @@ const DocumentUpload = ({ userId }) => {
         console.log(uploadedDocuments);
         setBotLoading(true);
         if (uploadedDocuments.length<1) {
-                  return  alert('please upload files to continue');
-                  setBotLoading(false);
+          setBotLoading(false);       
+          return  alert('please upload files to continue');
+                 
                 }
                 console.log(Array.isArray(uploadedDocuments));
                 setBotLoading(true);
@@ -147,7 +138,7 @@ const DocumentUpload = ({ userId }) => {
         var hasAsst = charSet.split('').every(char => botId.includes(char))
         console.log(hasAsst);
         setBotLoading(false);
-        if (hasAsst){
+        if (hasAsst == true){
           // Navigate('/BotTesting');
           Navigate(`/BotTesting/${assistantId}`);
         };

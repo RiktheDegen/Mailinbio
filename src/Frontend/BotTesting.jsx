@@ -33,6 +33,8 @@ function BotTesting({ userId }) {
     // Function to fetch the user's name
     const fetchUserName = async () => {
   
+       // Dynamically create script tag and append it to the head
+      
       
       const db = getDatabase();
       const userRef = ref(db, 'users/' + context.user.uid);
@@ -40,10 +42,13 @@ function BotTesting({ userId }) {
       setUserData(snapshot.val());
       setHasPaidStatus(snapshot.val().HasPaidStatus);
 
+
     };
 
     fetchUserName();
   }, [context.user?.uid,  hasPaidStatus ]); 
+
+
 
 
   const handleGotItClick = () => {
@@ -102,6 +107,11 @@ function BotTesting({ userId }) {
     //    }
   return (
     <div>
+      <Helmet>
+<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>
+<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
+
+    </Helmet>
 
       {embedCode && (
         
@@ -135,10 +145,7 @@ function BotTesting({ userId }) {
     <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="fIs6as1yB4WYfbncQojRHT0J4lG3"
     data-theme="dark"></div>
 
-<Helmet>
-<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>
-    <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
-    </Helmet>
+
 
       {/* Overlay */}
       {showOverlay && (

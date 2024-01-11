@@ -43,16 +43,12 @@ const BotPopup = ({ botId, onClose }) => {
       const botFilesRef = ref(db, `users/${context.user.uid}/files`);
       const UserFilesRef = ref(db, `users/${context.user.uid}`);
       
-
-
-    
-
-
         const snapshotUser = await get(UserFilesRef);
         const UserfilesData = snapshotUser.val();
       try {
         const snapshot = await get(botFilesRef);
         const filesData = snapshot.val();
+        
         // console.log('filesData:', filesData); 
         // console.log(UserfilesData);
         setUserAssitant(UserfilesData.AssitantId)
@@ -74,12 +70,12 @@ const BotPopup = ({ botId, onClose }) => {
         
   if (hasPaidStatusValue !==  undefined) {
     setHasPaidStatus(hasPaidStatusValue);
-  }
+  };
         
         const filesDataArray = Object.values(filesData).map(entry => ({
           filename: entry.fileName,
         }));
-        // console.log(filesDataArray);
+        console.log(filesDataArray);
         // Ensure botFiles is an array
         setBotFiles(filesDataArray || []);
 
@@ -96,7 +92,7 @@ const BotPopup = ({ botId, onClose }) => {
 
   // Clean up the interval when the component unmounts
   return () => clearInterval(intervalId);
-  }, [context.user?.uid, hasPaidStatus, msgCount, totalMessages, botFiles]);
+  }, [context.user, context.user?.uid, hasPaidStatus, msgCount, totalMessages, botFiles]);
 
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
@@ -155,6 +151,7 @@ const BotPopup = ({ botId, onClose }) => {
     }
     
   };
+
   function writeUserData(HasUploads, UploadCount) {
       
     const db = getDatabase();
