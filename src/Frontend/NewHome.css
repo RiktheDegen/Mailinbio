@@ -1,0 +1,7 @@
+.gradient-heading {
+    
+    background: linear-gradient(to right, #FFFFFF, #8F9099);
+    background-clip: text;
+    color: transparent;
+  }
+  

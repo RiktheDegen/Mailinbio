@@ -11,14 +11,14 @@ import upload from '../static/Group 24.svg'
 
 const CardsSection = () => {
   const cardsData = [
-    { title: 'Upload Docs', content: 'Upload upto 20 files per agent', icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-28 h-28 mx-auto mb-4">
+    { title: 'Upload Docs', content: 'Upload upto 20 files per agent', icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
     <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
   </svg> },
-    { title: 'Test it', content: 'Test your Ai agent rigorously', icon:  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-28 h-28 mx-auto mb-4">
+    { title: 'Test it', content: 'Test your Ai agent rigorously', icon:  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
     <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
   </svg>
    },
-    { title: 'Embed it', content: 'Embed it with three lines of code', icon:  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-28 h-28 mx-auto mb-4">
+    { title: 'Embed it', content: 'Embed it with three lines of code', icon:  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
   </svg>
    },
@@ -27,7 +27,7 @@ const CardsSection = () => {
   return (
     <div className="flex overflow-x-auto space-x-4 p-4  md:justify-center space-x-8 lg:justify-center space-x-8 ">
       {cardsData.map((card, index) => (
-        <div key={index} className="mb-8 bg-white p-4 rounded-4 shadow-md flex-shrink-0 w-128">
+        <div key={index} className="mb-8  p-4 rounded-4 flex-shrink-0 w-128">
           <div className="text-helvetica-neue mb-4">{card.icon}</div>
           <h2 className="text-lg font-bold mb-2 mb-2 text-center">{card.title}</h2>
           <p>{card.content}</p>
@@ -243,10 +243,10 @@ function NewHome() {
       </div>
     </section>    
  
-    <section style={{ background: '#1F2937' }} className="pb-16 mt-8 ">
+    <section style={{ background: '#010516' }} className="pb-16 mt-8 ">
  
 {/* Pricing Section */}
-<section className="py-16 " style={{ background: '#1F2937' }} ref={targetRef}>
+<section className="py-16 " style={{ background: '#010516' }} ref={targetRef}>
 <div className="container mx-auto text-center">
         <h2 className="text-helvetica-neue text-3xl md:text-5xl font-semibold mb-4 mt-10" style={{ color: '#C2C2C2' }}>DocMonster is free till you're ready to start</h2>
         <p className="mb-2 text-xl" style={{ color: '#C2C2C2' }}>Get started today with simple pricing. Never pay for more than you use.</p>
@@ -365,7 +365,7 @@ function NewHome() {
       </section>
 
       
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto mt-8" >
       <div className="grid grid-cols-1 md: gap-8">
 
         {/* FAQ Item 1 */}
