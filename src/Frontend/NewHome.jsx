@@ -555,7 +555,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer6 && (
             <div className="mt-4">
               <p className="text-gray-600">
-               Right now we offer a light and dark theme on bots. If you need a specific spec please reach out for a free custom integration with your brand colors.
+               Right now we offer a dark theme on bots. If you need a specific spec please reach out for a free custom integration with your brand colors.
               </p>
             </div>
           )}
