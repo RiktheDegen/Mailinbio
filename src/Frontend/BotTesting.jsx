@@ -77,7 +77,7 @@ function BotTesting({ userId }) {
       
       //Insert this in the bottom of any html page 
       
-      <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>`
+      <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>`
     
    
    ;
@@ -108,7 +108,7 @@ function BotTesting({ userId }) {
   return (
     <div>
       <Helmet>
-<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>
+<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>
 <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
 
     </Helmet>

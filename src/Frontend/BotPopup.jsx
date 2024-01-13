@@ -131,7 +131,7 @@ const BotPopup = ({ botId, onClose }) => {
     
     //Insert this in the bottom of any html page 
     
-    <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-6R_8UOld.js"></script>`;
+    <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>`;
   };
 
   const handleGenerateEmbedClick = () => {
