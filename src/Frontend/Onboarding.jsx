@@ -5,6 +5,7 @@ import "firebase/compat/auth";
 import { getDatabase,ref, set, get, update } from 'firebase/database';
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
 
 
   
@@ -17,9 +18,33 @@ function Onboarding({ userId }) {
     const [name, setName] = useState('');
     const [organization, setOrganization] = useState('');
     const context = useContext(UserContext);
+
+
+
     if (!context.user?.uid){
         navigate('/')
     }
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const db = getDatabase();
+          const userRef = ref(db, 'users/' + context.user.uid);
+          const snapshot = await get(userRef);
+          const userValues = snapshot.val();
+          
+          if (userValues && userValues.Name !== '') {
+            navigate('/BotDashboard');
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+    
+      if (context.user?.uid) {
+        fetchData();
+      }
+    }, [context.user?.uid, navigate]);
     
 
     //update values in Firebase

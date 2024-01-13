@@ -327,8 +327,8 @@ GPT-4 support</p>
           {/* Repeat the above structure for Advanced and Enterprise plans */}
           <div className="bg-white p-8 rounded-lg shadow-md  border-2 border-black max-w-md mb-6 flex-grow">
           <h3 className="text-2xl font-bold text-center">Advanced</h3>
-              <div className="mt-4 text-center text-zinc-600 dark:text-zinc-400">
-                <span className="text-4xl font-bold">$199</span>/ month
+              <div className="mt-4 text-center dark:text-zinc-400">
+                <span className="text-4xl text-black font-bold">$199</span>/ month
               </div>
             {/* Gradient Line */}
             <div className="w-full border-b-2 border-gray-300 my-4"></div>
@@ -521,7 +521,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer3 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Integrating DocMonster is quite straightforward. Our integration involves a script tag based integration that uses 3 lines of code, no more. It's compatible with just about any tech stack. If you need help with integration, reach out to us for a free custom integration.
+                Integrating DocMonster is quite straightforward. Our integration involves a script tag based integration that uses 3 lines of code, no more. It's compatible with just about any tech stack. If you need help with integration, reach out to us on teamdocmonster@gmail.com for a free custom integration.
               </p>
             </div>
           )}
@@ -555,7 +555,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer6 && (
             <div className="mt-4">
               <p className="text-gray-600">
-               Right now we offer a dark theme on bots. If you need a specific spec please reach out for a free custom integration with your brand colors.
+               Right now we offer a dark theme on bots. If you need a specific spec please reach out to us on teamdocmonster@gmail.com for a free custom integration with your brand colors.
               </p>
             </div>
           )}
@@ -611,7 +611,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer6 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Absolutely! We provide dedicated customer support to assist you with any questions, issues, or customization needs. Our support team is available via email during business hours.
+                Absolutely! We provide dedicated customer support to assist you with any questions, issues, or customization needs. Our support team is available via email on teamdocmonster@gmail.com during business hours.
               </p>
             </div>
           )}
