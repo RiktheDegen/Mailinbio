@@ -286,7 +286,7 @@ GPT-4 support</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
 
-                Upto 1000 messages with GPT4 
+                Upto 1000 messages with GPT 4 
                </p>
             </div>
             <div className="flex items-center justify-left text-gray-800 mb-2">
@@ -340,7 +340,7 @@ GPT-4 support</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
 
-              2 chatbots</p>
+              1 chatbot</p>
           </div>
             <div className="flex items-center justify-left text-gray-800 mb-2">
              
@@ -357,7 +357,7 @@ GPT-4 support</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
 
-                Upto 2000 messages with GPT4 
+                Upto 2500 messages with GPT 4 
                </p>
             </div>
             <div className="flex items-center justify-left text-gray-800 mb-2">
@@ -471,40 +471,43 @@ GPT-4 and custom models</p>
       <div className="grid grid-cols-1 md: gap-8">
 
         {/* FAQ Item 1 */}
+
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer6')}
+          >
+            <h2 className="text-lg font-semibold">Where can I try the bot before I buy a plan?</h2>
+            <span className="text-gray-500">{answersVisible.answer6 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer6 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+            Our bots are free to use till you're ready to go live with it. Create an account to get started with a bot for free today!
+              </p>
+            </div>
+          )}
+        </div>
+
         <div className="bg-white p-4 rounded-lg shadow">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer1')}
           >
-            <h2 className="text-lg font-semibold">How does your AI chat work?</h2>
+            <h2 className="text-lg font-semibold">How does Docmonster work? What models are supported?</h2>
             <span className="text-gray-500">{answersVisible.answer1 ? '-' : '+'}</span>
           </div>
           {answersVisible.answer1 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Our AI chat uses advanced natural language processing to understand user queries and provide relevant responses. It continuously learns and adapts to improve user interactions over time.
+                Docmonster uses OpenAI's LLMs like GPT-4 and GPT-3.5 today. Models use RAG to understand your API Docs and help your users integrate your API into thier website. We're bringing support for Mistral and CodeLlama and a few other models soon.
               </p>
             </div>
           )}
         </div>
 
         {/* FAQ Item 2 */}
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div
-            className="flex items-center justify-between cursor-pointer"
-            onClick={() => toggleAnswer('answer2')}
-          >
-            <h2 className="text-lg font-semibold">Is my data secure with your platform?</h2>
-            <span className="text-gray-500">{answersVisible.answer2 ? '-' : '+'}</span>
-          </div>
-          {answersVisible.answer2 && (
-            <div className="mt-4">
-              <p className="text-gray-600">
-                We prioritize the security of your data. Our platform employs robust encryption protocols and follows industry best practices to ensure the confidentiality and integrity of your information.
-              </p>
-            </div>
-          )}
-        </div>
+     
 
         {/* FAQ Item 3 */}
         <div className="bg-white p-4 rounded-lg shadow">
@@ -512,35 +515,71 @@ GPT-4 and custom models</p>
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer3')}
           >
-            <h2 className="text-lg font-semibold">How can I integrate your service with my website?</h2>
+            <h2 className="text-lg font-semibold">How do I integrate docmonster into my website?</h2>
             <span className="text-gray-500">{answersVisible.answer3 ? '-' : '+'}</span>
           </div>
           {answersVisible.answer3 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Integrating our service with your website is straightforward. We provide comprehensive documentation and support to guide you through the process. Additionally, our team is available to assist you if needed.
+                Integrating DocMonster is quite straightforward. Our integration involves a script tag based integration that uses 3 lines of code, no more. It's compatible with just about any tech stack. If you need help with integration, reach out to us for a free custom integration.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer4')}
+          >
+            <h2 className="text-lg font-semibold">What types of documents can i upload?</h2>
+            <span className="text-gray-500">{answersVisible.answer4 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer4 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+          We support a plethora of file types including: .c .cpp .csv .docx .html .java .json .md .pdf .php .pptx .py .rb .tex .txt .css. We only allow text based files, an image based PDF will not work yet, but we're adding support for that in the future.            
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer6')}
+          >
+            <h2 className="text-lg font-semibold">Can i use custom colors on my bot?</h2>
+            <span className="text-gray-500">{answersVisible.answer6 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer6 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+               Right now we offer a light and dark theme on bots. If you need a specific spec please reach out for a free custom integration with your brand colors.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 rounded-lg shadow">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleAnswer('answer2')}
+          >
+            <h2 className="text-lg font-semibold">What happens if I run out of credits?</h2>
+            <span className="text-gray-500">{answersVisible.answer2 ? '-' : '+'}</span>
+          </div>
+          {answersVisible.answer2 && (
+            <div className="mt-4">
+              <p className="text-gray-600">
+            Our plans support generous usage, but if you run out of credits, you can add a booster pack for additional messages. Alternatively, you can choose to make the bot hide from your website after it's quota. 
               </p>
             </div>
           )}
         </div>
 
         {/* FAQ Item 4 */}
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div
-            className="flex items-center justify-between cursor-pointer"
-            onClick={() => toggleAnswer('answer4')}
-          >
-            <h2 className="text-lg font-semibold">What pricing plans do you offer?</h2>
-            <span className="text-gray-500">{answersVisible.answer4 ? '-' : '+'}</span>
-          </div>
-          {answersVisible.answer4 && (
-            <div className="mt-4">
-              <p className="text-gray-600">
-                We offer flexible pricing plans tailored to meet the needs of different users. You can find detailed information about our pricing on our pricing page, or feel free to contact our sales team for personalized assistance.
-              </p>
-            </div>
-          )}
-        </div>
+     
 
         {/* FAQ Item 5 */}
         <div className="bg-white p-4 rounded-lg shadow">
@@ -554,7 +593,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer5 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Yes, you can cancel your subscription at any time. There are no long-term commitments, and we believe in providing our users with flexibility and freedom.
+                Yes, you can cancel your subscription at any time under the Billings page in the dashboard.
               </p>
             </div>
           )}
@@ -566,13 +605,13 @@ GPT-4 and custom models</p>
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer6')}
           >
-            <h2 className="text-lg font-semibold">Do you offer customer support?</h2>
+            <h2 className="text-lg font-semibold">I need help integrating my bot, do you offer suport?</h2>
             <span className="text-gray-500">{answersVisible.answer6 ? '-' : '+'}</span>
           </div>
           {answersVisible.answer6 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Absolutely! We provide dedicated customer support to assist you with any questions, issues, or customization needs. Our support team is available via email and live chat during business hours.
+                Absolutely! We provide dedicated customer support to assist you with any questions, issues, or customization needs. Our support team is available via email during business hours.
               </p>
             </div>
           )}
