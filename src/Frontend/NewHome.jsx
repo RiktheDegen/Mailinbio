@@ -250,19 +250,19 @@ function NewHome() {
 <div className="container mx-auto text-center">
         <h2 className="text-helvetica-neue text-3xl md:text-5xl font-semibold mb-4 mt-10" >DocMonster is free till you're ready to start</h2>
         <p className="mb-2 text-xl" >Get started today with simple pricing. Never pay for more than you use.</p>
-        <div className="mt-8 flex justify-center items-center flex-wrap">
+        <div className="mt-8 flex justify-center items-center flex-wrap space-x-4">
           {/* Pricing cards for Premium, Advanced, and Enterprise plans */}
           
          
           
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6 flex-grow border-2 border-grey" >
+          <div className="bg-white p-8 rounded-lg shadow-md max-w-md mb-6 flex-grow border-2 border-grey " >
           <h3 className="text-2xl font-bold justify-left">Basic</h3>
               <div className="mt-4 text-center text-zinc-600 dark:text-zinc-400">
                 <span className="text-4xl font-bold">$99</span>/ month
               </div>
             <div className="w-full border-b-2 border-gray-300 my-4"></div>
             {/* Features */}
-            <div className="flex items-center justify-lefttext-gray-800 mb-2">
+            <div className="flex items-center justify-left text-gray-800 mb-2">
             
             <p className="flex mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -279,7 +279,7 @@ function NewHome() {
 </svg>
 GPT-4 support</p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -289,7 +289,7 @@ GPT-4 support</p>
                 Upto 1000 messages with GPT 4 
                </p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
             <p className="flex mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -325,7 +325,7 @@ GPT-4 support</p>
           </div>
 
           {/* Repeat the above structure for Advanced and Enterprise plans */}
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 border-2 border-black max-w-md mb-6 flex-grow">
+          <div className="bg-white p-8 rounded-lg shadow-md  border-2 border-black max-w-md mb-6 flex-grow">
           <h3 className="text-2xl font-bold text-center">Advanced</h3>
               <div className="mt-4 text-center text-zinc-600 dark:text-zinc-400">
                 <span className="text-4xl font-bold">$199</span>/ month
@@ -333,7 +333,7 @@ GPT-4 support</p>
             {/* Gradient Line */}
             <div className="w-full border-b-2 border-gray-300 my-4"></div>
             {/* Features */}
-            <div className="flex items-center justify-lefttext-gray-800 mb-2">
+            <div className="flex items-center text-left justify-lefttext-gray-800 mb-2">
             
             <p className="flex mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -342,7 +342,7 @@ GPT-4 support</p>
 
               1 chatbot</p>
           </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
              
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -350,7 +350,7 @@ GPT-4 support</p>
 </svg>
 GPT-4 support</p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -360,7 +360,7 @@ GPT-4 support</p>
                 Upto 2500 messages with GPT 4 
                </p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
             <p className="flex mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -397,7 +397,7 @@ GPT-4 support</p>
             </form> */}
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-md mx-4 max-w-md mb-6 flex-grow border-2 border-grey">
+          <div className="bg-white p-8 rounded-lg shadow-md max-w-md mb-6 flex-grow border-2 border-grey">
           <h3 className="text-2xl font-bold text-center">Enterprise</h3>
               <div className="mt-4 text-center text-zinc-600 dark:text-zinc-400">
                 <span className="text-4xl font-bold">Let's chat</span>
@@ -414,7 +414,7 @@ GPT-4 support</p>
 
              Unlimited chatbots</p>
           </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
              
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -422,7 +422,7 @@ GPT-4 support</p>
 </svg>
 GPT-4 and custom models</p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -431,7 +431,7 @@ GPT-4 and custom models</p>
 
                 unlimited messages on any model</p>
             </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
              
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
