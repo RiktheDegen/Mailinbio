@@ -142,7 +142,7 @@ function BotTesting({ userId }) {
 
  
 
-    <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="fIs6as1yB4WYfbncQojRHT0J4lG3"
+    <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="EzqjBlenACZH9TWxd1mK1sEAEg92"
     data-theme="dark"></div>
 
 
