@@ -56,9 +56,9 @@ const BotPopup = ({ botId, onClose }) => {
         console.log(UserfilesData);
         const UserMsgCountRef = ref(db, `users/${context.user.uid}/${userAssitant}`);
         if (UserfilesData.PlanName == 'Premium') {
-          setTotalMessages(5000)
+          setTotalMessages(1000)
         } else if(UserfilesData.PlanName == 'Advance'){
-          setTotalMessages(10000)
+          setTotalMessages(2500)
         }
 
 
