@@ -281,8 +281,8 @@ function NewHome() {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
-
-              Upto 5000 messages with GPT 3.5 turbo
+Upto 1000 messages with GPT 4 
+              
              </p>
           </div>
 
@@ -302,7 +302,7 @@ function NewHome() {
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
-GPT-4 support</p>
+GPT-3.5 support</p>
            </div>
            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
            
@@ -310,8 +310,8 @@ GPT-4 support</p>
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
-
-               Upto 1000 messages with GPT 4 
+Upto 5000 messages with GPT 3.5 turbo
+               
               </p>
            </div>
 
@@ -355,7 +355,8 @@ GPT-4 support</p>
 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
 
-              Upto 10000 messages with GPT 3.5 turbo
+              
+              Upto 2500 messages with GPT 4 
              </p>
           </div>
             <div className="flex items-center justify-left text-gray-800 mb-2">
@@ -375,7 +376,7 @@ GPT-4 support</p>
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
-GPT-4 support</p>
+GPT-3.5 support</p>
            </div>
            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
            
@@ -384,7 +385,7 @@ GPT-4 support</p>
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
 
-               Upto 2500 messages with GPT 4 
+Upto 10000 messages with GPT 3.5 turbo
               </p>
            </div>
 
