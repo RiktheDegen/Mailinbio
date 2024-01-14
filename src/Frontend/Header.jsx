@@ -16,6 +16,7 @@ export default function Header() {
   const history = useNavigate();
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
+    
   };
 
   const fetchUserBotStatus = async () => {

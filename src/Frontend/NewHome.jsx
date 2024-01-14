@@ -4,8 +4,8 @@ import './NewHome.css'
 import axios from 'axios'
 import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
-import sectionTwo from '../static/Group 12.png'
-import sectionThree from '../static/Frame 6.png'
+import sectionTwo from '../static/frame6.gif' 
+import sectionThree from '../static/frame7.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
 
@@ -194,6 +194,9 @@ function NewHome() {
           className="mx-auto max-w-[1/2vw] self-right"
         />
       </div>
+
+
+
     </section>    
 
     <section className="mt-8 mb-8 flex flex-col-reverse md:flex-row  bg-white p-8 md:p-16 max-w-[1200px] mx-auto">
