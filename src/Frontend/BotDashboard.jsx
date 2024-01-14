@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import { getDatabase, ref, get } from 'firebase/database';
 import { UserContext } from '../context/UserContext'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
@@ -24,7 +24,33 @@ function BotDashboard({HasBot}) {
   const [userHasBot, setUserHasBot] = useState(null);
   const [loading, setLoading] = useState(true); 
   const context = useContext(UserContext);
+  const hasNavigated = useRef(false);
+
+
+  useEffect(() => {
+    // Function to fetch the user's name
+    const fetchUserBotStatus = async () => {
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + context.user.uid);
+
+   
+        const snapshot = await get(userRef);
+        const userData = snapshot.val();
+        // Set the user's name in the component's state
+        if (userData.HasBotStatus === 'true' && !hasNavigated.current) {
+          hasNavigated.current = true;
+          navigate("/BotDashboardWithUsers");
+        };
+  };
+    // // Call the function to fetch the user's name
+    // 
+    
   
+    fetchUserBotStatus();
+  }, [context.user?.uid, navigate]); // Dependency to re-run the effect when the user ID changes
+
+
+
   useEffect(() => {
     // Function to fetch the user's name
     const fetchUserName = async () => {
@@ -38,10 +64,6 @@ function BotDashboard({HasBot}) {
         const snapshot = await get(userRef);
         const userData = snapshot.val();
         // Set the user's name in the component's state
-        if (userData.HasBotStatus === 'true') {
-          return  navigate("/BotDashboardWithUsers");
-          
-        }
 
 
         setUserName(userData ? userData.Name : 'No Name'); // Default to 'No Name' if the user data is not available
@@ -73,7 +95,7 @@ function BotDashboard({HasBot}) {
     
   
     fetchUserName();
-  }, [context.user?.uid]); // Dependency to re-run the effect when the user ID changes
+  }, [context.user?.uid,navigate, userHasBot]); // Dependency to re-run the effect when the user ID changes
 
   function goToUpload (){
    

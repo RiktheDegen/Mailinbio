@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import { getDatabase, ref, get, update, push, set } from 'firebase/database';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import logo from '../static/icon (1).png'
 
@@ -13,10 +13,29 @@ export default function Header() {
   const [HasBotStatus, setHasBotStatus] = useState(false);
   const [activeUser, setActiveUser] = useState(true);
   
+  const history = useNavigate();
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
+  const fetchUserBotStatus = async () => {
+    const db = getDatabase();
+    const userRef = ref(db, 'users/' + context.user.uid);
+      const snapshot = await get(userRef);
+      const userData = snapshot.val();
+      console.log(userData.HasBotStatus );
+      // Set the user's name in the component's state
+      if (userData.HasBotStatus === 'true') {
+ 
+        history("/BotDashboardWithUsers");
+      }
+      
+      else if (userData.HasBotStatus == 'False') {
+       
+        history("/BotDashboard");
+      }
+
+};
   
 
   // if (context.user) {
@@ -86,7 +105,19 @@ export default function Header() {
                 </NavLink>
               </li>
               {context.user ? (
+                <>
                 <li>
+                <NavLink
+                  onClick={fetchUserBotStatus}
+                  style={{ textDecoration: 'none', color: '#1F2937' }}
+                  className={() =>
+                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+               <li>
                   <Link
                     to="/"
                     onClick={() => {
@@ -99,6 +130,7 @@ export default function Header() {
                     Logout
                   </Link>
                 </li>
+                </>
               ) : (
                 <li>
                   <Link
@@ -186,7 +218,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to="/BotDashboard"
+                  onClick={fetchUserBotStatus}
                   style={{ textDecoration: 'none', color: '#1F2937' }}
                   className={() =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
