@@ -26,6 +26,7 @@ const BotPopup = ({ botId, onClose }) => {
   const [embedCode, setEmbedCode] = useState(null);
   const [userAssitant, setUserAssitant] = useState('');
   const [Botloading, setBotLoading] = useState(false);
+  const [createBotLoading, setCreateBotLoading] = useState(false);
   const [upgradeAlert, setUpgradeAlert] = useState(null);
   const [hasPaidStatus, setHasPaidStatus] = useState(null);
   const [msgCount, setMsgCount] = useState(0); // New state for message count
@@ -99,7 +100,6 @@ const BotPopup = ({ botId, onClose }) => {
   };
 
 
-
   const handleSaveChanges = async () => {
     try {
       const db = getDatabase();
@@ -118,7 +118,6 @@ const BotPopup = ({ botId, onClose }) => {
   };
 
  
-
   const generateEmbedCode = () => {
     
     return `//Insert this div in whichever pages you want your bot on
@@ -164,21 +163,14 @@ const BotPopup = ({ botId, onClose }) => {
 
   const deleteBot = async() => {
     const db = getDatabase();
+    const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/deleteBot', {
+      assistantId: userAssitant,
+      });
+      
+      console.log(response.data.response);
 
     const userRef = ref(db, 'users/' + context.user.uid);
-    // const snapshot = await get(userRef);
-    // const userData = snapshot.val();
-    // const userAssitant = userData.AssitantId;
-    // console.log(userAssitant);
-  
-    //   const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/deleteBot', {
-    //     userAssitant: userAssitant,
-    //   });
-  
-    //   const botId = response.data.sendResponse;
-    //   console.log(botId);
-
-   
+    
 
     update(userRef, {
       AssitantId: '',
@@ -297,6 +289,7 @@ const BotPopup = ({ botId, onClose }) => {
       // Handle error if necessary
     }
   };
+
   function writeUserBot(AssitantId, HasBotStatus) {
     const db = getDatabase();
     const userRef = ref(db, 'users/' + context.user.uid);
@@ -304,14 +297,12 @@ const BotPopup = ({ botId, onClose }) => {
       AssitantId: AssitantId,
       HasBotStatus: HasBotStatus,
     });
-  }
+  };
 
-
- 
 
 
   const createBot = async () => {
-    setBotLoading(true);
+    setCreateBotLoading(true);
   
     const db = getDatabase();
     const botFilesRef = ref(db, `users/${context.user.uid}/files`);
@@ -319,7 +310,7 @@ const BotPopup = ({ botId, onClose }) => {
     const filesData = snapshot.val();
   
     if (!filesData || Object.keys(filesData).length < 1) {
-      setBotLoading(false);
+      setCreateBotLoading(false);
       return alert('Please upload files to continue');
     }
   
@@ -366,7 +357,7 @@ const BotPopup = ({ botId, onClose }) => {
       setBotLoading(false);
   
       if (hasAsst) {
-        Navigate(`/BotTesting/${botId}`);
+      return  Navigate(`/BotTesting/${botId}`);
       }
     } catch (error) {
       console.error('Error creating bot:', error);
@@ -506,10 +497,22 @@ const BotPopup = ({ botId, onClose }) => {
         </button>
       </div>
     )}
+   
+   
+
       <div className="mt-16 ">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={createBot}>
-          Save Changes/Test
-        </button>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={createBot}  disabled={createBotLoading} >
+          
+      
+
+        {createBotLoading ? (
+        <div className="flex items-center justify-center mt-4">
+          <BarLoader color="#4A90E2" loading={createBotLoading}/>
+        </div>
+      ) : 'Save Changes/Test'}
+  </button>
+
+
         <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' onClick={handleGenerateEmbedClick} style = {{backgroundColor: "#2D3748"}}>View Current embed</button>
       </div>
 
