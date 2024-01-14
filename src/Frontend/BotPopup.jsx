@@ -167,7 +167,7 @@ const BotPopup = ({ botId, onClose }) => {
       assistantId: userAssitant,
       });
       
-      console.log(response.data.response);
+      console.log(response.data.outcome);
 
     const userRef = ref(db, 'users/' + context.user.uid);
     

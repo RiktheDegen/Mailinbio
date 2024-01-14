@@ -247,10 +247,10 @@ function NewHome() {
  
 {/* Pricing Section */}
 <section className="py-16 "ref={targetRef}>
-<div className="container mx-auto text-center">
+<div className="container-fluid text-center md: mx-auto lg: mx-auto ">
         <h2 className="text-helvetica-neue text-3xl md:text-5xl font-semibold mb-4 mt-10" >DocMonster is free till you're ready to start</h2>
         <p className="mb-2 text-xl" >Get started today with simple pricing. Never pay for more than you use.</p>
-        <div className="mt-8 flex justify-center items-center flex-wrap space-x-4">
+        <div className="mt-8 flex justify-center items-center flex-wrap md:space-x-4 lg:space-x-4">
           {/* Pricing cards for Premium, Advanced, and Enterprise plans */}
           
          
@@ -271,24 +271,7 @@ function NewHome() {
 
               1 chatbot</p>
           </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
-             
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-GPT-4 support</p>
-            </div>
-            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
-            
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-
-                Upto 1000 messages with GPT 4 
-               </p>
-            </div>
+           
             <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
             <p className="flex mb-2">
@@ -301,7 +284,7 @@ GPT-4 support</p>
           </div>
 
             <div className="flex items-center justify-left text-gray-800 mb-2">
-             
+            
               <p className="flex mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -309,6 +292,25 @@ GPT-4 support</p>
 
                 Upto 20 files per bot</p>
             </div>
+            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+            
+             <p className="flex mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+ <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+GPT-4 support</p>
+           </div>
+           <div className="flex items-center justify-left text-left text-gray-800 mb-2">
+           
+             <p className="flex mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+ <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+
+               Upto 1000 messages with GPT 4 
+              </p>
+           </div>
 
             <div className="flex items-center justify-left text-gray-800 mb-2">
              
@@ -342,24 +344,7 @@ GPT-4 support</p>
 
               1 chatbot</p>
           </div>
-            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
-             
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-GPT-4 support</p>
-            </div>
-            <div className="flex items-center justify-left text-left text-gray-800 mb-2">
-            
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-
-                Upto 2500 messages with GPT 4 
-               </p>
-            </div>
+          
             <div className="flex items-center justify-left text-left text-gray-800 mb-2">
             
             <p className="flex mb-2">
@@ -379,6 +364,26 @@ GPT-4 support</p>
 
                 Upto 20 files per bot</p>
             </div>
+
+            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+            
+             <p className="flex mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+ <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+GPT-4 support</p>
+           </div>
+           <div className="flex items-center justify-left text-left text-gray-800 mb-2">
+           
+             <p className="flex mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+ <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+
+               Upto 2500 messages with GPT 4 
+              </p>
+           </div>
 
             <div className="flex items-center justify-left text-gray-800 mb-2">
              
@@ -500,7 +505,7 @@ GPT-4 and custom models</p>
           {answersVisible.answer1 && (
             <div className="mt-4">
               <p className="text-gray-600">
-                Docmonster uses OpenAI's LLMs like GPT-4 and GPT-3.5 today. Models use RAG to understand your API Docs and help your users integrate your API into thier website. We're bringing support for Mistral and CodeLlama and a few other models soon.
+                Docmonster uses OpenAI's LLMs like GPT-3.5 today. Models use RAG to understand your API Docs and help your users integrate your API into thier website. We're bringing support for Mistral and CodeLlama and a few other models soon.
               </p>
             </div>
           )}
