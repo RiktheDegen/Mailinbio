@@ -276,29 +276,7 @@ function NewHome() {
           </div>
            
             <div className="flex items-center justify-left text-left text-gray-800 mb-2">
-            
             <p className="flex mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-Upto 1000 messages with GPT 4 
-              
-             </p>
-          </div>
-
-            <div className="flex items-center justify-left text-gray-800 mb-2">
-            
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-
-                Upto 20 files per bot</p>
-            </div>
-            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
-            
-             <p className="flex mb-2">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
@@ -313,6 +291,28 @@ GPT-3.5 support</p>
 Upto 5000 messages with GPT 3.5 turbo
                
               </p>
+         
+          </div>
+
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+            
+              <p className="flex mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+
+                Upto 20 files per bot</p>
+            </div>
+            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <p className="flex mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+Upto 1000 messages with GPT 4 
+              
+             </p>
+        
            </div>
 
             <div className="flex items-center justify-left text-gray-800 mb-2">
@@ -349,30 +349,7 @@ Upto 5000 messages with GPT 3.5 turbo
           </div>
           
             <div className="flex items-center justify-left text-left text-gray-800 mb-2">
-            
             <p className="flex mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-
-              
-              Upto 2500 messages with GPT 4 
-             </p>
-          </div>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
-             
-              <p className="flex mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-</svg>
-
-                Upto 20 files per bot</p>
-            </div>
-
-            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
-            <div className="flex items-center justify-left text-gray-800 mb-2">
-            
-             <p className="flex mb-2">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
@@ -386,7 +363,30 @@ GPT-3.5 support</p>
 </svg>
 
 Upto 10000 messages with GPT 3.5 turbo
-              </p>
+              </p>   
+           
+          </div>
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+             
+              <p className="flex mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+
+                Upto 20 files per bot</p>
+            </div>
+
+            <p className="flex mb-2 ml-2 font-bold"> Coming soon</p>
+            <div className="flex items-center justify-left text-gray-800 mb-2">
+            <p className="flex mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+</svg>
+
+              
+              Upto 2500 messages with GPT 4 
+             </p>
+          
            </div>
 
             <div className="flex items-center justify-left text-gray-800 mb-2">
