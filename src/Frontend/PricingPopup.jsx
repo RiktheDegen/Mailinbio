@@ -121,12 +121,12 @@ GPT-4 support</p>
              <p className="mb-2"></p>
            </div>
             {/* Buy Button */}
-          <Link to="/Signup">
-              <button className="border-2 border-black w-full text-black py-2 px-2 rounded-lg font-semibold  transition duration-300" type="submit">
-                Choose plan
+            <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-premium" method="POST">
+              <button className=" border-2 border-black w-full text-black py-2 px-2 rounded-lg font-semibold  transition duration-300" type="submit">
+                Choose Plan
               </button>
-              </Link>
-
+            </form>
+             
          
           </div>
 
@@ -191,11 +191,14 @@ GPT-4 support</p>
              <p className="mb-2"></p>
            </div>
             {/* Buy Button */}
-            <Link to="/Signup">
-              <button className="bg-green-500  w-full text-white py-2 px-2 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit" >
-              Choose plan
-              </button></Link>
          
+              <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-advanced" method="POST">
+              <button className="bg-green-500 w-full text-white py-2 px-2 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
+                Choose Plan
+              </button>
+            </form>
+
+
             {/* <form action="https://lorem-ipsum-demo-3115728536ba.herokuapp.com/create-checkout-session-advanced" method="POST">
               <button className="bg-green-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit">
                 Choose Plan
