@@ -108,6 +108,7 @@ function BotTesting({ userId }) {
   return (
     <div>
       <Helmet>
+
 <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>
 
     </Helmet>
@@ -141,7 +142,7 @@ function BotTesting({ userId }) {
 
  
 
-    <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="EzqjBlenACZH9TWxd1mK1sEAEg92"
+    <div class="Api-chat-widget" data-symbol={AssistantId} data-uid="IbUkET0l9mVla1gRLYtYri3oJIf2"
     data-theme="dark"></div>
 
 
