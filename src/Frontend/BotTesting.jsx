@@ -109,7 +109,6 @@ function BotTesting({ userId }) {
     <div>
       <Helmet>
 <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>
-<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"></link>
 
     </Helmet>
 

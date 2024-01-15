@@ -192,7 +192,9 @@ const BotPopup = ({ botId, onClose }) => {
           
             if (uploadedDocuments.length >= 20) {
               alert('You can only upload up to 20 files.');
+              setLoading(false);
               return;
+
             }
 
           const allowedFileTypes = ['.c', '.cpp', '.csv', '.docx', '.html', '.java', '.json', '.md', '.pdf', '.php', '.pptx', '.py', '.rb', '.tex', '.txt', '.css'];
