@@ -2,14 +2,22 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import './NewHome.css'
 import axios from 'axios'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/frame6.gif' 
 import sectionThree from '../static/frame7.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
+import Hotjar from '@hotjar/browser';
+
+
 
 const CardsSection = () => {
+
+ 
+
   const cardsData = [
     { title: 'Upload Docs', content: 'Upload upto 20 files per agent', icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-4">
     <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
@@ -38,8 +46,12 @@ const CardsSection = () => {
 };
 
 
-
 function NewHome() {
+  const siteId = 3826822;
+  const hotjarVersion = 6;
+  
+  Hotjar.init(siteId, hotjarVersion);
+  
     const [activeStep, setActiveStep] = useState(1);
     
 

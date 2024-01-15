@@ -7,31 +7,15 @@ import { UserContext } from '../context/UserContext';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+
+
+
 const Signup = () => {
   const context = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleSignup = () => {
-  //   firebase
-  //     .auth()
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then((res) => {
-  //       console.log(res);
-  //       context.setUser({ email: res.user.email, uid: res.user.uid });
-  //       try {
-  //         writeUserData(res.user.uid, res.user.email);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       toast(error.message, {
-  //         type: 'error',
-  //       });
-  //     });
-  // };
+
 
   const handleSignup = async () => {
     try {

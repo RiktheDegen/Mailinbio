@@ -33,6 +33,12 @@ function Onboarding({ userId }) {
           const snapshot = await get(userRef);
           const userValues = snapshot.val();
           
+      
+        update(userRef, {
+          emailVerified: true,
+        });
+          
+
           if (userValues && userValues.Name !== '') {
             navigate('/BotDashboard');
           }
