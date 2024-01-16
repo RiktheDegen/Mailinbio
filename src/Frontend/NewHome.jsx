@@ -10,6 +10,8 @@ import sectionTwo from '../static/frame6.gif'
 import sectionThree from '../static/frame7.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
+import Hotjar from '@hotjar/browser';
+
 
 
 
@@ -48,7 +50,10 @@ const CardsSection = () => {
 
 function NewHome() {
 
-  
+  const siteId = 3826822;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
     const [activeStep, setActiveStep] = useState(1);
     
 
