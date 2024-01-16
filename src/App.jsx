@@ -10,7 +10,7 @@ import Upload from './Frontend/Upload'
 import Mybotbckend from './ReusableComponents/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
-
+import { Analytics } from '@vercel/analytics/react';
 
 
 //toast 
@@ -100,6 +100,7 @@ function App() {
           </Routes>
    
           <Footer/>
+          <Analytics />
           </UserContext.Provider>
     </Router>
     
