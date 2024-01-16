@@ -140,8 +140,8 @@ export default YourComponent;
    <>
     <Helmet>
 
-<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>
-
+<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-9Zc4VrRm.js"></script>
+<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-E-sZSRUH.css"></link>
     </Helmet>
   
    
