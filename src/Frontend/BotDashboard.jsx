@@ -5,6 +5,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import PopupModal from './PopupModal';
 import { json } from 'body-parser';
 import PricingPopup from './PricingPopup';
+import './BotDashboardWithUsers.css';
 
 function BotDashboard({HasBot}) {
 //comment
@@ -110,7 +111,7 @@ function BotDashboard({HasBot}) {
       <div>
        <div className="flex h-screen ">
         {/* Left Sidebar */}
-        <div className="w-64 p-4 text-white" style={{backgroundColor: "#2D3748"}}>
+        <div className="w-64 p-4 text-white custom-block-below-425" style={{backgroundColor: "#2D3748"}}>
           <div className="mb-8">
             <div className="text-2xl text-helvetica-neue font-medium mb-4">My Dashboard</div>
             <div className="border-b border-gray-600 pb-2 mb-4">

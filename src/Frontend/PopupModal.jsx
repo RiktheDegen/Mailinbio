@@ -23,9 +23,20 @@ const PopupModal = ({ isOpen, onRequestClose }) => {
     padding: "10px",
     borderRadius: "8px",
     outline: "none",
+
+    
         },
 
+
       };
+
+        // Apply different styles for viewports below 425px
+  if (window.innerWidth < 765) {
+    customStyles.content.height = "50%";
+    customStyles.content.width = "80%";
+    // Add more style changes as needed for small viewports
+  };
+
       const customOverlayStyles = {
         content: {
             backgroundColor: 'rgba(0, 0, 0, 0.5)',

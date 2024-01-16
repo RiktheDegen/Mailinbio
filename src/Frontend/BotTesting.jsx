@@ -168,7 +168,7 @@ export default YourComponent;
         <title>Bot Integration Guide</title>
       </Helmet>
 
-      <h2 className="text-3xl font-bold mb-4">Bot Integration Guide with React Helmet</h2>
+      <h2 className="text-3xl font-bold mb-4">Bot Integration Guide</h2>
       <p>
         To integrate the bot into your webpage follow these steps:
       </p>
@@ -214,13 +214,15 @@ export default YourComponent;
 
         </pre>
       </div>
-    </div>
-    </div>
-
-    <a href={mailtoLink} className='ml-16 text-helvetica-neue font-semibold text-black' target="_blank" rel="noopener noreferrer">
+      <a href={mailtoLink} className='text-helvetica-neue font-semibold text-black  ' target="_blank" rel="noopener noreferrer">
       Having trouble integrating? Reach out for a free integration.
     </a>
+  
+    </div>
+    </div>
 
+
+  
 
 
       {embedCode && (
@@ -268,10 +270,10 @@ export default YourComponent;
       {showOverlay && (
         <div className="overlay">
           
-          <div className="overlay-content ">
+          <div className="overlay-content px-4 ">
             <div className='flex mx-auto'>
             
-            <h2 className='flex mx-auto'>
+            <h2 className='flex mx-auto px-2'>
               
               Congratulations, your GPT Bot is ready.
               

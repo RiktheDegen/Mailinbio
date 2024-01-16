@@ -7,6 +7,8 @@ import PopupModal from './PopupModal';
 import PricingPopup from './PricingPopup';
 import { json } from 'body-parser';
 import BotPopup from './BotPopup'
+import './BotDashboardWithUsers.css';
+
 
 function BotDashboardWithUsers() {
 
@@ -99,7 +101,7 @@ function BotDashboardWithUsers() {
     <div className='text-helvetica-neue'>
     <div className="flex h-screen bg-gray-100">
    {/* Left Sidebar */}
-   <div className="w-64 p-4 text-white" style={{backgroundColor: "#2D3748"}}>
+   <div className="w-64 p-4 text-white custom-block-below-425" style={{backgroundColor: "#2D3748"}}>
      <div className="mb-8">
        <div className="text-2xl text-helvetica-neue font-medium mb-4">My Dashboard</div>
        <div className="border-b border-gray-600 pb-2 mb-4">

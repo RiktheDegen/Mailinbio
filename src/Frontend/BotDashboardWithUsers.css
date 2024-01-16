@@ -1,0 +1,5 @@
+@media (max-width: 425px) {
+    .custom-block-below-425 {
+      display: none;
+    }
+  }
