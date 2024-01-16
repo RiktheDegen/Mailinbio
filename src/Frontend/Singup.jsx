@@ -87,7 +87,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="mt-4 mb-4 px-2" >
+    <Container className="mt-4 mb-4 px-2" >
       
     <Card className='max-w-[550px] justify-center mx-auto '>
       <Form onSubmit={handleSubmit}>
@@ -176,7 +176,7 @@ const Signup = () => {
     Sign up with Google
   </div>
 </Button> */}
-</div>
+</Container>
           
           
 
