@@ -111,7 +111,7 @@ const Signin = () => {
 
   return (
     
-    <Container className="mt-8 text-left p-8 text-helvetica-neue" >
+    <div className="mt-8 text-left p-8 text-helvetica-neue px-2" >
       <Card className='max-w-[550px] justify-center mx-auto '>
         <Form onSubmit={handleSubmit}>
           <h2 className="p-3 text-helvetica-neue text-3xl font-medium mb-4">Sign Into Your Account</h2>
@@ -168,7 +168,7 @@ const Signin = () => {
                 </div>
               </button>
               </div> */}
-    </Container>
+    </div>
   
   );
 };
