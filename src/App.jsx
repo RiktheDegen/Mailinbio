@@ -98,9 +98,7 @@ function App() {
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
-   
           <Footer/>
-         
           </UserContext.Provider>
     </Router>
     
