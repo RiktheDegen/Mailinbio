@@ -10,7 +10,7 @@ import sectionTwo from '../static/frame6.gif'
 import sectionThree from '../static/frame7.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
-import { Helmet } from 'react-helmet';
+
 
 
 
@@ -129,22 +129,7 @@ function NewHome() {
       
     return (
     <>
-    <Helmet>
-
-    <script>
-    {`
-      (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3826822,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    `}
-  </script>
-    </Helmet>
-    
+   
      
     
     <section>
