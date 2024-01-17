@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^1.0.6",
     "@hotjar/browser": "^1.0.9",
     "@mui/icons-material": "^5.14.18",
@@ -25,6 +27,7 @@
     "firebase": "^10.7.0",
     "firebase-admin": "^11.11.1",
     "firebase-functions": "^4.5.0",
+    "framer-motion": "^10.18.0",
     "localforage": "^1.10.0",
     "magic-sdk": "^21.5.0",
     "match-sorter": "^6.3.1",
@@ -39,6 +42,7 @@
     "react-modal": "^3.16.1",
     "react-resizable": "^3.0.5",
     "react-router-dom": "^6.18.0",
+    "react-scripts": "^5.0.1",
     "react-spinners": "^0.13.8",
     "react-syntax-highlighter": "^15.5.0",
     "react-toastify": "^9.1.3",

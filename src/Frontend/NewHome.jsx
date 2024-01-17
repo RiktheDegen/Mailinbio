@@ -8,11 +8,13 @@ import HeroBanner from '../static/Group 22.png'
 import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/frame6.gif' 
 import sectionThree from '../static/frame7.gif'
+import sectionFour from '../static/Group 32.png'
+import sectionFive from '../static/Group 30.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
-
-
-
+import SectionComponent from './SectionComponent';
+import { Helmet } from 'react-helmet';
+import { Card }  from 'reactstrap'
 
 
 
@@ -129,7 +131,7 @@ function NewHome() {
       
     return (
     <>
-   
+ 
      
     
     <section>
@@ -142,16 +144,19 @@ function NewHome() {
               Supercharge your API docs with AI chat
               </h1>
               <p className=" text-helvetica-neue mb-8 text-lg md:text-xl">
-               Nobody loves reading API documentation. Help your customers understand, implement and debug your product faster than ever with docmonsterAI's chat assitant.
+               Nobody loves reading API documentation. Help your customers understand, implement and debug your product faster than ever with docmonsterAI's chat assistant.
               </p>
               <div className="flex mx-auto   items-center md:items-center ">
     <div>
     <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
     </div>
-    <button className="border ml-4  border-black text-grey py-2 px-4 rounded-md" onClick={scrollToSection}>View Pricing</button>
+    <button className="border ml-4  border-black text-grey py-2 px-4 rounded-md"> <YouTubeLightboxButton/></button>
    
   </div>
+
+  
+
   <p className='mt-2 text-helvetica-neue font-semibold '>No credit card required</p>
             </div>
             <div className="mt-8 md:mt-0 md:w-1/2">
@@ -165,18 +170,53 @@ function NewHome() {
         </div>
       </div>
     </section>
-   
+
+  
     <div className=" pt-20  rounded-b-[30] ">
       {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
     <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
-    How DocMonster Works
+    Instant Support, Anytime, Anywhere
     </h2>
-    <p className="text-helvetica-neue text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
+    <p className="text-helvetica-neue mt-2 text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >No more waiting for hours. Experience immediate assistance with our round-the-clock support.</p>
+
+<section className=" mt-16 mb-8 flex flex-col p-4 md:flex-row bg-white md:max-w-[1200px] mx-auto">
+  {/* Image Section */}
+  
  
-   < CardsSection/>
- 
+  <div className="mx-auto md:mb-0 mb-4 text-center ">
+
+    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">Relics of the Past</p>
+    <img
+      src={sectionFour}  // Replace with your image path
+      alt="Description of the image"
+      className="mx-auto  max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
+    />
+  
+  </div>
+
+  {/* Image Section */}
+  <div className=" mx-auto md:ml-8 text-center">
+  
+    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">DocsAI by DocMonster</p>
+    <img
+      src={sectionFive}  // Replace with your image path
+      alt="Description of the image"
+      className="mx-auto p-2 rounded-2 shadow-md max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
+    />
+
+  </div>
+
+  
+
+</section>
+
+
+
+
  
   </div>
+   
+ 
 
   
 
@@ -206,6 +246,8 @@ function NewHome() {
 
 
     </section>    
+
+   
 
     <section className="mt-8 mb-8 flex flex-col-reverse md:flex-row  bg-white p-8 md:p-16 max-w-[1200px] mx-auto">
   {/* Image Section */}
@@ -253,6 +295,28 @@ function NewHome() {
         />
       </div>
     </section>    
+    <div className=" pt-20  rounded-b-[30] ">
+      {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
+    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
+    How DocMonster Works
+    </h2>
+    <p className="text-helvetica-neue text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
+ 
+   < CardsSection/>
+ 
+ 
+  </div>
+    <div className=" pt-20  rounded-b-[30] ">
+      {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
+    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
+    Try DocMonster with Popular Saas APIs
+    </h2>
+    <p className="text-helvetica-neue text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >Ask docmonster any question you want about these popular Saas APIs</p>
+    <SectionComponent />
+    <p className="text-helvetica-neue text-md font-light mb-4 mx-auto px-8 max-w-[950px] md:text-center" > Disclaimer: Docmonster has no affiliation with the companies listed above as customers, users or otherwise. This tool is purely demonstrative and not intended to be used outside of docmonster.</p>
+ 
+ 
+  </div>
  
     <section className=" pb-16 mt-8 ">
  
@@ -403,7 +467,7 @@ Upto 10000 messages with GPT 3.5 turbo
            </div>
             {/* Buy Button */}
             <Link to="/Signup">
-              <button className="bg-green-500  w-full text-white py-2 px-2 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit" >
+              <button className="border-black border-2 w-full text-black py-2 px-2 rounded-lg font-semibold hover:bg-green-400 transition duration-300" type="submit" >
                 Start for free
               </button></Link>
          
@@ -663,3 +727,60 @@ GPT-4 and custom models</p>
 }
 
 export default NewHome
+
+
+const YouTubeLightboxButton = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const openLightbox = () => {
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const handleOverlayClick = (e) => {
+    // Close the lightbox if the click is outside the video overlay
+    if (e.target.classList.contains('lightbox-overlay')) {
+      closeLightbox();
+    }
+  };
+
+  return (
+    <div className="relative">
+      <button onClick={openLightbox} className="button-1-gradient secondary w-inline-block" aria-label="open lightbox">
+        <div className="secondary-button centered-content">
+          <div className="hero-button-icon-container">
+            {/* Use the YouTube video thumbnail as the button icon */}
+           
+          </div>
+          <div>TL;DR in 30 sec</div>
+        </div>
+      </button>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center lightbox-overlay" onClick={handleOverlayClick}>
+          <div className="bg-white p-4 rounded-md max-w-full max-h-full overflow-auto">
+            {/* YouTube Video Embed */}
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/rQ3oUKvedgQ?si=AYNfcHZH-Bras7dS"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+
+            {/* Close Button */}
+            <button onClick={closeLightbox} className="absolute top-2 right-2 text-white text-xl">
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
