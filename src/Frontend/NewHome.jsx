@@ -197,7 +197,7 @@ function NewHome() {
   {/* Image Section */}
   <div className=" mx-auto md:ml-8 text-center">
   
-    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">DocsAI by DocMonster</p>
+    <p className="text-helvetica-neue mt-2 text-lg font-bold mb-4 mx-auto px-4 max-w-[750px]">DocsAI by DocMonster</p>
     <img
       src={sectionFive}  // Replace with your image path
       alt="Description of the image"
