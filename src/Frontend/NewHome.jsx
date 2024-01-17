@@ -9,7 +9,7 @@ import sectionOne from '../static/Group 11.png'
 import sectionTwo from '../static/frame6.gif' 
 import sectionThree from '../static/frame7.gif'
 import sectionFour from '../static/Group 32.png'
-import sectionFive from '../static/Group 30.gif'
+import sectionFive from '../static/group 30.gif'
 import logo from '../static/icon (1).png'
 import upload from '../static/Group 24.svg'
 import SectionComponent from './SectionComponent';
