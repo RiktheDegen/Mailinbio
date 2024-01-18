@@ -17,13 +17,14 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
 
   
   const userAssitant = AssistantId;
-
+const uid = UserId;
   
-
-  const [collapsed, setCollapsed] = useState(false);
+console.log(userAssitant +" "+ uid);
+  const [collapsed, setCollapsed] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [hideComponent, setHideComponent] = useState(false);
+  const [runResponse, setRunResponse] = useState('');
 
   const chatContainerRef = useRef(null);
 
@@ -52,6 +53,32 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
     setCollapsed(!collapsed);
   };
 
+  const initThread = async () => {
+    console.log('x');
+    console.log(runResponse);
+  
+    if (runResponse !== '') {
+      console.log('thread already created');
+      return;
+    }
+  
+    console.log('y');
+  
+    let threadId = '';
+    while (threadId === '') {
+      const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/initThread', {
+        assistant: "hello",
+      });
+  
+      threadId = response.data.threadId;
+      console.log('New run:', threadId);
+    }
+  
+    setRunResponse(threadId);
+    console.log('Run created:', threadId);
+  };
+  
+
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
   
@@ -63,6 +90,8 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
       const response = await axios.post('https://lorem-ipsum-demo-3115728536ba.herokuapp.com/api/messages', {
         text: newMessage,
         assistant: userAssitant,
+        uid: uid,
+        threadId: runResponse,
       });
   
       const botResponse = response.data.botResponse?.text;
@@ -150,7 +179,14 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
           
           
           </div>
-        <button onClick={toggleCollapse}>{collapsed ? '+' : '-'}</button>
+          
+        <button className='ml-2' onClick={() => {
+          toggleCollapse();
+          if (collapsed) {
+            initThread();
+          }
+        }}>
+          {collapsed ? '+' : '-'}</button>
       </div>
 
       {!collapsed && (

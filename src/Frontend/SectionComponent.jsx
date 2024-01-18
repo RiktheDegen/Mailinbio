@@ -16,7 +16,7 @@ const SectionComponent = () => {
       case 'sendgrid':
         return <div className='item-center'>
           <p className='mx-auto text-center text-helvetica-neue font-semibold'>SendGrid</p>
-          <Mybot AssistantId='asst_b8Hw9jjOigy3qGGcfIaWXUys'/></div>;
+          <Mybot AssistantId='asst_b8Hw9jjOigy3qGGcfIaWXUys' UserId ='EzqjBlenACZH9TWxd1mK1sEAEg92'/></div>;
       case 'stripe':
         return <div className='item-center'>
                 <p className='mx-auto text-center text-helvetica-neue font-semibold'>Stripe</p>
