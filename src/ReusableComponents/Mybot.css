@@ -26,7 +26,7 @@
 
 /* Add styling for partially expanded mode */
 .partially-expanded {
-  width: 50%; /* Set your desired width for partially expanded mode */
+  width: 95%; /* Set your desired width for partially expanded mode */
   z-index: 52;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }

@@ -20,7 +20,7 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
 
   
 
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [hideComponent, setHideComponent] = useState(false);
@@ -35,8 +35,7 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
     // Add an event listener for window resize
     window.addEventListener('resize', handleResize);
 
-    // Call handleResize once on component mount
-    handleResize();
+ 
 
     // Clean up the event listener on component unmount
     return () => {
@@ -137,8 +136,8 @@ const Mybot = ({ UserId, AssistantId, title, theme}) => {
   return (
     <div>
     <div
-      className={`fixed bottom-0 right-0 m-4 p-4 bg-gray-800 text-gray-300 rounded-lg  ${
-        collapsed ? 'w-60 collapsed' : 'partially-expanded'
+      className={` m-4 p-4 bg-gray-800 text-gray-300 rounded-lg  ${
+        collapsed ? 'w-60 collapsed' : 'mx-auto partially-expanded'
       }`}
     >
       <div className="flex justify-between items-center mb-4">

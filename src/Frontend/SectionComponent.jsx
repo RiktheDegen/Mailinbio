@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
+import Mybot from '../ReusableComponents/Mybotbckend';
+import SendGrid from '../static/SendGrid.png'
 
 const SectionComponent = () => {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -12,24 +14,29 @@ const SectionComponent = () => {
   const renderContent = () => {
     switch (selectedButton) {
       case 'sendgrid':
-        return <div>Content for Sendgrid</div>;
+        return <div className='item-center'>
+          <p className='mx-auto text-center text-helvetica-neue font-semibold'>SendGrid</p>
+          <Mybot /></div>;
       case 'stripe':
-        return <div>Content for Stripe</div>;
+        return <div className='item-center'>
+                <p className='mx-auto text-center text-helvetica-neue font-semibold'>Stripe</p>
+          <Mybot /></div>;
       case 'hubspot':
-        return <div>Content for Hubspot</div>;
+        return <div className='item-center'>
+           <p className='mx-auto text-center text-helvetica-neue font-semibold'>HubSpot</p>
+          <Mybot /></div>;
       case 'brex':
-        return <div>Content for Brex</div>;
+        return <div className='item-center'>
+           <p className='mx-auto text-center text-helvetica-neue font-semibold'>Brex</p>
+          <Mybot /></div>;
       default:
-        return <div>Select a service</div>;
+        return <div className='item-center'></div>;
     }
   };
 
   return (
     <>
-    <Helmet>
-<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-9Zc4VrRm.js"></script>
-<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-E-sZSRUH.css"></link>
-    </Helmet>
+  
 
     <div className="flex flex-col items-center mt-10">
       <div className="rounded-full border border-black p-2 ">
