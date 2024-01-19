@@ -24,7 +24,7 @@ function Footer() {
                 © 2023
                 <a href=""  className="mx-2 py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0"
                   style={{ textDecoration: 'none', color: '#1F2937' }}>
-                    Srinath Hariharan
+                   Team DocMonster
                 </a>
                 . All Rights Reserved.
             </span>
