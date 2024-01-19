@@ -10,7 +10,7 @@ import Upload from './Frontend/Upload'
 import Mybotbckend from './ReusableComponents/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
-
+import Pricing from './Frontend/Pricing';
 
 
 //toast 
@@ -95,6 +95,7 @@ function App() {
           <Route exact path="/premium" element={<PaymentSuccessPre />}/>
           <Route exact path="/EmailVerification" element={<EmailVerification />}/>
           <Route exact path="/PricingPopup" element={<PricingPopup />}/>
+          <Route exact path="/Pricing" element={<Pricing />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
