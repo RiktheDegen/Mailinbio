@@ -492,7 +492,7 @@ function NewHome() {
   <div className="flex space-x-4 md:items-center justify-center">
     <button className=" py-2 px-4 rounded-md "style={{ color: '#FFFFFF', backgroundColor: '#21C55D' }} ><Link to="/Signup" style={{  color: '#FFFFFF', textDecoration: 'none' }}>Get Started</Link></button>
     
-    <button className="border border-21C55D text-21C55D py-2 px-4 rounded-md" style={{ color: '#C2C2C2' }} onClick={scrollToSection}>View Pricing</button>
+    <button className="border border-21C55D text-21C55D py-2 px-4 rounded-md" style={{ color: '#C2C2C2' }} ><Link to="/Pricing" style={{  color: '#D9D9D9', textDecoration: 'none' }}>View Pricing</Link></button>
   </div>
 </div>
 
