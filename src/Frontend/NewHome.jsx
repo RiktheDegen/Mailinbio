@@ -170,52 +170,18 @@ function NewHome() {
         </div>
       </div>
     </section>
-
-  
     <div className=" pt-20  rounded-b-[30] ">
       {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
     <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
-    Instant Support, Anytime, Anywhere
+    How DocMonster Works
     </h2>
-    <p className="text-helvetica-neue mt-2 text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >No more waiting for hours. Experience immediate assistance with our round-the-clock support.</p>
-
-<section className=" mt-16 mb-8 flex flex-col p-4 md:flex-row bg-white md:max-w-[1200px] mx-auto">
-  {/* Image Section */}
-  
+    <p className="text-helvetica-neue text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
  
-  <div className="mx-auto md:mb-0 mb-4 text-center ">
-
-    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">Relics of the Past</p>
-    <img
-      src={sectionFour}  // Replace with your image path
-      alt="Description of the image"
-      className="mx-auto  max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
-    />
-  
-  </div>
-
-  {/* Image Section */}
-  <div className=" mx-auto md:ml-8 text-center">
-  
-    <p className="text-helvetica-neue mt-2 text-lg font-bold mb-4 mx-auto px-4 max-w-[750px]">DocsAI by DocMonster</p>
-    <img
-      src={sectionFive}  // Replace with your image path
-      alt="Description of the image"
-      className="mx-auto p-2 rounded-2 shadow-md max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
-    />
-
-  </div>
-
-  
-
-</section>
-
-
-
-
+   < CardsSection/>
+ 
  
   </div>
-   
+  
  
 
   
@@ -245,7 +211,45 @@ function NewHome() {
 
 
 
-    </section>    
+    </section> 
+
+    
+    <div className=" pt-20  rounded-b-[30] ">
+      {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
+    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
+    Instant Support without hours of waiting
+    </h2>
+    <p className="text-helvetica-neue mt-2 text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >No more waiting for hours. Experience immediate assistance with our round-the-clock support.</p>
+
+<section className=" mt-16 mb-8 flex flex-col p-4 justify-center md:flex-row bg-white md:max-w-[1200px] mx-auto">
+  {/* Image Section */}
+  
+ 
+  <div className="mx-auto md:mb-0 mb-4 text-center ">
+
+    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">Wait for a few hours </p>
+    <img
+      src={sectionFour}  // Replace with your image path
+      alt="Description of the image"
+      className="mx-auto  max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
+    />
+  
+  </div>
+
+  {/* Image Section */}
+  <div className=" mx-auto md:ml-8 text-center">
+  
+    <p className="text-helvetica-neue mt-2 text-lg mb-4 mx-auto px-4 max-w-[750px]">Instant support with <b> DocsAI by DocMonster</b></p>
+    <img
+      src={sectionFive}  // Replace with your image path
+      alt="Description of the image"
+      className="mx-auto p-2 rounded-2 shadow-md max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
+    />
+
+  </div>
+</section>
+  </div>
+      
 
    
 
@@ -295,17 +299,7 @@ function NewHome() {
         />
       </div>
     </section>    
-    <div className=" pt-20  rounded-b-[30] ">
-      {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
-    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
-    How DocMonster Works
-    </h2>
-    <p className="text-helvetica-neue text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >Get started with DocMonster in three easy steps today. DocMonster is free to use till you're ready to integrate it onto your website</p>
- 
-   < CardsSection/>
- 
- 
-  </div>
+
     <div className=" pt-20  rounded-b-[30] ">
       {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
     <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
@@ -553,7 +547,7 @@ GPT-4 and custom models</p>
 
         {/* FAQ Item 1 */}
 
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer6')}
@@ -570,7 +564,7 @@ GPT-4 and custom models</p>
           )}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer1')}
@@ -591,7 +585,7 @@ GPT-4 and custom models</p>
      
 
         {/* FAQ Item 3 */}
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer3')}
@@ -608,7 +602,7 @@ GPT-4 and custom models</p>
           )}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer4')}
@@ -625,7 +619,7 @@ GPT-4 and custom models</p>
           )}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer6')}
@@ -642,7 +636,7 @@ GPT-4 and custom models</p>
           )}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer2')}
@@ -663,7 +657,7 @@ GPT-4 and custom models</p>
      
 
         {/* FAQ Item 5 */}
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer5')}
@@ -681,7 +675,7 @@ GPT-4 and custom models</p>
         </div>
 
         {/* FAQ Item 6 */}
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 rounded-lg shadow border-2 border-grey">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleAnswer('answer6')}

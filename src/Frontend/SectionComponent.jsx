@@ -14,9 +14,11 @@ const SectionComponent = () => {
   const renderContent = () => {
     switch (selectedButton) {
       case 'sendgrid':
-        return <div className='item-center'>
-          <p className='mx-auto text-center text-helvetica-neue font-semibold'>SendGrid</p>
-          <Mybot AssistantId='asst_b8Hw9jjOigy3qGGcfIaWXUys' UserId ='EzqjBlenACZH9TWxd1mK1sEAEg92'/></div>;
+        return( <div className='item-center'>
+          <img className='max-w-[200px] mx-auto' src='https://easysendy.com/wp-content/uploads/2016/08/SendGrid-Logo-1.png' alt='SendGrid Logo' />
+         <p className='mx-auto text-center mt-2 text-helvetica-neue font-semibold'>
+             Click '+' to get started</p>
+          <Mybot AssistantId='asst_b8Hw9jjOigy3qGGcfIaWXUys' UserId ='EzqjBlenACZH9TWxd1mK1sEAEg92'/></div>);
       case 'stripe':
         return <div className='item-center'>
                 <p className='mx-auto text-center text-helvetica-neue font-semibold'>Stripe</p>
@@ -29,8 +31,12 @@ const SectionComponent = () => {
         return <div className='item-center'>
            <p className='mx-auto text-center text-helvetica-neue font-semibold'>Brex</p>
           <Mybot /></div>;
-      default:
-        return <div className='item-center'></div>;
+         default:
+       return ( <div className='item-center'>
+       <img className='max-w-[200px] mx-auto' src='https://easysendy.com/wp-content/uploads/2016/08/SendGrid-Logo-1.png' alt='SendGrid Logo' />
+      <p className='mx-auto text-center mt-2 text-helvetica-neue font-semibold'>
+          Click '+' to get started</p>
+       <Mybot AssistantId='asst_b8Hw9jjOigy3qGGcfIaWXUys' UserId ='EzqjBlenACZH9TWxd1mK1sEAEg92'/></div>);
     }
   };
 
