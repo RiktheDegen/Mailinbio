@@ -191,45 +191,7 @@ function NewHome() {
 
     
     
-    <div className=" pt-20  rounded-b-[30] ">
-      {/* <img className='max-w-[150px] md:mx-auto ' src={logo} /> */}
-    <h2  className="text-helvetica-neue text-5xl px-8 font-semibold md:text-left md:text-center">
-    Instant Support without hours of waiting
-    </h2>
-    <p className="text-helvetica-neue mt-2 text-md font-medium mb-4 mx-auto px-8 max-w-[750px] md:text-center" >No more waiting for hours. Experience immediate assistance with our round-the-clock support.</p>
-
-
-
-<section className=" mt-16 mb-8 flex flex-col p-4 justify-center md:flex-row bg-white md:max-w-[1200px] mx-auto">
-  {/* Image Section */}
   
- 
-  <div className="mx-auto md:mb-0 mb-4 text-center ">
-
-    <p className="text-helvetica-neue mt-2 text-lg font-medium mb-4 mx-auto px-4 max-w-[750px]">Wait for a few hours </p>
-    <img
-      src={sectionFour}  // Replace with your image path
-      alt="Description of the image"
-      className="mx-auto  max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
-    />
-  
-  </div>
-
-
-
-  {/* Image Section */}
-  <div className=" mx-auto md:ml-8 text-center">
-  
-    <p className="text-helvetica-neue mt-2 text-lg mb-4 mx-auto px-4 max-w-[750px]">Instant support with <b> DocsAI by DocMonster</b></p>
-    <img
-      src={sectionFive}  // Replace with your image path
-      alt="Description of the image"
-      className="mx-auto p-2 rounded-2 shadow-md max-w-half h-auto md:max-w-[40vw] md:h-[30vw] rounded"
-    />
-
-  </div>
-</section>
-  </div>
       
 
   <section className="mt-8 mb-8 flex flex-col md:flex-row bg-white p-8 md:p-16 max-w-[1200px] mx-auto ">
