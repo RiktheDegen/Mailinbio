@@ -11,7 +11,7 @@ import Mybotbckend from './ReusableComponents/Mybotbckend'
 import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
 import Pricing from './Frontend/Pricing';
-
+import Courier from './Frontend/Courier';
 
 //toast 
 import {ToastContainer} from 'react-toastify'
@@ -96,6 +96,7 @@ function App() {
           <Route exact path="/EmailVerification" element={<EmailVerification />}/>
           <Route exact path="/PricingPopup" element={<PricingPopup />}/>
           <Route exact path="/Pricing" element={<Pricing />}/>
+          <Route exact path="/Courier" element={<Courier />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>

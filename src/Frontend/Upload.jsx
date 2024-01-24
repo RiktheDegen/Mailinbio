@@ -131,13 +131,16 @@ const DocumentUpload = ({ userId }) => {
         )
           
         const botId = response.data.botResponse;
+        setBotLoading(false);
         console.log('Bot succesfully made ' + botId);
+
         const assistantId = botId;
         writeUserBot(botId, 'true');
         const charSet = 'asst';
         var hasAsst = charSet.split('').every(char => botId.includes(char))
         console.log(hasAsst);
-        setBotLoading(false);
+        
+
         if (hasAsst == true){
           // Navigate('/BotTesting');
           Navigate(`/BotTesting/${assistantId}`);
