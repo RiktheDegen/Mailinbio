@@ -37,6 +37,7 @@ import PaymentSuccessAdv from './Frontend/PaymentSuccessAdv';
 
 import PaymentSuccessPre from './Frontend/PaymentSuccessPre';
 import PricingPopup from './Frontend/PricingPopup';
+import Integration from './Frontend/Integration';
 
 
  const firebaseConfig = {
@@ -97,6 +98,7 @@ function App() {
           <Route exact path="/PricingPopup" element={<PricingPopup />}/>
           <Route exact path="/Pricing" element={<Pricing />}/>
           <Route exact path="/Courier" element={<Courier />}/>
+          <Route exact path="/Integration" element={<Integration />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>

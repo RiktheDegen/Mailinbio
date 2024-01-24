@@ -504,17 +504,19 @@ const YouTubeLightboxButton = () => {
       {/* Lightbox */}
       {lightboxOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center lightbox-overlay" onClick={handleOverlayClick}>
-          <div className="bg-white p-4 rounded-md max-w-full max-h-full overflow-auto">
+          <div className="mt-16 m-8 bg-white p-4 rounded-md max-w-full max-h-full overflow-auto">
             {/* YouTube Video Embed */}
             <iframe
-              width="100%"
-              height="100%"
+
+            
+             className='md: min-w-[500px] min-h-[450px] lg:min-w-[750px] min-h-[550px]  '
               src="https://www.youtube.com/embed/rQ3oUKvedgQ?si=AYNfcHZH-Bras7dS"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
+
 
             {/* Close Button */}
             <button onClick={closeLightbox} className="absolute top-2 right-2 text-white text-xl">
