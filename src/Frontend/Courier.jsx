@@ -7,8 +7,8 @@ function Courier() {
     return (
         <div className='h-screen'>
     <Helmet>
-<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css"/>
-<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>
+<link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-9zFeCT1e.css"/>
+<script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MWfnQyut.js"></script>
     </Helmet>
 
   

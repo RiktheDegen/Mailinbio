@@ -126,11 +126,11 @@ const BotPopup = ({ botId, onClose }) => {
     
     //Insert this CSS file above any existing stylesheets in the head tag
     
-    <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-5zgJYuOQ.css">
+    <link rel="stylesheet" href="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-9zFeCT1e.css">
     
     //Insert this in the bottom of any html page 
     
-    <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MeHTexxv.js"></script>`;
+    <script type="module" src="https://myapiembedbot-9fe68cda24da.herokuapp.com/index-MWfnQyut.js"></script>`;
   };
 
   const handleGenerateEmbedClick = () => {
