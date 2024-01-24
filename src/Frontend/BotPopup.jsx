@@ -95,6 +95,12 @@ const BotPopup = ({ botId, onClose }) => {
   return () => clearInterval(intervalId);
   }, [context.user, context.user?.uid, hasPaidStatus, msgCount, totalMessages, botFiles]);
 
+  const testBot = () =>{
+Navigate(`/BotTesting/${userAssitant}`)
+  };
+
+
+
   const handleFileChange = (e) => {
     setNewFile(e.target.files[0]);
   };
@@ -517,10 +523,17 @@ const BotPopup = ({ botId, onClose }) => {
 
         <button className='mx-4 mt-8 mb-8 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700' onClick={handleGenerateEmbedClick} style = {{backgroundColor: "#2D3748"}}>View Current embed</button>
       </div>
+<div className='flex space-x-12'>
+<button block className="mt-2 bg-green-500 text-white px-8 py-2 rounded justify-center items-center" onClick={testBot} >
+         Test Current Bot
+        </button>
+
 
       <button block className="mt-2 bg-red-500 text-white px-8 py-2 rounded justify-center items-center" onClick={deleteBot} >
          Delete My bot
         </button>
+</div>
+     
     </div>
   );
 };

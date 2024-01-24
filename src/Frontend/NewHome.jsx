@@ -144,7 +144,7 @@ function NewHome() {
               Supercharge your API docs with AI chat
               </h1>
               <p className=" text-helvetica-neue mb-8 text-lg md:text-xl">
-               Nobody loves reading API documentation. Help your customers understand, implement and debug your product faster than ever with docmonsterAI's chat assistant.
+               Nobody loves reading API documentation. Help your customers understand, implement and debug your product faster than ever with docmonster's chat assistant.
               </p>
               <div className="flex mx-auto   items-center md:items-center ">
     <div>
@@ -201,7 +201,7 @@ function NewHome() {
           Analytics
         </p>
         <h2 className="text-helvetica-neue text-5xl font-medium mb-4">
-         Understand how developers are using your api
+         Understand how developers are using your API
         </h2>
         <p className="text-helvetica-neue mb-4">
          Get powerful analytics about what questions your users have about your docs. Write and rewrite better docs and features based on what developers are looking for.
@@ -239,7 +239,7 @@ function NewHome() {
       Retain
     </p>
     <h2 className="text-helvetica-neue text-5xl font-medium mb-4">
-    Allow developers to integrate your api quickly
+    Allow developers to integrate your API quickly
     </h2>
     <p className="text-helvetica-neue mb-4">
     Developers can ask your bot for custom code examples that can be used immediately in their product. This reduces the time to integrate and use your API by an order of magnitude 
