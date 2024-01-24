@@ -20,16 +20,16 @@ function Courier() {
               Ask the bot to the bottom left of the screen anything about Courier API:
               </p>
               <p className="italic text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
-             "Can i automate notifications"
+             "Can i automate email notifications with Courier"
               </p>
               <p className="italic text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
-             "How can i send a message with Apple Push Notifications Service"
+             "How can i send a message with Apple Push Notifications Service with Courier"
               </p>
               <p className="italic text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
              "How can i install the Courier CLI"
               </p>
               <p className="italic text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
-             "How do i send an idempotent message with Go?" (Yes we even indexed your github Go SDK)
+             "How do i send an idempotent message with Go with Courier?" (Yes we even indexed your github Go SDK)
               </p>
     <div class="Api-chat-widget" data-symbol="asst_xjQBdw1P9E790zFnlkRaWTmJ" data-uid="5jbx5VRouNZwWZC2hRI000Yyzgk2"></div>
     </div>
