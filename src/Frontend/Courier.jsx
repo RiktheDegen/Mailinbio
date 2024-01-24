@@ -16,8 +16,8 @@ function Courier() {
       Hi Troy, We made this page just for Courier
               </h2>
 
-              <p className=" text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
-              "Ask the bot to the bottom left of the screen anything about Courier API"
+              <p className=" font-semibold text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
+              Ask the bot to the bottom left of the screen anything about Courier API:
               </p>
               <p className="italic text-helvetica-neue mb-8 text-lg justify-center text-center md:text-xl">
              "Can i automate notifications"
