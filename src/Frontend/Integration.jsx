@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect }  from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+
 function Integration() {
     const [embedCode, setEmbedCode] = useState(null);
     const [upgradeAlert, setUpgradeAlert] = useState(null);
-    
+    const navigate = useNavigate();
 
     const moveToDashboard = () => {
     
