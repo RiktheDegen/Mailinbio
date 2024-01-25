@@ -39,25 +39,7 @@ export default function Header() {
 };
   
 
-  // if (context.user) {
-  //   const checkBotStatus= async () => {
-  //     setActiveUser(true)
-  //     const db = getDatabase();
-  //     const userRef = ref(db, 'users/' + context.user.uid);
-  //     const snapshot = await get(userRef);
-  //         const userData = snapshot.val();
-  //         if (userData.HasBotStatus == 'true') {
-  //           setHasBotStatus(true);
-  //         }
-  //         else if (userData.HasBotStatus == 'false') {
-  //           setHasBotStatus(true);
-  //         }
-  //   }
-  // }
-  // else if (!context.user) {
-  //   setActiveUser(false)
-  // }
- 
+  
 
   return (
     <header className="shadow sticky z-50 top-0">
