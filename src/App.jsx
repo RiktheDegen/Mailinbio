@@ -12,7 +12,7 @@ import CurrentUploads from './CurrentUploads';
 import BotTesting from './Frontend/BotTesting';
 import Pricing from './Frontend/Pricing';
 import Courier from './Frontend/Courier';
-
+import Preview from './Frontend/Preview'
 //toast 
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -99,6 +99,7 @@ function App() {
           <Route exact path="/Pricing" element={<Pricing />}/>
           <Route exact path="/Courier" element={<Courier />}/>
           <Route exact path="/Integration" element={<Integration />}/>
+          <Route exact path="/Preview" element={<Preview />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
