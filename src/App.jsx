@@ -99,7 +99,7 @@ function App() {
           <Route exact path="/Pricing" element={<Pricing />}/>
           <Route exact path="/Courier" element={<Courier />}/>
           <Route exact path="/Integration" element={<Integration />}/>
-          <Route exact path="/Preview" element={<Preview />}/>
+          <Route exact path="/Preview/:AssistantId" element={<Preview />}/>
           {/* <Route exact path="/Mybot" element={<Mybot />}/> */}
           <Route exact path="*" element={<NotFound/>}/>
           </Routes>
